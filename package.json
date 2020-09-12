@@ -2,10 +2,6 @@
   "name": "ngx-admin",
   "version": "6.0.0",
   "license": "MIT",
-  "main": "web.js",
-  "engines": {
-    "node": "12.18.3"
-  },
   "scripts": {
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
