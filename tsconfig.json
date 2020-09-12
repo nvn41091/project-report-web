@@ -14,5 +14,9 @@
       "path": "./src/tsconfig.spec.json"
     }
   ],
-  "target": "es5"
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "target": "ES2015"
+  }
 }
