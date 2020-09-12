@@ -35,6 +35,9 @@ import {AuthExpiredInterceptor} from './auth/auth-expired.interceptor';
 import {FingerPrintInterceptor} from './auth/FingerPrintInterceptor';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { registerLocaleData } from '@angular/common';
+import localeVi from '@angular/common/locales/vi';
+registerLocaleData(localeVi);
 
 @NgModule({
   declarations: [AppComponent, NgxLoginComponent],
@@ -74,7 +77,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
   ],
   bootstrap: [AppComponent],
   providers: [AuthGuard,
-    {provide: LOCALE_ID, useValue: 'vi-VI'},
+    {provide: LOCALE_ID, useValue: 'vi-VN'},
     {provide: HTTP_INTERCEPTORS, useClass: AuthExpiredInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: NbAuthJWTInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: FingerPrintInterceptor, multi: true},

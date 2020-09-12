@@ -91,18 +91,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "nvn41091:build"
+            "browserTarget": "ngx-admin-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "nvn41091:build:production"
+              "browserTarget": "ngx-admin-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "nvn41091:build"
+            "browserTarget": "ngx-admin-demo:build"
           }
         },
         "test": {
@@ -159,7 +159,7 @@
         }
       }
     },
-    "nvn41091-e2e": {
+    "ngx-admin-demo-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -168,7 +168,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "nvn41091:serve"
+            "devServerTarget": "ngx-admin-demo:serve"
           }
         },
         "lint": {
@@ -183,7 +183,7 @@
       }
     }
   },
-  "defaultProject": "nvn41091",
+  "defaultProject": "ngx-admin-demo",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "ngx",
