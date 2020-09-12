@@ -11,7 +11,7 @@
     "conventional-changelog": "conventional-changelog",
     "start": "node server.js",
     "start:local": "ng serve",
-    "build": "ng build --prod --aot --base-href /",
+    "build": "ng build --prod --aot",
     "build:prod": "ng build",
     "test": "ng test",
     "test:coverage": "rimraf coverage && npm run test -- --code-coverage",
