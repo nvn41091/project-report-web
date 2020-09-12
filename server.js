@@ -3,11 +3,11 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const app = express();
 
-app.use(express.static(__dirname + './dist/nvn41091/'));
+app.use(express.static(__dirname + './dist'));
 
 app.listen(process.env.PORT || 8080);
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname + '/dist/nvn41091/index.html'));
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
