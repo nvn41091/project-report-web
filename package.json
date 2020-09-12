@@ -1,11 +1,16 @@
 {
-  "name": "ngx-admin",
+  "name": "nvn41091",
   "version": "6.0.0",
   "license": "MIT",
+  "engines": {
+    "node": "12.18.3",
+    "npm": "6.14.6"
+  },
   "scripts": {
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
-    "start": "ng serve",
+    "start": "node server.js",
+    "start:local": "ng serve",
     "build": "ng build --prod --aot",
     "build:prod": "ng build",
     "test": "ng test",
@@ -50,6 +55,7 @@
     "core-js": "2.5.1",
     "echarts": "^4.0.2",
     "eva-icons": "^1.1.3",
+    "express": "^4.17.1",
     "fingerprintjs2": "^2.1.2",
     "intl": "1.2.5",
     "ionicons": "2.0.1",
