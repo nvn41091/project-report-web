@@ -4,6 +4,7 @@ import {NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeServi
 import {LayoutService} from '../../../@core/utils';
 import {map, takeUntil, filter} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {NbTokenService} from '@nebular/auth';
 
 @Component({
   selector: 'ngx-header',
@@ -38,17 +39,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [{title: 'Profile'}, {title: 'Log out'}];
+  userMenu = [
+    {title: 'Profile', icon: 'person-outline', data: 'profile'},
+    {title: 'Log out', icon: 'log-out-outline', data: 'logout'},
+  ];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private themeService: NbThemeService,
               private layoutService: LayoutService,
-              private breakpointService: NbMediaBreakpointsService) {
+              private breakpointService: NbMediaBreakpointsService,
+              private tokenService: NbTokenService) {
   }
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
+    this.menuService.onItemClick()
+      .pipe(filter(({tag}) => tag === this.tag))
+      .subscribe(bag => this.onMenuClick(bag.item));
 
     const {xl} = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
@@ -84,5 +92,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   navigateHome() {
     this.menuService.navigateHome();
     return false;
+  }
+
+  onMenuClick(item) {
+    switch (item.data) {
+      case 'logout':
+        this.tokenService.clear();
+        window.location.reload();
+        break;
+    }
   }
 }
