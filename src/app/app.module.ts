@@ -35,12 +35,19 @@ import {AuthExpiredInterceptor} from './auth/auth-expired.interceptor';
 import {FingerPrintInterceptor} from './auth/FingerPrintInterceptor';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { registerLocaleData } from '@angular/common';
-import localeVi from '@angular/common/locales/vi';
-registerLocaleData(localeVi);
+import {DecimalPipe, registerLocaleData } from '@angular/common';
+import vi from '@angular/common/locales/vi';
+import viEt from '@angular/common/locales/extra/vi';
+import { NgxRegisterComponent } from './auth/register/register.component';
+import {SharedModule} from './shared/shared.module';
+registerLocaleData(vi, 'vi-VI', viEt);
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
-  declarations: [AppComponent, NgxLoginComponent],
+  declarations: [AppComponent, NgxLoginComponent, NgxRegisterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -69,15 +76,16 @@ registerLocaleData(localeVi);
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: httpTranslateLoader,
+        useFactory: (createTranslateLoader),
         deps: [HttpClient],
       },
       defaultLanguage: 'vi',
     }),
+    SharedModule,
   ],
   bootstrap: [AppComponent],
-  providers: [AuthGuard,
-    {provide: LOCALE_ID, useValue: 'vi-VN'},
+  providers: [AuthGuard, DecimalPipe,
+    {provide: LOCALE_ID, useValue: 'vi-VI'},
     {provide: HTTP_INTERCEPTORS, useClass: AuthExpiredInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: NbAuthJWTInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: FingerPrintInterceptor, multi: true},
@@ -85,8 +93,4 @@ registerLocaleData(localeVi);
   ],
 })
 export class AppModule {
-}
-
-export function httpTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

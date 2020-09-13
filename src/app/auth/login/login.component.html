@@ -1,16 +1,16 @@
 <div>
-  <h1 id="title" class="title">Login</h1>
-  <p class="sub-title">Hello! Log in with your email.</p>
+  <h1 id="title" class="title">{{ 'login.title' | translate }}</h1>
+  <p class="sub-title">{{'login.description' | translate }}</p>
 
   <nb-alert *ngIf="errors?.length > 0 && !submitted" outline="danger" role="alert">
-    <p class="alert-title"><b>Thông báo</b></p>
+    <p class="alert-title"><b>{{'login.title-notification-success' | translate }}</b></p>
     <ul class="alert-message-list">
       <li *ngFor="let error of errors" class="alert-message">{{ error }}</li>
     </ul>
   </nb-alert>
 
   <nb-alert *ngIf="messages?.length > 0 && !submitted" outline="success" role="alert">
-    <p class="alert-title"><b>Hooray!</b></p>
+    <p class="alert-title"><b>{{ 'title-notification-error' | translate }}</b></p>
     <ul class="alert-message-list">
       <li *ngFor="let message of messages" class="alert-message">{{ message }}</li>
     </ul>
@@ -19,7 +19,7 @@
   <form (ngSubmit)="login()" [formGroup]="loginForm" aria-labelledby="title">
 
     <div class="form-control-group">
-      <label class="label" for="input-userName">Email address:</label>
+      <label class="label" for="input-userName">{{'login.username' | translate }}</label>
       <input nbInput
              fullWidth
              formControlName="userName"
@@ -30,15 +30,15 @@
              [attr.aria-invalid]="this.loginForm.get('userName').invalid && this.loginForm.get('userName').touched ? true : null">
       <ng-container *ngIf="this.loginForm.get('userName').invalid && this.loginForm.get('userName').touched">
         <p class="caption status-danger" *ngIf="this.loginForm.get('userName').errors?.required">
-          Email is required!
+          {{'login.error.username.required' | translate }}
         </p>
       </ng-container>
     </div>
 
     <div class="form-control-group">
     <span class="label-with-link">
-      <label class="label" for="input-password">Password:</label>
-      <a class="forgot-password caption-2" routerLink="../request-password">Forgot Password?</a>
+      <label class="label" for="input-password">{{ 'login.password' | translate }}</label>
+      <a class="forgot-password caption-2" routerLink="../request-password">{{'login.forgot-password' | translate }}</a>
     </span>
       <input nbInput
              fullWidth
@@ -50,7 +50,7 @@
              [attr.aria-invalid]="this.loginForm.get('passwordHash').invalid && this.loginForm.get('passwordHash').touched ? true : null">
       <ng-container *ngIf="this.loginForm.get('passwordHash').invalid && this.loginForm.get('passwordHash').touched ">
         <p class="caption status-danger" *ngIf="this.loginForm.get('passwordHash').errors?.required">
-          Password is required!
+          {{ 'login.error.password.required' | translate }}
         </p>
       </ng-container>
     </div>
@@ -61,11 +61,11 @@
             size="large"
             [disabled]="submitted || !this.loginForm.valid"
             [class.btn-pulse]="submitted">
-      Log In
+      {{'login.submit' | translate }}
     </button>
   </form>
 
   <section class="another-action" aria-label="Register">
-    Don't have an account? <a class="text-link" routerLink="../register">Register</a>
+    {{ 'login.notification-register' | translate}} <a class="text-link" routerLink="../register">{{ 'login.register' | translate }}</a>
   </section>
 </div>

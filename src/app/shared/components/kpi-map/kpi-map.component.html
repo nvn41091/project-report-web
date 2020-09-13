@@ -1,0 +1,54 @@
+<nb-card>
+  <nb-card-header>Map chỉ tiêu</nb-card-header>
+  <nb-card-body class="row">
+    <div class="col-md-6 form-group">
+      <nb-card size="large">
+        <nb-card-header>Thông tin chỉ tiêu trên báo cáo</nb-card-header>
+        <nb-card-body>
+          <div class="col-md-12 form-group">
+            <label class="label">Hàng</label>
+            <input type="text" nbInput fullWidth readonly [(ngModel)]="row">
+          </div>
+          <div class="col-md-12 form-group">
+            <label class="label">Cột</label>
+            <input type="text" nbInput fullWidth [(ngModel)]="column" readonly>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+    <div class="col-md-6 form-group">
+      <nb-card size="large">
+        <nb-card-header>Thông tin chỉ tiêu trên dashboard</nb-card-header>
+        <nb-card-body>
+          <div class="col-md-12 form-group">
+            <label class="label">Chỉ tiêu báo cáo</label>
+            <input type="text" nbInput fullWidth>
+          </div>
+          <div class="col-md-12 form-group">
+            <label class="label">Mã chỉ tiêu báo cáo</label>
+            <input type="text" nbInput fullWidth>
+          </div>
+          <div class="col-md-12 form-group">
+            <label class="label">Đối tượng báo cáo</label>
+            <input type="text" nbInput fullWidth>
+          </div>
+          <div class="col-md-12 form-group">
+            <label class="label">Mã đối tượng báo cáo</label>
+            <input type="text" nbInput fullWidth>
+          </div>
+          <div class="col-md-12 form-group">
+            <label class="label">Trường dữ liệu</label>
+            <ng-select fullWidth [items]="items"></ng-select>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </nb-card-body>
+  <nb-card-footer class="d-flex justify-content-end">
+    <div class="ml-auto">
+      <button nbButton status="warning" (click)="ref.close()">Hủy</button>
+      <button nbButton status="primary" class="ml-2">Lưu</button>
+    </div>
+
+  </nb-card-footer>
+</nb-card>
