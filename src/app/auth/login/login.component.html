@@ -3,14 +3,14 @@
   <p class="sub-title">{{'login.description' | translate }}</p>
 
   <nb-alert *ngIf="errors?.length > 0 && !submitted" outline="danger" role="alert">
-    <p class="alert-title"><b>{{'login.title-notification-success' | translate }}</b></p>
+    <p class="alert-title"><b>{{'login.title-notification-error' | translate }}</b></p>
     <ul class="alert-message-list">
       <li *ngFor="let error of errors" class="alert-message">{{ error }}</li>
     </ul>
   </nb-alert>
 
   <nb-alert *ngIf="messages?.length > 0 && !submitted" outline="success" role="alert">
-    <p class="alert-title"><b>{{ 'title-notification-error' | translate }}</b></p>
+    <p class="alert-title"><b>{{ 'login.title-notification-success' | translate }}</b></p>
     <ul class="alert-message-list">
       <li *ngFor="let message of messages" class="alert-message">{{ message }}</li>
     </ul>
