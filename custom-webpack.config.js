@@ -1,7 +1,5 @@
 const MergeJsonWebpackPlugin = require("merge-jsons-webpack-plugin");
 
-console.log('run language merge');
-
 module.exports = {
   plugins: [
     new MergeJsonWebpackPlugin({

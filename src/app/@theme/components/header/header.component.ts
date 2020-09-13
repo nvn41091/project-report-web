@@ -85,8 +85,4 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.menuService.navigateHome();
     return false;
   }
-
-  onMenuItemCLick() {
-    this.menuService.onItemClick().pipe(filter(({ tag }) => tag === this.tag)) .subscribe(bag => console.log(bag));
-  }
 }
