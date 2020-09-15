@@ -1,6 +1,10 @@
 {
   "register": {
     "title": "Đăng ký",
-    "fullname": "Tên đầy đủ"
+    "fullname": "Tên đầy đủ",
+    "username": "Tên đăng nhập",
+    "email": "Email",
+    "password_hash": "Mật khẩu",
+    "submit": "Đăng ký"
   }
 }

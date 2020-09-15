@@ -7,13 +7,45 @@
   </ul>
 </nb-alert>
 
-<form (ngSubmit)="register()" aria-labelledby="title">
+<form (ngSubmit)="register()" aria-labelledby="title" [formGroup]="formRegister">
   <div class="form-control-group">
     <label class="label" for="input-fullname">{{ 'register.fullname' | translate }}</label>
-    <input id="input-fullname" autofocus fullWidth nbInput fieldSize="large"
+    <input id="input-fullname" autofocus fullWidth nbInput fieldSize="large" formControlName="fullname"
            [status]="this.formRegister.get('fullname').dirty ? (this.formRegister.get('fullname').invalid  ? 'danger' : 'success') : 'basic'"
            [attr.aria-invalid]="this.formRegister.get('fullname').invalid && this.formRegister.get('fullname').touched ? true : null"/>
     <ngx-inline-message [message]="'register.fullname' | translate"
                         [formName]="formRegister.get('fullname')"></ngx-inline-message>
   </div>
+  <div class="form-control-group">
+    <label class="label" for="input-username">{{ 'register.username' | translate }}</label>
+    <input id="input-username" fullWidth nbInput fieldSize="large" formControlName="username"
+           [status]="this.formRegister.get('username').dirty ? (this.formRegister.get('username').invalid  ? 'danger' : 'success') : 'basic'"
+           [attr.aria-invalid]="this.formRegister.get('username').invalid && this.formRegister.get('username').touched ? true : null"/>
+    <ngx-inline-message [message]="'register.username' | translate"
+                        [formName]="formRegister.get('username')"></ngx-inline-message>
+  </div>
+  <div class="form-control-group">
+    <label class="label" for="input-email">{{ 'register.email' | translate }}</label>
+    <input id="input-email" fullWidth nbInput fieldSize="large" formControlName="email"
+           [status]="this.formRegister.get('email').dirty ? (this.formRegister.get('email').invalid  ? 'danger' : 'success') : 'basic'"
+           [attr.aria-invalid]="this.formRegister.get('email').invalid && this.formRegister.get('email').touched ? true : null"/>
+    <ngx-inline-message [message]="'register.email' | translate"
+                        [formName]="formRegister.get('email')"></ngx-inline-message>
+  </div>
+  <div class="form-control-group">
+    <label class="label" for="input-password_hash">{{ 'register.password_hash' | translate }}</label>
+    <input id="input-password_hash" type="password" fullWidth nbInput fieldSize="large" formControlName="passwordHash"
+           [status]="this.formRegister.get('passwordHash').dirty ? (this.formRegister.get('passwordHash').invalid  ? 'danger' : 'success') : 'basic'"
+           [attr.aria-invalid]="this.formRegister.get('passwordHash').invalid && this.formRegister.get('passwordHash').touched ? true : null"/>
+    <ngx-inline-message [message]="'register.password_hash' | translate"
+                        [formName]="formRegister.get('passwordHash')"></ngx-inline-message>
+  </div>
+  <button nbButton
+          fullWidth
+          status="primary"
+          size="large"
+          [disabled]="submitted || !this.formRegister.valid"
+          [class.btn-pulse]="submitted">
+    {{'register.submit' | translate }}
+  </button>
 </form>

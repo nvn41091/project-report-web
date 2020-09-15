@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit} f
 import {Router} from '@angular/router';
 import {NbAuthJWTToken, NbTokenService} from '@nebular/auth';
 import {FormControl, FormGroup} from '@angular/forms';
-import {LoginSerivce} from '../../../assets/service/login.serivce';
+import {AuthSerivce} from '../../../assets/service/auth.serivce';
 import {HttpResponse} from '@angular/common/http';
 
 @Component({
@@ -20,7 +20,7 @@ export class NgxLoginComponent implements OnInit {
   rememberMe = false;
   loginForm: FormGroup;
 
-  constructor(private service: LoginSerivce,
+  constructor(private service: AuthSerivce,
               private jwtService: NbTokenService,
               protected cd: ChangeDetectorRef,
               protected router: Router) {
