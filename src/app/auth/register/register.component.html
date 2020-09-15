@@ -9,20 +9,20 @@
 
 <form (ngSubmit)="register()" aria-labelledby="title" [formGroup]="formRegister">
   <div class="form-control-group">
-    <label class="label" for="input-fullname">{{ 'register.fullname' | translate }}</label>
-    <input id="input-fullname" autofocus fullWidth nbInput fieldSize="large" formControlName="fullname"
-           [status]="this.formRegister.get('fullname').dirty ? (this.formRegister.get('fullname').invalid  ? 'danger' : 'success') : 'basic'"
-           [attr.aria-invalid]="this.formRegister.get('fullname').invalid && this.formRegister.get('fullname').touched ? true : null"/>
-    <ngx-inline-message [message]="'register.fullname' | translate"
-                        [formName]="formRegister.get('fullname')"></ngx-inline-message>
+    <label class="label" for="input-fullName">{{ 'register.fullName' | translate }}</label>
+    <input id="input-fullName" autofocus fullWidth nbInput fieldSize="large" formControlName="fullName"
+           [status]="this.formRegister.get('fullName').dirty ? (this.formRegister.get('fullName').invalid  ? 'danger' : 'success') : 'basic'"
+           [attr.aria-invalid]="this.formRegister.get('fullName').invalid && this.formRegister.get('fullName').touched ? true : null"/>
+    <ngx-inline-message [message]="'register.fullName' | translate"
+                        [formName]="formRegister.get('fullName')"></ngx-inline-message>
   </div>
   <div class="form-control-group">
-    <label class="label" for="input-username">{{ 'register.username' | translate }}</label>
-    <input id="input-username" fullWidth nbInput fieldSize="large" formControlName="username"
-           [status]="this.formRegister.get('username').dirty ? (this.formRegister.get('username').invalid  ? 'danger' : 'success') : 'basic'"
-           [attr.aria-invalid]="this.formRegister.get('username').invalid && this.formRegister.get('username').touched ? true : null"/>
-    <ngx-inline-message [message]="'register.username' | translate"
-                        [formName]="formRegister.get('username')"></ngx-inline-message>
+    <label class="label" for="input-userName">{{ 'register.userName' | translate }}</label>
+    <input id="input-userName" fullWidth nbInput fieldSize="large" formControlName="userName"
+           [status]="this.formRegister.get('userName').dirty ? (this.formRegister.get('userName').invalid  ? 'danger' : 'success') : 'basic'"
+           [attr.aria-invalid]="this.formRegister.get('userName').invalid && this.formRegister.get('userName').touched ? true : null"/>
+    <ngx-inline-message [message]="'register.userName' | translate"
+                        [formName]="formRegister.get('userName')"></ngx-inline-message>
   </div>
   <div class="form-control-group">
     <label class="label" for="input-email">{{ 'register.email' | translate }}</label>

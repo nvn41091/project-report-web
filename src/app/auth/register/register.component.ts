@@ -20,8 +20,8 @@ export class NgxRegisterComponent implements OnInit {
   }
 
   formRegister = this.fb.group({
-    fullname: new FormControl(null, [Validators.required, Validators.maxLength(200)]),
-    username: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(50)]),
+    fullName: new FormControl(null, [Validators.required, Validators.maxLength(200)]),
+    userName: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(50)]),
     email: new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(200)]),
     passwordHash: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(60)]),
   });
