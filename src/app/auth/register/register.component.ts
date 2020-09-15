@@ -9,9 +9,10 @@ import {AuthSerivce} from '../../../assets/service/auth.serivce';
 })
 export class NgxRegisterComponent implements OnInit {
   messages: string[] = [];
+  errors: string[] = [];
   submitted: boolean = false;
 
-  constructor(private traslate: TranslateService,
+  constructor(private translate: TranslateService,
               private fb: FormBuilder,
               private authService: AuthSerivce) {
   }
@@ -28,11 +29,15 @@ export class NgxRegisterComponent implements OnInit {
 
   register() {
     this.submitted = true;
+    this.messages = [];
     this.authService.register(this.formRegister.value).subscribe(
       (success) => {
+        this.submitted = false;
+        this.messages.push(this.translate.instant('register.success'));
       },
       (error) => {
         this.submitted = false;
+        this.errors.push(error.error.messages);
       },
     );
   }

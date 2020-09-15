@@ -7,6 +7,13 @@
   </ul>
 </nb-alert>
 
+<nb-alert *ngIf="errors.length > 0 && !submitted" outline="danger" role="alert">
+  <p class="alert-title"><b>Hooray!</b></p>
+  <ul class="alert-message-list">
+    <li *ngFor="let error of errors" class="alert-message">{{ error }}</li>
+  </ul>
+</nb-alert>
+
 <form (ngSubmit)="register()" aria-labelledby="title" [formGroup]="formRegister">
   <div class="form-control-group">
     <label class="label" for="input-fullName">{{ 'register.fullName' | translate }}</label>
