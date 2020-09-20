@@ -1,6 +1,10 @@
 {
   "register": {
-    "title": "Đăng ký",
+    "title": {
+      "header": "Đăng ký",
+      "success": "Thành công",
+      "error": "Hooray!"
+    },
     "fullName": "Tên đầy đủ",
     "userName": "Tên đăng nhập",
     "email": "Email",

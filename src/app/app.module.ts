@@ -40,6 +40,7 @@ import vi from '@angular/common/locales/vi';
 import viEt from '@angular/common/locales/extra/vi';
 import { NgxRegisterComponent } from './auth/register/register.component';
 import {SharedModule} from './shared/shared.module';
+import {NbSecurityModule} from '@nebular/security';
 registerLocaleData(vi, 'vi-VI', viEt);
 
 export function createTranslateLoader(http: HttpClient) {
@@ -65,6 +66,7 @@ export function createTranslateLoader(http: HttpClient) {
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     NbAuthModule.forRoot(),
+    NbSecurityModule.forRoot(),
     NbCardModule,
     FormsModule,
     NbInputModule,
@@ -87,8 +89,8 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [AuthGuard, DecimalPipe,
     {provide: LOCALE_ID, useValue: 'vi-VI'},
     {provide: HTTP_INTERCEPTORS, useClass: AuthExpiredInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: NbAuthJWTInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: FingerPrintInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: NbAuthJWTInterceptor, multi: true},
     {provide: APP_BASE_HREF, useValue: '/'},
   ],
 })

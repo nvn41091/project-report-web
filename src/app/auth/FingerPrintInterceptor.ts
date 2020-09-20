@@ -14,7 +14,9 @@ export class FingerPrintInterceptor implements HttpInterceptor {
   async handle(req: HttpRequest<any>, next: HttpHandler) {
     let fingerprint: string = '';
     await this.getFingerPrint().then((value: string) => fingerprint = value);
-    req = req.clone({headers: req.headers.set('fingerprint', fingerprint)});
+    req = req.clone({headers: req.headers.set('fingerprint', fingerprint)
+        .set('Content-type', 'application/json; charset=UTF-8')
+        .set('accept-charset', 'UTF-8')});
     return next.handle(req).toPromise();
   }
 
