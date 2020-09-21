@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {NbAuthJWTToken, NbTokenService} from '@nebular/auth';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthSerivce} from '../../../assets/service/auth.serivce';
 import {HttpResponse} from '@angular/common/http';
 
@@ -32,8 +32,8 @@ export class NgxLoginComponent implements OnInit {
 
   init() {
     this.loginForm = new FormGroup({
-      userName: new FormControl(null),
-      passwordHash: new FormControl(null),
+      userName: new FormControl(null, [Validators.required]),
+      passwordHash: new FormControl(null, [Validators.required]),
     });
   }
 
