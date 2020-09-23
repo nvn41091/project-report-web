@@ -38,6 +38,9 @@
   <small class="form-text text-danger" *ngIf="formName.errors.existCheck">
     {{'validation.existCheck' | translate:{field: (message|translate)} }}
   </small>
+  <small class="form-text text-danger" *ngIf="formName.errors.notMatchPassword">
+    {{'validation.notMatchPassword' | translate:{field: (message|translate)} }}
+  </small>
 
 </div>
 <div *ngIf="formName.invalid">

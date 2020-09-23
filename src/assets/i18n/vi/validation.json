@@ -13,6 +13,7 @@
     "passwordMustMatchChange": "Mật khẩu mới và nhập lại mật khẩu mới không khớp",
     "existCheck": "{{field}} đã tồn tại",
     "email": "Không đúng định dạng email",
-    "mustSameUnit": "{{field}} phải cùng đơn vị"
+    "mustSameUnit": "{{field}} phải cùng đơn vị",
+    "notMatchPassword": "{field}} không đúng"
   }
 }

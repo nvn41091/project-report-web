@@ -3,6 +3,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {AuthSerivce} from '../../../assets/service/auth.serivce';
 import {Router} from '@angular/router';
+import {passwordsMatchValidator} from '../../share-lib-module/password-validator';
 
 @Component({
   selector: 'ngx-register',
@@ -27,6 +28,9 @@ export class NgxRegisterComponent implements OnInit {
     userName: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(50)]),
     email: new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(200)]),
     passwordHash: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(60)]),
+    rePassword: new FormControl(null, []),
+  }, {
+    validators: passwordsMatchValidator,
   });
 
   register() {

@@ -3,7 +3,7 @@
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, Title} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {HTTP_INTERCEPTORS, HttpClientModule, HttpClient} from '@angular/common/http';
@@ -33,7 +33,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {NgxLoginComponent} from './auth/login/login.component';
 import {AuthExpiredInterceptor} from './auth/auth-expired.interceptor';
 import {FingerPrintInterceptor} from './auth/FingerPrintInterceptor';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {DecimalPipe, registerLocaleData } from '@angular/common';
 import vi from '@angular/common/locales/vi';
@@ -95,4 +95,8 @@ export function createTranslateLoader(http: HttpClient) {
   ],
 })
 export class AppModule {
+  constructor(private title: Title,
+              private translate: TranslateService) {
+    this.title.setTitle(this.translate.instant('index.title'));
+  }
 }

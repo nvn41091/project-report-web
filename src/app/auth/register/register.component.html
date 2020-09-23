@@ -47,6 +47,14 @@
     <ngx-inline-message [message]="'register.password_hash' | translate"
                         [formName]="formRegister.get('passwordHash')"></ngx-inline-message>
   </div>
+  <div class="form-control-group">
+    <label class="label" for="input-repassword">{{ 'register.repassword' | translate }}</label>
+    <input id="input-repassword" type="password" fullWidth nbInput fieldSize="large" formControlName="repassword"
+           [status]="this.formRegister.get('repassword').dirty ? (this.formRegister.get('repassword').invalid  ? 'danger' : 'success') : 'basic'"
+           [attr.aria-invalid]="this.formRegister.get('repassword').invalid && this.formRegister.get('repassword').touched ? true : null"/>
+    <ngx-inline-message [message]="'register.repassword' | translate"
+                        [formName]="formRegister.get('repassword')"></ngx-inline-message>
+  </div>
   <button nbButton
           fullWidth
           status="primary"

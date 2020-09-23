@@ -9,6 +9,7 @@
     "userName": "Tên đăng nhập",
     "email": "Email",
     "password_hash": "Mật khẩu",
+    "repassword": "Nhập lại mật khẩu",
     "submit": "Đăng ký",
     "success": "Đăng ký thành công. Tự động chuyển sang trang đăng nhập sau 3s"
   }
