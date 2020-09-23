@@ -48,12 +48,12 @@
                         [formName]="formRegister.get('passwordHash')"></ngx-inline-message>
   </div>
   <div class="form-control-group">
-    <label class="label" for="input-repassword">{{ 'register.repassword' | translate }}</label>
-    <input id="input-repassword" type="password" fullWidth nbInput fieldSize="large" formControlName="repassword"
-           [status]="this.formRegister.get('repassword').dirty ? (this.formRegister.get('repassword').invalid  ? 'danger' : 'success') : 'basic'"
-           [attr.aria-invalid]="this.formRegister.get('repassword').invalid && this.formRegister.get('repassword').touched ? true : null"/>
-    <ngx-inline-message [message]="'register.repassword' | translate"
-                        [formName]="formRegister.get('repassword')"></ngx-inline-message>
+    <label class="label" for="input-rePassword">{{ 'register.rePassword' | translate }}</label>
+    <input id="input-rePassword" type="password" fullWidth nbInput fieldSize="large" formControlName="rePassword"
+           [status]="this.formRegister.get('rePassword').dirty ? (this.formRegister.get('rePassword').invalid  ? 'danger' : 'success') : 'basic'"
+           [attr.aria-invalid]="this.formRegister.get('rePassword').invalid && this.formRegister.get('rePassword').touched ? true : null"/>
+    <ngx-inline-message [message]="'register.rePassword' | translate"
+                        [formName]="formRegister.get('rePassword')"></ngx-inline-message>
   </div>
   <button nbButton
           fullWidth
