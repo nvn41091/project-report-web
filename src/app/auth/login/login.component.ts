@@ -4,6 +4,8 @@ import {NbAuthJWTToken, NbTokenService} from '@nebular/auth';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthSerivce} from '../../../assets/service/auth.serivce';
 import {HttpResponse} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'ngx-login',
@@ -21,6 +23,7 @@ export class NgxLoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private service: AuthSerivce,
+              private translate: TranslateService,
               private jwtService: NbTokenService,
               protected cd: ChangeDetectorRef,
               protected router: Router) {
@@ -43,10 +46,10 @@ export class NgxLoginComponent implements OnInit {
     this.submitted = true;
     this.service.login(this.loginForm.value).subscribe((result: HttpResponse<any>) => {
         this.submitted = false;
-        this.messages.push('Đăng nhập thành công');
+        this.messages.push(this.translate.instant('login.success'));
         this.jwtService.set(new NbAuthJWTToken(result.headers.get('Authorization'), result.body.username));
         this.cd.detectChanges();
-        const redirect = '/pages/iot-dashboard';
+        const redirect = environment.homePage;
         if (redirect) {
           setTimeout(() => {
             return this.router.navigateByUrl(redirect);
@@ -54,7 +57,7 @@ export class NgxLoginComponent implements OnInit {
         }
       },
       (error) => {
-        this.errors.push('Tài khoản hoặc mật khẩu không đúng');
+        this.errors.push(this.translate.instant('login.login-fail'));
         this.submitted = false;
         this.cd.detectChanges();
       },

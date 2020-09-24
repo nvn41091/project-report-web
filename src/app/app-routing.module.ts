@@ -3,20 +3,22 @@ import { NgModule } from '@angular/core';
 import {
   NbAuthComponent,
 } from '@nebular/auth';
-import {AuthGuard} from './auth/auth-guard';
+import {PagesAuth} from './auth/pages-auth';
 import {NgxLoginComponent} from './auth/login/login.component';
 import {NgxRegisterComponent} from './auth/register/register.component';
+import {LoginAuth} from './auth/login-auth';
 
 export const routes: Routes = [
   {
     path: 'pages',
-    canActivate: [AuthGuard],
+    canActivate: [PagesAuth],
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },
   {
     path: 'auth',
     component: NbAuthComponent,
+    canActivate: [LoginAuth],
     children: [
       {
         path: '',

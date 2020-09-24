@@ -23,7 +23,7 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-import {AuthGuard} from './auth/auth-guard';
+import {PagesAuth} from './auth/pages-auth';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   NbAuthJWTInterceptor,
@@ -41,6 +41,7 @@ import viEt from '@angular/common/locales/extra/vi';
 import {NgxRegisterComponent} from './auth/register/register.component';
 import {SharedModule} from './shared/shared.module';
 import {NbSecurityModule} from '@nebular/security';
+import {LoginAuth} from './auth/login-auth';
 
 registerLocaleData(vi, 'vi-VI', viEt);
 
@@ -87,7 +88,7 @@ export function createTranslateLoader(http: HttpClient) {
     SharedModule,
   ],
   bootstrap: [AppComponent],
-  providers: [AuthGuard, DecimalPipe,
+  providers: [PagesAuth, DecimalPipe, LoginAuth,
     {provide: LOCALE_ID, useValue: 'vi-VI'},
     {provide: HTTP_INTERCEPTORS, useClass: AuthExpiredInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: FingerPrintInterceptor, multi: true},

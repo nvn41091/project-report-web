@@ -10,6 +10,8 @@
     "submit": "Đăng nhập",
     "notification-register": "Bạn chưa có tài khoản đăng nhập?",
     "register": "Đăng ký",
+    "success": "Đăng nhập thành công",
+    "login-fail": "Tài khoản hoặc mật khẩu không đúng",
     "error": {
       "username": {
         "required": "Tài khoản không được để trống"
