@@ -31,3 +31,8 @@
 
   @include nb-overrides();
 };
+
+.datatable-footer {
+  background: none !important;
+  border-top: 1.5px solid;
+}

@@ -39,6 +39,7 @@ import {COSMIC_THEME} from './styles/theme.cosmic';
 import {CORPORATE_THEME} from './styles/theme.corporate';
 import {DARK_THEME} from './styles/theme.dark';
 import {AuthSerivce} from '../../assets/service/auth.serivce';
+import {UserService} from '../../assets/service/user.service';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -72,6 +73,7 @@ const PIPES = [
 ];
 const SERVICE = [
   AuthSerivce,
+  UserService,
 ];
 
 @NgModule({

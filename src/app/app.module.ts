@@ -28,6 +28,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   NbAuthJWTInterceptor,
   NbAuthModule,
+  NB_AUTH_TOKEN_INTERCEPTOR_FILTER,
 } from '@nebular/auth';
 import {APP_BASE_HREF} from '@angular/common';
 import {NgxLoginComponent} from './auth/login/login.component';
@@ -94,6 +95,7 @@ export function createTranslateLoader(http: HttpClient) {
     {provide: HTTP_INTERCEPTORS, useClass: FingerPrintInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: NbAuthJWTInterceptor, multi: true},
     {provide: APP_BASE_HREF, useValue: '/'},
+    { provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: (req) => false },
   ],
 })
 export class AppModule {

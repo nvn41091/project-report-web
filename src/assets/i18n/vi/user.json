@@ -5,6 +5,15 @@
     "userName": "Tên đăng nhập",
     "fullName": "Tên người dùng",
     "email": "Email",
-    "search": "Tìm kiếm"
+    "search": "Tìm kiếm",
+    "index": "STT",
+    "action": "Hành động",
+    "notFoundText": "Không có dữ liệu",
+    "totalMessage": "bản ghi",
+    "status": {
+      "title": "Trạng thái",
+      "true": "Hoạt động",
+      "false": "Không hoạt động"
+    }
   }
 }
