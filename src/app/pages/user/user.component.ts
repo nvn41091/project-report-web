@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
     count: 0,
     offset: 0,
   };
-  lstLimit = [5, 10, 15, 20];
+  dataSearch;
   columns = [
     {name: 'user.index', prop: 'index', flexGrow: 0.3},
     {name: 'user.userName', prop: 'userName', flexGrow: 1.5},
@@ -51,7 +51,7 @@ export class UserComponent implements OnInit {
     this.search();
   }
 
-  dataSearch = this.fb.group({
+  formSearch = this.fb.group({
     userName: new FormControl(null),
     fullName: new FormControl(null),
     email: new FormControl(null),
@@ -60,6 +60,7 @@ export class UserComponent implements OnInit {
 
   search() {
     if (!this.loading) {
+      this.dataSearch = this.formSearch.value;
       this.setPage({offset: 0});
     }
   }
@@ -67,7 +68,7 @@ export class UserComponent implements OnInit {
   setPage(pageInfo) {
     this.loading = true;
     const pageToLoad: number = pageInfo.offset;
-    this.userService.doSearch(this.dataSearch.value, {
+    this.userService.doSearch(this.dataSearch, {
       page: pageToLoad,
       size: this.page.limit,
     }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad));
@@ -81,7 +82,6 @@ export class UserComponent implements OnInit {
   }
 
   pageCallback(pageInfo: { count?: number, pageSize?: number, limit?: number, offset?: number, page?: number }) {
-    pageInfo.offset = pageInfo.page - 1;
     this.setPage(pageInfo);
   }
 
@@ -95,8 +95,8 @@ export class UserComponent implements OnInit {
         message: this.translate.instant('user.message_delete') + ' ' + data.userName + ' ?',
       },
     }).onClose.subscribe(res => {
-      this.loading = true;
       if (res === 'confirm') {
+        this.loading = true;
         this.userService.delete(data).subscribe((success) => {
             this.toastr.success(this.translate.instant('user.delete_success'),
               this.translate.instant('user.title_toastr'));
