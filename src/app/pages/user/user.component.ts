@@ -71,7 +71,8 @@ export class UserComponent implements OnInit {
     this.userService.doSearch(this.dataSearch, {
       page: pageToLoad,
       size: this.page.limit,
-    }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad));
+    }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad),
+      err => this.loading = false );
   }
 
   protected onSuccess(data: any | null, headers: HttpHeaders, page: number): void {
