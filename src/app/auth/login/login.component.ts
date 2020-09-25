@@ -45,7 +45,6 @@ export class NgxLoginComponent implements OnInit {
     this.messages = [];
     this.submitted = true;
     this.service.login(this.loginForm.value).subscribe((result: HttpResponse<any>) => {
-        this.submitted = false;
         this.messages.push(this.translate.instant('login.success'));
         this.jwtService.set(new NbAuthJWTToken(result.headers.get('Authorization'), result.body.username));
         this.cd.detectChanges();
