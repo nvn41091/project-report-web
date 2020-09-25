@@ -1,0 +1,10 @@
+{
+  "user": {
+    "title": "Quản lý tài khoản",
+    "add_btn": "Thêm mới",
+    "userName": "Tên đăng nhập",
+    "fullName": "Tên người dùng",
+    "email": "Email",
+    "search": "Tìm kiếm"
+  }
+}
