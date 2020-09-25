@@ -1,6 +1,11 @@
 {
   "user": {
     "title": "Quản lý tài khoản",
+    "title_delete": "Xác nhận xóa người dùng",
+    "message_delete": "Bạn có chắc muốn xóa tài khoản",
+    "delete_success": "Xóa tài khoản thành công!",
+    "delete_error": "Có lỗi xảy ra!",
+    "title_toastr": "Thông báo",
     "add_btn": "Thêm mới",
     "userName": "Tên đăng nhập",
     "fullName": "Tên người dùng",

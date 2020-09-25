@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {NbThemeService} from '@nebular/theme';
+import {NbDialogService, NbThemeService, NbToastrService} from '@nebular/theme';
 import {HttpHeaders} from '@angular/common/http';
-import {UserService} from '../../../assets/service/user.service';
+import {User, UserService} from '../../../assets/service/user.service';
 import {FormBuilder, FormControl} from '@angular/forms';
+import {ConfirmDialogComponent} from '../../share-lib-module/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'ngx-user',
@@ -35,7 +36,9 @@ export class UserComponent implements OnInit {
   constructor(private translate: TranslateService,
               private themeService: NbThemeService,
               private userService: UserService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private dialog: NbDialogService,
+              private toastr: NbToastrService) {
     this.themeService.onThemeChange()
       .subscribe((theme: any) => {
         this.theme = theme.name;
@@ -82,6 +85,26 @@ export class UserComponent implements OnInit {
   edit(data) {
   }
 
-  delete(data) {
+  delete(data: User) {
+    this.dialog.open(ConfirmDialogComponent, {
+      context: {
+        title: this.translate.instant('user.title_delete'),
+        message: this.translate.instant('user.message_delete') + ' ' + data.userName + ' ?',
+      },
+    }).onClose.subscribe(res => {
+      this.loading = true;
+      if (res === 'confirm') {
+        this.userService.delete(data).subscribe((success) => {
+            this.toastr.success(this.translate.instant('user.delete_success'),
+              this.translate.instant('user.title_toastr'));
+            this.setPage({offset: 0});
+          },
+          (error) => {
+            this.loading = false;
+            this.toastr.danger(this.translate.instant('user.delete_error'),
+              this.translate.instant('user.title_toastr'));
+          });
+      }
+    });
   }
 }

@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {createRequestOption} from '../../app/shared/util/request-util';
-import {Observable} from 'rxjs';
 
 @Injectable()
 export class UserService {
@@ -14,6 +13,12 @@ export class UserService {
     const options = createRequestOption(req);
     return this.http.post<Array<User>>(`${environment.api}/user/doSearch`, data, {
       params: options,
+      observe: 'response',
+    });
+  }
+
+  delete(data: User) {
+    return this.http.post<any>(`${environment.api}/user/delete`, data, {
       observe: 'response',
     });
   }

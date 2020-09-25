@@ -4,14 +4,14 @@ import {NbDialogRef} from '@nebular/theme';
 @Component({
   selector: 'ngx-confirm-dialog',
   templateUrl: './confirm-dialog.component.html',
-  styleUrls: ['./confirm-dialog.component.scss']
+  styleUrls: ['./confirm-dialog.component.scss'],
 })
 export class ConfirmDialogComponent implements OnInit, AfterViewInit {
-  @Input() title?: string = 'Thông báo'
-  @Input() message: string
-  @Input() okTitle?: string = 'Đồng ý'
+  @Input() title?: string = 'Thông báo';
+  @Input() message: string;
+  @Input() okTitle?: string = 'Đồng ý';
   @Input() cancelTitle?: string = 'Huỷ';
-  @Input() hideCancel?;
+  @Input() hideCancel?: boolean;
 
   constructor(protected ref: NbDialogRef<ConfirmDialogComponent>) {
   }
@@ -27,7 +27,7 @@ export class ConfirmDialogComponent implements OnInit, AfterViewInit {
   }
 
   close() {
-    this.ref.close()
+    this.ref.close();
   }
 
   save() {

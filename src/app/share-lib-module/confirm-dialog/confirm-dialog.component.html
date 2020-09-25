@@ -9,7 +9,7 @@
     <div class="text-right">
       <button *ngIf="!hideCancel" nbButton type="button" status="warning" (click)="close()"
               id="dialogCancelBtn">{{ cancelTitle }}</button>
-      <button nbButton type="button" status="success" nbButton (click)="save()" class="ml-2">{{ okTitle }}</button>
+      <button nbButton type="button" status="success" (click)="save()" class="ml-2">{{ okTitle }}</button>
     </div>
   </nb-card-footer>
 </nb-card>
