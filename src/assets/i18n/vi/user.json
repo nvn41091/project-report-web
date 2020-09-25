@@ -12,6 +12,7 @@
     "totalMessage": "bản ghi",
     "status": {
       "title": "Trạng thái",
+      "holder": "Chọn trạng thái",
       "true": "Hoạt động",
       "false": "Không hoạt động"
     }

@@ -25,7 +25,11 @@ export class UserComponent implements OnInit {
     {name: 'user.fullName', prop: 'fullName', flexGrow: 1.7},
     {name: 'user.email', prop: 'email', flexGrow: 1.5},
     {name: 'user.status.title', prop: 'status', flexGrow: 1},
-    {name: 'user.action', prop: 'action_btn', flexGrow: 1},
+    {name: 'user.action', prop: 'action_btn', flexGrow: 0.6},
+  ];
+  lstStatus = [
+    {value: true, name: 'user.status.true'},
+    {value: false, name: 'user.status.false'},
   ];
 
   constructor(private translate: TranslateService,

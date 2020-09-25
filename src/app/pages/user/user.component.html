@@ -30,6 +30,14 @@
                 </label>
                 <input (keyup.enter)="search()" formControlName="email" nbInput fullWidth trim="blur">
               </div>
+              <div class="col-lg-4 form-group">
+                <label class="label">
+                  {{ 'user.status.title' | translate }}
+                </label>
+                <nb-select fullWidth formControlName="status" [placeholder]="'user.status.holder' | translate">
+                  <nb-option *ngFor="let status of lstStatus" [value]="status.value">{{ status.name | translate }}</nb-option>
+                </nb-select>
+              </div>
               <div class="form-group col-lg-12 text-center">
                 <button nbButton status="primary" [disabled]="loading" (click)="search()">
                   <nb-icon icon="search-outline"></nb-icon>
@@ -40,6 +48,7 @@
           </form>
         </div>
         <ngx-datatable class="fullscreen"
+                       ngxResizeWatcher
                        [ngClass]="theme === 'default' || theme === 'corporate' ? 'material' : 'bootstrap'"
                        [columnMode]="'flex'"
                        [rows]="rows"

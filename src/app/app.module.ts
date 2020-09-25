@@ -43,6 +43,7 @@ import {NgxRegisterComponent} from './auth/register/register.component';
 import {SharedModule} from './shared/shared.module';
 import {NbSecurityModule} from '@nebular/security';
 import {LoginAuth} from './auth/login-auth';
+import {NgxResizeWatcherDirective} from './@theme/directives/ngx-resize-watcher.directive';
 
 registerLocaleData(vi, 'vi-VI', viEt);
 
@@ -51,7 +52,7 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, NgxLoginComponent, NgxRegisterComponent],
+  declarations: [AppComponent, NgxLoginComponent, NgxRegisterComponent, NgxResizeWatcherDirective],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -97,6 +98,7 @@ export function createTranslateLoader(http: HttpClient) {
     {provide: APP_BASE_HREF, useValue: '/'},
     { provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: (req) => false },
   ],
+  exports: [NgxResizeWatcherDirective],
 })
 export class AppModule {
 }
