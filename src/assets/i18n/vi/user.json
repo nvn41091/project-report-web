@@ -19,7 +19,8 @@
       "title": "Trạng thái",
       "holder": "Chọn trạng thái",
       "true": "Hoạt động",
-      "false": "Không hoạt động"
+      "false": "Không hoạt động",
+      "clean": "--- Chọn trạng thái ---"
     }
   }
 }

@@ -29,6 +29,7 @@ export class UserComponent implements OnInit {
     {name: 'user.action', prop: 'action_btn', flexGrow: 0.6},
   ];
   lstStatus = [
+    {value: null, name: 'user.status.clean'},
     {value: true, name: 'user.status.true'},
     {value: false, name: 'user.status.false'},
   ];
