@@ -20,6 +20,7 @@ export class UserComponent implements OnInit {
     count: 0,
     offset: 0,
   };
+  lstLimit = [5, 10, 15, 20];
   columns = [
     {name: 'user.index', prop: 'index', flexGrow: 0.3},
     {name: 'user.userName', prop: 'userName', flexGrow: 1.5},
@@ -79,7 +80,8 @@ export class UserComponent implements OnInit {
     this.loading = false;
   }
 
-  pageCallback(pageInfo: { count?: number, pageSize?: number, limit?: number, offset?: number }) {
+  pageCallback(pageInfo: { count?: number, pageSize?: number, limit?: number, offset?: number, page?: number }) {
+    pageInfo.offset = pageInfo.page - 1;
     this.setPage(pageInfo);
   }
 

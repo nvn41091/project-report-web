@@ -60,8 +60,7 @@
                        [limit]="page.limit"
                        [footerHeight]="50"
                        [headerHeight]="50"
-                       (page)="pageCallback($event)"
-                       [messages]="{ emptyMessage: 'user.notFoundText' | translate, totalMessage: 'user.totalMessage' | translate }">
+                       [messages]="{ emptyMessage: 'user.notFoundText' | translate }">
           <ng-container *ngFor="let col of columns">
             <ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flexGrow" [sortable]="false">
               <ng-template let-column="column" ngx-datatable-header-template>
@@ -102,6 +101,33 @@
               </ng-template>
             </ngx-datatable-column>
           </ng-container>
+
+          <ngx-datatable-footer>
+            <ng-template ngx-datatable-footer-template
+              let-rowCount="rowCount"
+              let-pageSize="pageSize"
+              let-selectedCount="selectedCount"
+              let-curPage="curPage"
+              let-offset="offset"
+              let-isVisible="isVisible">
+              <div class="page-count">
+                {{rowCount.toLocaleString()}} {{'user.totalMessage' | translate}}
+              </div>
+              <nb-select [selected]="page.limit" size="small">
+                <nb-option *ngFor="let limit of lstLimit" [value]="limit">{{ limit }}</nb-option>
+              </nb-select>
+              <datatable-pager
+                [pagerLeftArrowIcon]="'datatable-icon-left'"
+                [pagerRightArrowIcon]="'datatable-icon-right'"
+                [pagerPreviousIcon]="'datatable-icon-prev'"
+                [pagerNextIcon]="'datatable-icon-skip'"
+                [page]="curPage"
+                [size]="pageSize"
+                [count]="rowCount"
+                (change)="pageCallback($event)">
+              </datatable-pager>
+            </ng-template>
+          </ngx-datatable-footer>
 
         </ngx-datatable>
       </nb-card-body>
