@@ -76,8 +76,7 @@ export class UserComponent implements OnInit {
   }
 
   pageCallback(pageInfo: { count?: number, pageSize?: number, limit?: number, offset?: number }) {
-    this.page.offset = pageInfo.offset;
-    this.search();
+    this.setPage(pageInfo);
   }
 
   edit(data) {

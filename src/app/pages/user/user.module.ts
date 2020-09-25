@@ -14,11 +14,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {ThemeModule} from '../../@theme/theme.module';
+import {NgxResizeWatcherDirective} from '../../@theme/directives/ngx-resize-watcher.directive';
 
 @NgModule({
   imports: [
     CommonModule,
-    TranslateModule,
     FormsModule,
     NbCardModule,
     NbIconModule,
@@ -30,7 +30,9 @@ import {ThemeModule} from '../../@theme/theme.module';
     NbSpinnerModule,
     NbSelectModule,
     ThemeModule,
+    TranslateModule,
   ],
-  declarations: [UserComponent],
+  declarations: [UserComponent, NgxResizeWatcherDirective],
+  exports: [NgxResizeWatcherDirective],
 })
 export class UserModule { }
