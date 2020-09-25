@@ -5,6 +5,7 @@ import {LayoutService} from '../../../@core/utils';
 import {map, takeUntil, filter} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {NbTokenService} from '@nebular/auth';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'ngx-header',
@@ -49,7 +50,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private themeService: NbThemeService,
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService,
-              private tokenService: NbTokenService) {
+              private tokenService: NbTokenService,
+              public translate: TranslateService) {
   }
 
   ngOnInit() {
