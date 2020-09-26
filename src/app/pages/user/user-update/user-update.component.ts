@@ -9,7 +9,6 @@ import {CustomToastrService} from '../../../shared/services/custom-toastr.servic
   selector: 'ngx-user-update',
   templateUrl: './user-update.component.html',
   styleUrls: ['./user-update.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class UserUpdateComponent implements OnInit {
   data: User;
