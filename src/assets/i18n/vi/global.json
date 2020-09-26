@@ -1,0 +1,43 @@
+{
+  "label": {
+    "test": "test translate"
+  },
+  "common": {
+    "label": {
+      "notice": "Thông báo",
+      "error": "Lỗi",
+      "unknown_error": "Lỗi không xác định!",
+      "record": "bản ghi",
+      "cancel": "Hủy bỏ",
+      "close": "Đóng",
+      "save": "Lưu lại",
+      "edit": "Cập nhật",
+      "add": "Thêm mới",
+      "search": "Tìm kiếm",
+      "detail": "Xem chi tiết",
+      "active": "Kích hoạt",
+      "copy": "Sao chép",
+      "delete": "Xoá",
+      "refresh": "Làm mới",
+      "gridTitle": "Kết quả tìm kiếm",
+      "insert_btn": "Thêm mới",
+      "design": "Xem thiết kế",
+      "all": "Tất cả"
+    },
+    "confirm": {
+      "update_complete": "Cập nhật danh mục thành công",
+      "insert_complete": "Thêm mới danh mục thành công",
+      "delete_complete": "Xoá danh mục thành công",
+      "delete_confirm": "Bạn có chắc muốn xoá bản ghi này không?"
+    },
+    "status": {
+      "active": "Hoạt động",
+      "inActive": "Không hoạt động"
+    },
+    "select": {
+      "placeHolder": "Lựa chọn",
+      "notFoundText": "Không tìm thấy kết quả",
+      "clearAllText": "Xoá"
+    }
+  }
+}

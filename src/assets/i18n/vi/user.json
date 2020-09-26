@@ -1,6 +1,8 @@
 {
   "user": {
     "title": "Quản lý tài khoản",
+    "update_title": "Sửa thông tin người dùng",
+    "new_title": "Thêm mới người dùng",
     "title_delete": "Xác nhận xóa người dùng",
     "message_delete": "Bạn có chắc muốn xóa tài khoản",
     "delete_success": "Xóa tài khoản thành công!",
@@ -8,7 +10,7 @@
     "title_toastr": "Thông báo",
     "add_btn": "Thêm mới",
     "userName": "Tên đăng nhập",
-    "fullName": "Tên người dùng",
+    "fullName": "Tên đầy đủ",
     "email": "Email",
     "search_result": "Kết quả tìm kiếm",
     "search": "Tìm kiếm",
@@ -24,7 +26,11 @@
       "clean": "--- Chọn trạng thái ---"
     },
     "column": {
-      "userName": "Tên đăng nhập"
+      "userName": "Tên đăng nhập",
+      "fullName": "Tên đầy đủ",
+      "email": "Email",
+      "imageUrl": "Đường dẫn",
+      "status": "Trạng thái"
     },
     "label": {
       "save": "Lưu lại",

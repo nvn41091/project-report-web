@@ -3,7 +3,7 @@
     <form [formGroup]="userField">
       <nb-card>
         <nb-card-header>
-          <label>{{title | translate}}</label>
+          <label>{{(userField.value.id ? 'user.update_title' : 'user.new_title') | translate}}</label>
           <span>
           <button ghost size="tiny" nbButton class="objLink float-right" (click)="cancel()">
             <nb-icon icon="close-outline"></nb-icon>
@@ -12,28 +12,56 @@
         </nb-card-header>
         <nb-card-body>
           <div class="row">
-            <div class="col-lg-12">
-              <div class="form-group">
-                <label class="label">{{ 'user.column.userName' | translate }}<span
-                  class="text-danger ml-2">*</span></label>
-                <input id="userName" nbInput autofocus fullWidth class="form-control" formControlName="userName"
-                       status="{{(this.userField.get('userName').invalid
+            <div class="form-group col-md-4">
+              <label class="label">{{ 'user.column.userName' | translate }}<span class="text-danger ml-2">*</span></label>
+              <input id="userName" nbInput autofocus fullWidth class="form-control" formControlName="userName"
+                     status="{{(this.userField.get('userName').invalid
                  &&this.userField.get('userName')?.touched) ? 'danger' : null }}" trim="blur">
-                <ngx-inline-message [message]="'user.column.userName'"
-                                    [formName]="userField.get('userName')">
-                </ngx-inline-message>
-              </div>
+              <ngx-inline-message [message]="'user.column.userName'"
+                                  [formName]="userField.get('userName')">
+              </ngx-inline-message>
+            </div>
+            <div class="form-group col-md-4">
+              <label class="label">{{ 'user.column.fullName' | translate }}<span class="text-danger ml-2">*</span></label>
+              <input id="fullName" nbInput autofocus fullWidth class="form-control" formControlName="fullName"
+                     status="{{(this.userField.get('fullName').invalid
+                 &&this.userField.get('fullName')?.touched) ? 'danger' : null }}" trim="blur">
+              <ngx-inline-message [message]="'user.column.fullName'"
+                                  [formName]="userField.get('fullName')">
+              </ngx-inline-message>
+            </div>
+            <div class="form-group col-md-4">
+              <label class="label">{{ 'user.column.email' | translate }}<span class="text-danger ml-2">*</span></label>
+              <input id="email" nbInput autofocus fullWidth class="form-control" formControlName="email"
+                     status="{{(this.userField.get('email').invalid
+                 &&this.userField.get('email')?.touched) ? 'danger' : null }}" trim="blur">
+              <ngx-inline-message [message]="'user.column.email'"
+                                  [formName]="userField.get('email')">
+              </ngx-inline-message>
+            </div>
+            <div class="form-group col-md-4">
+              <label class="label">{{ 'user.column.imageUrl' | translate }}</label>
+              <input id="imageUrl" nbInput autofocus fullWidth class="form-control" formControlName="imageUrl"
+                     status="{{(this.userField.get('imageUrl').invalid
+                 &&this.userField.get('imageUrl')?.touched) ? 'danger' : null }}" trim="blur">
+              <ngx-inline-message [message]="'user.column.imageUrl'"
+                                  [formName]="userField.get('imageUrl')">
+              </ngx-inline-message>
+            </div>
+            <div class="form-group col-md-4">
+              <label class="label w-100">{{ 'user.column.status' | translate }} <span class="text-danger ml-2">*</span> </label>
+              <nb-toggle fullWidth formControlName="status"></nb-toggle>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 text-center">
+              <button nbButton size="small" type="submit" (click)="save()" [disabled]="userField.invalid">{{'common.label.save'|translate}}
+                <nb-icon icon="save-outline"></nb-icon>
+              </button>
+              <button nbButton class="ml-2" size="small" (click)="cancel()">{{'common.label.cancel'|translate}}</button>
             </div>
           </div>
         </nb-card-body>
-        <nb-card-footer>
-          <div class=" row col-lg-12 text-right d-block">
-            <button nbButton (click)="save()" class="mr-1"
-                    [disabled]="userField.invalid">{{ 'user.label.save' | translate }}</button>
-            <button nbButton (click)="cancel()"
-                    status="warning">{{ 'user.label.cancel' | translate }}</button>
-          </div>
-        </nb-card-footer>
       </nb-card>
     </form>
   </div>

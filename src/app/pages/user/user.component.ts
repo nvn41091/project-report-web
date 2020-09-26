@@ -1,11 +1,12 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {NbDialogService, NbThemeService, NbToastrService} from '@nebular/theme';
+import {NbDialogService, NbThemeService} from '@nebular/theme';
 import {HttpHeaders} from '@angular/common/http';
 import {User, UserService} from '../../../assets/service/user.service';
 import {FormBuilder, FormControl} from '@angular/forms';
 import {ConfirmDialogComponent} from '../../share-lib-module/confirm-dialog/confirm-dialog.component';
 import {UserUpdateComponent} from './user-update/user-update.component';
+import {CustomToastrService} from '../../shared/services/custom-toastr.service';
 
 @Component({
   selector: 'ngx-user',
@@ -42,13 +43,12 @@ export class UserComponent implements OnInit {
               private userService: UserService,
               private fb: FormBuilder,
               private dialog: NbDialogService,
-              private toastr: NbToastrService) {
+              private toastr: CustomToastrService) {
     this.themeService.onThemeChange()
       .subscribe((theme: any) => {
         this.theme = theme.name;
       });
   }
-
   ngOnInit(): void {
     this.search();
   }
@@ -92,7 +92,6 @@ export class UserComponent implements OnInit {
     this.dialog.open(UserUpdateComponent, {
       context: {
         data: data,
-        title: 'Thêm mới người dùng',
       },
       dialogClass: 'modal-full',
       hasScroll: true,
@@ -109,14 +108,12 @@ export class UserComponent implements OnInit {
       if (res === 'confirm') {
         this.loading = true;
         this.userService.delete(data).subscribe((success) => {
-            this.toastr.success(this.translate.instant('user.delete_success'),
-              this.translate.instant('user.title_toastr'));
+            this.toastr.success('user.delete_success', true);
             this.setPage({offset: 0});
           },
           (error) => {
             this.loading = false;
-            this.toastr.danger(this.translate.instant('user.delete_error'),
-              this.translate.instant('user.title_toastr'));
+            this.toastr.unknownError();
           });
       }
     });

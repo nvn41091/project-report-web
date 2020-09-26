@@ -13,6 +13,7 @@ export class NgxResizeWatcherDirective implements AfterContentChecked {
     if (this.table && this.table.element.clientWidth !== this.latestWidth) {
       this.latestWidth = this.table.element.clientWidth;
       this.table.recalculate();
+      this.table.onWindowResize();
       this.ref.markForCheck();
     }
   }

@@ -34,7 +34,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {NgxLoginComponent} from './auth/login/login.component';
 import {AuthExpiredInterceptor} from './auth/auth-expired.interceptor';
 import {FingerPrintInterceptor} from './auth/FingerPrintInterceptor';
-import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {DecimalPipe, registerLocaleData} from '@angular/common';
 import vi from '@angular/common/locales/vi';
@@ -46,7 +46,7 @@ import {LoginAuth} from './auth/login-auth';
 
 registerLocaleData(vi, 'vi-VI', viEt);
 
-export function createTranslateLoader(http: HttpClient) {
+export function CreateTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
@@ -81,7 +81,7 @@ export function createTranslateLoader(http: HttpClient) {
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
+        useFactory: (CreateTranslateLoader),
         deps: [HttpClient],
       },
       defaultLanguage: 'vi',
