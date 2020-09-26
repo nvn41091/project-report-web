@@ -88,11 +88,18 @@ $nb-themes: nb-register-theme((
 ), dark, dark);
 
 .nb-theme-default nb-card-header {
-  padding-top: .5rem !important;
-  padding-bottom: .5rem !important;
   color: #4674eb !important;
 }
 
-.nb-theme-default nb-card-header > label {
+nb-card-header > label {
   margin: 0 !important;
+}
+
+nb-card-header {
+  padding-top: .5rem !important;
+  padding-bottom: .5rem !important;
+}
+
+.nb-theme-corporate nb-card-header {
+  color: #4674eb !important;
 }
