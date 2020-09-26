@@ -15,24 +15,27 @@ import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {ThemeModule} from '../../@theme/theme.module';
 import {NgxResizeWatcherDirective} from '../../@theme/directives/ngx-resize-watcher.directive';
+import { UserUpdateComponent } from './user-update/user-update.component';
+import {SharedModule} from "../../shared/shared.module";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    NbCardModule,
-    NbIconModule,
-    NbButtonModule,
-    NbInputModule,
-    NgxTrimDirectiveModule,
-    NgxDatatableModule,
-    ReactiveFormsModule,
-    NbSpinnerModule,
-    NbSelectModule,
-    ThemeModule,
-    TranslateModule,
-  ],
-  declarations: [UserComponent, NgxResizeWatcherDirective],
+    imports: [
+        CommonModule,
+        FormsModule,
+        NbCardModule,
+        NbIconModule,
+        NbButtonModule,
+        NbInputModule,
+        NgxTrimDirectiveModule,
+        NgxDatatableModule,
+        ReactiveFormsModule,
+        NbSpinnerModule,
+        NbSelectModule,
+        ThemeModule,
+        TranslateModule,
+        SharedModule,
+    ],
+  declarations: [UserComponent, NgxResizeWatcherDirective, UserUpdateComponent],
   exports: [NgxResizeWatcherDirective],
 })
 export class UserModule { }

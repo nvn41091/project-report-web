@@ -21,6 +21,13 @@
       "true": "Hoạt động",
       "false": "Không hoạt động",
       "clean": "--- Chọn trạng thái ---"
+    },
+    "column": {
+      "userName": "Tên đăng nhập"
+    },
+    "label": {
+      "save": "Lưu lại",
+      "cancel": "Hủy bỏ"
     }
   }
 }

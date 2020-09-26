@@ -1,15 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {NbDialogService, NbThemeService, NbToastrService} from '@nebular/theme';
 import {HttpHeaders} from '@angular/common/http';
 import {User, UserService} from '../../../assets/service/user.service';
 import {FormBuilder, FormControl} from '@angular/forms';
 import {ConfirmDialogComponent} from '../../share-lib-module/confirm-dialog/confirm-dialog.component';
+import {UserUpdateComponent} from './user-update/user-update.component';
 
 @Component({
   selector: 'ngx-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class UserComponent implements OnInit {
   theme;
@@ -22,12 +24,12 @@ export class UserComponent implements OnInit {
   };
   dataSearch;
   columns = [
-    {name: 'user.index', prop: 'index', flexGrow: 0.3},
-    {name: 'user.userName', prop: 'userName', flexGrow: 1.5},
-    {name: 'user.fullName', prop: 'fullName', flexGrow: 1.7},
-    {name: 'user.email', prop: 'email', flexGrow: 1.5},
-    {name: 'user.status.title', prop: 'status', flexGrow: 1},
-    {name: 'user.action', prop: 'action_btn', flexGrow: 0.6},
+    {name: 'user.index', prop: 'index', flexGrow: 0.3, minWidth: 45},
+    {name: 'user.userName', prop: 'userName', flexGrow: 1.3, minWidth: 195},
+    {name: 'user.fullName', prop: 'fullName', flexGrow: 1.5, minWidth: 225},
+    {name: 'user.email', prop: 'email', flexGrow: 1.5, minWidth: 225},
+    {name: 'user.status.title', prop: 'status', flexGrow: 1, minWidth: 150},
+    {name: 'user.action', prop: 'action_btn', flexGrow: 0.6, minWidth: 100},
   ];
   lstStatus = [
     {value: null, name: 'user.status.clean'},
@@ -87,6 +89,14 @@ export class UserComponent implements OnInit {
   }
 
   edit(data) {
+    this.dialog.open(UserUpdateComponent, {
+      context: {
+        data: data,
+        title: 'Thêm mới người dùng',
+      },
+      dialogClass: 'modal-full',
+      hasScroll: true,
+    });
   }
 
   delete(data: User) {

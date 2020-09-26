@@ -3,7 +3,7 @@
     <nb-card>
       <nb-card-header class="d-flex header">
         <label> {{ 'user.title' | translate }}</label>
-        <button nbButton status="primary" size="tiny" class="ml-auto">
+        <button nbButton status="primary" size="tiny" class="ml-auto" (click)="edit(null)">
           <nb-icon icon="plus" pack="eva"></nb-icon>
           {{ 'user.add_btn' | translate }}
         </button>
@@ -16,7 +16,7 @@
                 <label class="label">
                   {{ 'user.userName' | translate }}
                 </label>
-                <input (keyup.enter)="search()" formControlName="userName" nbInput fullWidth trim="blur">
+                <input autofocus (keyup.enter)="search()" formControlName="userName" nbInput fullWidth trim="blur">
               </div>
               <div class="col-lg-4 form-group">
                 <label class="label">
@@ -55,6 +55,7 @@
                        [loadingIndicator]="loading"
                        [nbSpinner]="loading"
                        [columns]="columns"
+                       [scrollbarH]="true"
                        rowHeight="auto"
                        [externalPaging]="true"
                        [count]="page.count"
@@ -65,7 +66,7 @@
                        (page)="pageCallback($event)"
                        [messages]="{ emptyMessage: 'user.notFoundText' | translate, totalMessage: 'user.totalMessage' | translate }">
           <ng-container *ngFor="let col of columns">
-            <ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flexGrow" [sortable]="false">
+            <ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flexGrow" [sortable]="false" [minWidth]="col.minWidth">
               <ng-template let-column="column" ngx-datatable-header-template>
                 {{ column.name | translate }}
               </ng-template>
