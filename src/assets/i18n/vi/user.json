@@ -4,6 +4,8 @@
     "update_title": "Sửa thông tin người dùng",
     "new_title": "Thêm mới người dùng",
     "title_delete": "Xác nhận xóa người dùng",
+    "insert_complete": "Thêm người dùng thành công",
+    "update_complete": "Cập nhật người dùng thành công",
     "message_delete": "Bạn có chắc muốn xóa tài khoản",
     "delete_success": "Xóa tài khoản thành công!",
     "delete_error": "Có lỗi xảy ra!",

@@ -95,6 +95,8 @@ export class UserComponent implements OnInit {
       },
       dialogClass: 'modal-full',
       hasScroll: true,
+    }).onClose.subscribe(res => {
+      res?.result === 'complete' ? this.setPage({offset: 0}) : {};
     });
   }
 

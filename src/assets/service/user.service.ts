@@ -17,8 +17,20 @@ export class UserService {
     });
   }
 
-  delete(data: User) {
+  delete(data: any) {
     return this.http.post<any>(`${environment.api}/user/delete`, data, {
+      observe: 'response',
+    });
+  }
+
+  update(data: any) {
+    return this.http.post<any>(`${environment.api}/user/update`, data, {
+      observe: 'response',
+    });
+  }
+
+  insert(data: any) {
+    return this.http.post<any>(`${environment.api}/user/insert`, data, {
       observe: 'response',
     });
   }

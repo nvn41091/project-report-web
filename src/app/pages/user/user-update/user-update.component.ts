@@ -1,8 +1,9 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {User} from '../../../../assets/service/user.service';
+import {User, UserService} from '../../../../assets/service/user.service';
 import {NbDialogRef} from '@nebular/theme';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
+import {CustomToastrService} from '../../../shared/services/custom-toastr.service';
 
 @Component({
   selector: 'ngx-user-update',
@@ -15,7 +16,9 @@ export class UserUpdateComponent implements OnInit {
 
   constructor(private ref: NbDialogRef<UserUpdateComponent>,
               private fb: FormBuilder,
-              private translate: TranslateService) {
+              private toastr: CustomToastrService,
+              private translate: TranslateService,
+              private userService: UserService) {
   }
 
   userField: FormGroup;
@@ -33,7 +36,7 @@ export class UserUpdateComponent implements OnInit {
       fullName: new FormControl(this.data?.fullName, [Validators.required,
         Validators.maxLength(200)]),
       passwordHash: new FormControl(this.data?.passwordHash, []),
-      email: new FormControl(this.data?.email, [Validators.required, Validators.maxLength(200)]),
+      email: new FormControl(this.data?.email, [Validators.required, Validators.maxLength(200), Validators.email]),
       imageUrl: new FormControl(this.data?.imageUrl, [Validators.maxLength(256)]),
       status: new FormControl(this.data?.status ? this.data?.status : false, [Validators.required]),
       langKey: new FormControl(this.data?.langKey, []),
@@ -49,6 +52,22 @@ export class UserUpdateComponent implements OnInit {
   }
 
   save() {
+    const user = Object.assign({}, this.userField.value);
+    if (user.id) {
+      this.userService.update(user).subscribe(res => {
+        this.toastr.success('user.update_complete', true);
+        this.ref.close({result: 'complete'});
+      }, err => {
+        this.toastr.error(err.error.title);
+      });
+    } else {
+      this.userService.insert(user).subscribe(res => {
+        this.toastr.success('user.insert_complete', true);
+        this.ref.close({result: 'complete'});
+      }, err => {
+        this.toastr.error(err.error.title);
+      });
+    }
   }
 
   cancel() {
