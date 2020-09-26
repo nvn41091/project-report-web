@@ -1,0 +1,24 @@
+{
+  "login": {
+    "title": "Đăng nhập",
+    "description": "Xin chào! Nhập thông tin đăng nhập của bạn để tiếp tục",
+    "title-notification-success": "Thông báo",
+    "title-notification-error": "Hooray!",
+    "password": "Mật khẩu",
+    "username": "Tài khoản",
+    "forgot-password": "Quên mật khẩu?",
+    "submit": "Đăng nhập",
+    "notification-register": "Bạn chưa có tài khoản đăng nhập?",
+    "register": "Đăng ký",
+    "success": "Đăng nhập thành công",
+    "login-fail": "Tài khoản hoặc mật khẩu không đúng",
+    "error": {
+      "username": {
+        "required": "Tài khoản không được để trống"
+      },
+      "password": {
+        "required": "Mật khẩu không được để trống"
+      }
+    }
+  }
+}

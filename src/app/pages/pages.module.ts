@@ -6,6 +6,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import {UserModule} from './user/user.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import {UserModule} from './user/user.module';
     NbRouteTabsetModule,
     NbTabsetModule,
     UserModule,
+    TranslateModule,
   ],
   declarations: [
     PagesComponent,

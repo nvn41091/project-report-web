@@ -86,3 +86,13 @@ $nb-themes: nb-register-theme((
   slide-out-shadow-color: 0 4px 14px 0 #8f9bb3,
   slide-out-shadow-color-rtl: 0 4px 14px 0 #8f9bb3,
 ), dark, dark);
+
+.nb-theme-default nb-card-header {
+  padding-top: .5rem !important;
+  padding-bottom: .5rem !important;
+  color: #4674eb !important;
+}
+
+.nb-theme-default nb-card-header > label {
+  margin: 0 !important;
+}
