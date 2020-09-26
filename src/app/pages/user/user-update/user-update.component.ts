@@ -13,6 +13,7 @@ import {CustomToastrService} from '../../../shared/services/custom-toastr.servic
 })
 export class UserUpdateComponent implements OnInit {
   data: User;
+  loading: boolean = false;
 
   constructor(private ref: NbDialogRef<UserUpdateComponent>,
               private fb: FormBuilder,
@@ -52,12 +53,14 @@ export class UserUpdateComponent implements OnInit {
   }
 
   save() {
+    this.loading = true;
     const user = Object.assign({}, this.userField.value);
     if (user.id) {
       this.userService.update(user).subscribe(res => {
         this.toastr.success('user.update_complete', true);
         this.ref.close({result: 'complete'});
       }, err => {
+        this.loading = false;
         this.toastr.error(err.error.title);
       });
     } else {
@@ -65,6 +68,7 @@ export class UserUpdateComponent implements OnInit {
         this.toastr.success('user.insert_complete', true);
         this.ref.close({result: 'complete'});
       }, err => {
+        this.loading = false;
         this.toastr.error(err.error.title);
       });
     }
