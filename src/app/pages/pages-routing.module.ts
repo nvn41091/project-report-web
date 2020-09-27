@@ -5,6 +5,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {NgxAuthBlockComponent} from '../auth/auth-block/auth-block.component';
 import {UserComponent} from './user/user.component';
+import {CompanyComponent} from './company/company.component';
 
 const routes: Routes = [{
   path: '',
@@ -17,6 +18,10 @@ const routes: Routes = [{
     {
       path: 'user',
       component: UserComponent,
+    },
+    {
+      path: 'company',
+      component: CompanyComponent,
     },
     {
       path: '',

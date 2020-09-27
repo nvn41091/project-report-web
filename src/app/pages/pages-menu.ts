@@ -12,4 +12,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'person-outline',
     link: '/pages/user',
   },
+  {
+    title: 'Quản lý doanh nghiệp',
+    icon: 'npm-outline',
+    link: '/pages/company',
+  },
 ];
