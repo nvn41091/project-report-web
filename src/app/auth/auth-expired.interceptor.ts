@@ -23,8 +23,7 @@ export class AuthExpiredInterceptor implements HttpInterceptor {
       tap(null, (err: HttpErrorResponse) => {
         if (err.status === 401 && err.url && !err.url.includes('/authenticate')) {
           this.jwtService.clear();
-          this.toastr.error('common.label.token_expired ', true);
-          this.router.navigate(['auth/login']);
+          this.router.navigate(['auth/login']).then(r => this.toastr.error('common.label.token_expired', true));
         }
       }),
     );
