@@ -4,6 +4,7 @@
   },
   "common": {
     "label": {
+      "token_expired": "Phiên làm việc đã hết hạn",
       "notice": "Thông báo",
       "error": "Lỗi",
       "unknown_error": "Lỗi không xác định!",
