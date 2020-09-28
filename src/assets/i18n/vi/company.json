@@ -1,0 +1,20 @@
+{
+  "company": {
+    "title": "Quản lý doanh nghiệp",
+    "label": {
+      "delete": "Xác nhận xóa doanh nghiệp",
+      "message_delete": "Bạn có chắc muốn xóa doanh nghiệp",
+      "delete_success": "Xóa thành công"
+    },
+    "column": {
+      "index": "STT",
+      "code": "Mã doanh nghiệp",
+      "name": "Tên doanh nghiệp",
+      "email": "Email",
+      "tel": "Số điện thoại",
+      "status": "Trạng thái",
+      "updateTime": "Ngày cập nhật",
+      "action": "Hành động"
+    }
+  }
+}

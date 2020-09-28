@@ -33,9 +33,9 @@ export class UserComponent implements OnInit {
     {name: 'user.action', prop: 'action_btn', flexGrow: 0.6, minWidth: 100},
   ];
   lstStatus = [
-    {value: null, name: 'user.status.clean'},
-    {value: true, name: 'user.status.true'},
-    {value: false, name: 'user.status.false'},
+    {value: null, name: 'common.status.clean'},
+    {value: true, name: 'common.status.true'},
+    {value: false, name: 'common.status.false'},
   ];
 
   constructor(private translate: TranslateService,

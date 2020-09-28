@@ -14,7 +14,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {ThemeModule} from '../../@theme/theme.module';
-import {NgxResizeWatcherDirective} from '../../shared/directives/ngx-resize-watcher.directive';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import {SharedModule} from '../../shared/shared.module';
 
@@ -36,7 +35,6 @@ import {SharedModule} from '../../shared/shared.module';
     SharedModule,
     NbToggleModule,
   ],
-  declarations: [UserComponent, NgxResizeWatcherDirective, UserUpdateComponent],
-  exports: [NgxResizeWatcherDirective],
+  declarations: [UserComponent, UserUpdateComponent],
 })
 export class UserModule { }

@@ -1,1 +1,122 @@
-<p>company works!</p>
+<nb-card>
+  <nb-card-header class="d-flex">
+    <label> {{ 'company.title' | translate }}</label>
+    <button nbButton status="primary" size="tiny" outline class="ml-auto" (click)="edit(null)">
+      <nb-icon icon="plus" pack="eva"></nb-icon>
+      {{ 'common.label.insert_btn' | translate }}
+    </button>
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="formSearch">
+      <div class="row">
+        <div class="col-lg-4 form-group">
+          <label class="label">
+            {{ 'company.column.code' | translate }}
+          </label>
+          <input autofocus (keyup.enter)="search()" formControlName="code" nbInput fullWidth trim="blur">
+        </div>
+        <div class="col-lg-4 form-group">
+          <label class="label">
+            {{ 'company.column.name' | translate }}
+          </label>
+          <input (keyup.enter)="search()" formControlName="name" nbInput fullWidth trim="blur">
+        </div>
+        <div class="col-lg-4 form-group">
+          <label class="label">
+            {{ 'company.column.email' | translate }}
+          </label>
+          <input (keyup.enter)="search()" formControlName="email" nbInput fullWidth trim="blur">
+        </div>
+        <div class="col-lg-4 form-group">
+          <label class="label">
+            {{ 'company.column.tel' | translate }}
+          </label>
+          <input (keyup.enter)="search()" formControlName="tel" nbInput fullWidth trim="blur">
+        </div>
+        <div class="col-lg-4 form-group">
+          <label class="label">
+            {{ 'company.column.status' | translate }}
+          </label>
+          <nb-select fullWidth formControlName="status" [placeholder]="'common.status.clean' | translate">
+            <nb-option *ngFor="let status of lstStatus"
+                       [value]="status.value">{{ status.name | translate }}</nb-option>
+          </nb-select>
+        </div>
+        <div class="form-group col-lg-12 text-center mb-0">
+          <button nbButton status="primary" outline [disabled]="loading" (click)="search()">
+            <nb-icon icon="search-outline"></nb-icon>
+            {{ 'common.label.search' | translate }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-header>
+    {{ 'common.label.gridTitle' | translate }}
+  </nb-card-header>
+  <nb-card-body>
+    <ngx-datatable class="fullscreen"
+                   ngxResizeWatcher
+                   [ngClass]="theme === 'default' || theme === 'corporate' ? 'material' : 'bootstrap'"
+                   [columnMode]="'flex'"
+                   [rows]="rows"
+                   [loadingIndicator]="loading"
+                   [nbSpinner]="loading"
+                   [columns]="columns"
+                   [scrollbarH]="true"
+                   rowHeight="auto"
+                   [externalPaging]="true"
+                   [count]="page.count"
+                   [offset]="page.offset"
+                   [limit]="page.limit"
+                   [footerHeight]="50"
+                   [headerHeight]="50"
+                   (page)="pageCallback($event)"
+                   [messages]="{ emptyMessage: 'common.select.notFoundText' | translate, totalMessage: 'common.label.record' | translate }">
+      <ng-container *ngFor="let col of columns">
+        <ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flexGrow" [sortable]="false"
+                              [minWidth]="col.minWidth">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            {{ column.name | translate }}
+          </ng-template>
+          <ng-template let-value="value" ngx-datatable-cell-template let-row="row" let-rowIndex='rowIndex'>
+            <ng-container *ngIf="col.prop ==='index'" class="index-col">
+              {{ page.offset * page.limit + rowIndex + 1 }}
+            </ng-container>
+            <ng-container
+              *ngIf="col.prop !=='action_btn' && col.prop !=='updateTime' && col.prop !=='description' && col.prop !=='status'
+                   && col.prop !== 'code' && col.prop !== 'name'">
+              <span class="row-data-show" title="{{value}}">{{ value }}</span>
+            </ng-container>
+            <ng-container *ngIf="col.prop ==='description' || col.prop === 'code' || col.prop === 'name' "
+                          class="text-right">
+                  <span class="row-data-show"
+                        title="{{value}}">{{value.length > 50 ? value.substring(0, 50).concat('...') : value}}</span>
+            </ng-container>
+            <ng-container *ngIf="col.prop ==='status'">
+              {{ 'common.status.' + value | translate }}
+            </ng-container>
+            <ng-container *ngIf="col.prop ==='updateTime'">
+              {{value | date:'dd/MM/yyyy HH:mm:ss'}}
+            </ng-container>
+            <ng-container *ngIf="col.prop ==='action_btn'" class="text-right">
+              <div>
+                <button class="p-1" nbButton status="info" ghost title="{{ 'common.label.edit' | translate }}"
+                        (click)="edit(row)">
+                  <nb-icon icon="edit-outline" pack="eva" size="tiny"></nb-icon>
+                </button>
+                <button class="p-1" nbButton status="danger" ghost title="{{ 'common.label.delete' | translate }}"
+                        (click)="delete(row)">
+                  <nb-icon icon="trash-2-outline" pack="eva" size="tiny"></nb-icon>
+                </button>
+              </div>
+            </ng-container>
+          </ng-template>
+        </ngx-datatable-column>
+      </ng-container>
+    </ngx-datatable>
+  </nb-card-body>
+</nb-card>

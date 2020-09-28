@@ -32,8 +32,9 @@
       "delete_confirm": "Bạn có chắc muốn xoá bản ghi này không?"
     },
     "status": {
-      "active": "Hoạt động",
-      "inActive": "Không hoạt động"
+      "true": "Hoạt động",
+      "false": "Không hoạt động",
+      "clean": "--- Chọn trạng thái ---"
     },
     "select": {
       "placeHolder": "Lựa chọn",

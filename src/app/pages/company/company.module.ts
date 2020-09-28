@@ -1,13 +1,35 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CompanyComponent } from './company.component';
-
-
+import {
+  NbButtonModule,
+  NbCardModule,
+  NbIconModule, NbInputModule,
+  NbSelectModule,
+  NbSpinnerModule,
+} from '@nebular/theme';
+import {TranslateModule} from '@ngx-translate/core';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {ReactiveFormsModule} from '@angular/forms';
+import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
+import {SharedModule} from "../../shared/shared.module";
+import { CompanyUpdateComponent } from './company-update/company-update.component';
 
 @NgModule({
-  declarations: [CompanyComponent],
+  declarations: [CompanyComponent, CompanyUpdateComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    NbIconModule,
+    TranslateModule,
+    NgxDatatableModule,
+    NbCardModule,
+    ReactiveFormsModule,
+    NbSelectModule,
+    NbSpinnerModule,
+    NgxTrimDirectiveModule,
+    NbButtonModule,
+    NbInputModule,
+    SharedModule,
+  ],
 })
 export class CompanyModule { }

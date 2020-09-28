@@ -6,9 +6,10 @@ import {KpiMapComponent} from './components/kpi-map/kpi-map.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {InlineMessageComponent} from './directives/inline-message/inline-message.component';
 import {TranslateModule} from '@ngx-translate/core';
+import {NgxResizeWatcherDirective} from './directives/ngx-resize-watcher.directive';
 
 @NgModule({
-  declarations: [KpiMapComponent, InlineMessageComponent],
+  declarations: [KpiMapComponent, InlineMessageComponent, NgxResizeWatcherDirective],
   imports: [
     CommonModule,
     FormsModule,
@@ -22,6 +23,7 @@ import {TranslateModule} from '@ngx-translate/core';
   ],
   exports: [
     InlineMessageComponent,
+    NgxResizeWatcherDirective,
   ],
   providers: [],
 })
