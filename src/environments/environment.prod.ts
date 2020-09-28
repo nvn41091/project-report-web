@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  api: 'https://nvn41091-service.herokuapp.com',
+  api: 'https://nvn41091-service.herokuapp.com/api',
   homePage: '/pages/home',
 };
