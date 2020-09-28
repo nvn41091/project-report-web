@@ -8,9 +8,16 @@ import {InlineMessageComponent} from './directives/inline-message/inline-message
 import {TranslateModule} from '@ngx-translate/core';
 import {NgxResizeWatcherDirective} from './directives/ngx-resize-watcher.directive';
 import {UppercaseDirective} from './directives/uppercase.directive';
+import {NullValueDirective} from './directives/null-value.directive';
 
 @NgModule({
-  declarations: [KpiMapComponent, InlineMessageComponent, NgxResizeWatcherDirective, UppercaseDirective],
+  declarations: [
+    KpiMapComponent,
+    InlineMessageComponent,
+    NgxResizeWatcherDirective,
+    UppercaseDirective,
+    NullValueDirective,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -26,6 +33,7 @@ import {UppercaseDirective} from './directives/uppercase.directive';
     InlineMessageComponent,
     NgxResizeWatcherDirective,
     UppercaseDirective,
+    NullValueDirective,
   ],
   providers: [],
 })

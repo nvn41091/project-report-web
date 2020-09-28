@@ -13,19 +13,21 @@
         <nb-card-body>
           <div class="row">
             <div class="form-group col-md-4">
-              <label class="label">{{ 'company.column.code' | translate }}<span class="text-danger ml-2">*</span></label>
+              <label class="label">{{ 'company.column.code' | translate }}<span
+                class="text-danger ml-2">*</span></label>
               <input id="code" nbInput autofocus fullWidth class="form-control" formControlName="code"
                      status="{{(this.companyField.get('code').invalid
-                 && this.companyField.get('code')?.touched) ? 'danger' : null }}" trim="blur" ngxUppercase>
+                 && this.companyField.get('code')?.touched) ? 'danger' : null }}" trim="blur" ngxUppercase ngxNullValue>
               <ngx-inline-message [message]="'company.column.code'"
                                   [formName]="companyField.get('code')">
               </ngx-inline-message>
             </div>
             <div class="form-group col-md-4">
-              <label class="label">{{ 'company.column.name' | translate }}<span class="text-danger ml-2">*</span></label>
+              <label class="label">{{ 'company.column.name' | translate }}<span
+                class="text-danger ml-2">*</span></label>
               <input id="name" nbInput autofocus fullWidth class="form-control" formControlName="name"
                      status="{{(this.companyField.get('name').invalid
-                 &&this.companyField.get('name')?.touched) ? 'danger' : null }}" trim="blur">
+                 &&this.companyField.get('name')?.touched) ? 'danger' : null }}" trim="blur" ngxNullValue>
               <ngx-inline-message [message]="'company.column.name'"
                                   [formName]="companyField.get('name')">
               </ngx-inline-message>
@@ -34,7 +36,7 @@
               <label class="label">{{ 'company.column.email' | translate }}</label>
               <input id="email" nbInput autofocus fullWidth class="form-control" formControlName="email"
                      status="{{(this.companyField.get('email').invalid
-                 &&this.companyField.get('email')?.touched) ? 'danger' : null }}" trim="blur">
+                 &&this.companyField.get('email')?.touched) ? 'danger' : null }}" trim="blur" ngxNullValue>
               <ngx-inline-message [message]="'company.column.email'"
                                   [formName]="companyField.get('email')">
               </ngx-inline-message>
@@ -43,23 +45,25 @@
               <label class="label">{{ 'company.column.tel' | translate }}</label>
               <input id="tel" nbInput autofocus fullWidth class="form-control" formControlName="tel"
                      status="{{(this.companyField.get('tel').invalid
-                 &&this.companyField.get('tel')?.touched) ? 'danger' : null }}" trim="blur">
+                 &&this.companyField.get('tel')?.touched) ? 'danger' : null }}" trim="blur" ngxNullValue>
               <ngx-inline-message [message]="'company.column.tel'"
                                   [formName]="companyField.get('tel')">
               </ngx-inline-message>
             </div>
             <div class="form-group col-md-4">
-              <label class="label w-100">{{ 'company.column.status' | translate }} <span class="text-danger ml-2">*</span> </label>
+              <label class="label w-100">{{ 'company.column.status' | translate }} <span
+                class="text-danger ml-2">*</span> </label>
               <nb-toggle fullWidth formControlName="status"></nb-toggle>
             </div>
             <div class="form-group col-md-12">
               <label class="label w-100">{{ 'company.column.description' | translate }}</label>
-              <textarea nbInput fullWidth formControlName="description"></textarea>
+              <textarea nbInput fullWidth formControlName="description" ngxNullValue></textarea>
             </div>
           </div>
           <div class="row mt-3">
             <div class="col-12 text-center">
-              <button nbButton size="small" type="submit" (click)="save()" [disabled]="companyField.invalid">{{'common.label.save'|translate}}
+              <button nbButton size="small" type="submit" (click)="save()"
+                      [disabled]="companyField.invalid">{{'common.label.save'|translate}}
                 <nb-icon icon="save-outline"></nb-icon>
               </button>
               <button nbButton class="ml-2" size="small" (click)="cancel()">{{'common.label.cancel'|translate}}</button>

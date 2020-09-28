@@ -16,7 +16,7 @@
               <label class="label">{{ 'user.column.userName' | translate }}<span class="text-danger ml-2">*</span></label>
               <input id="userName" nbInput autofocus fullWidth class="form-control" formControlName="userName"
                      status="{{(this.userField.get('userName').invalid
-                 &&this.userField.get('userName')?.touched) ? 'danger' : null }}" trim="blur">
+                 &&this.userField.get('userName')?.touched) ? 'danger' : null }}" trim="blur" ngxNullValue>
               <ngx-inline-message [message]="'user.column.userName'"
                                   [formName]="userField.get('userName')">
               </ngx-inline-message>
@@ -25,7 +25,7 @@
               <label class="label">{{ 'user.column.fullName' | translate }}<span class="text-danger ml-2">*</span></label>
               <input id="fullName" nbInput autofocus fullWidth class="form-control" formControlName="fullName"
                      status="{{(this.userField.get('fullName').invalid
-                 &&this.userField.get('fullName')?.touched) ? 'danger' : null }}" trim="blur">
+                 &&this.userField.get('fullName')?.touched) ? 'danger' : null }}" trim="blur" ngxNullValue>
               <ngx-inline-message [message]="'user.column.fullName'"
                                   [formName]="userField.get('fullName')">
               </ngx-inline-message>
@@ -34,7 +34,7 @@
               <label class="label">{{ 'user.column.email' | translate }}<span class="text-danger ml-2">*</span></label>
               <input id="email" nbInput autofocus fullWidth class="form-control" formControlName="email"
                      status="{{(this.userField.get('email').invalid
-                 &&this.userField.get('email')?.touched) ? 'danger' : null }}" trim="blur">
+                 &&this.userField.get('email')?.touched) ? 'danger' : null }}" trim="blur" ngxNullValue>
               <ngx-inline-message [message]="'user.column.email'"
                                   [formName]="userField.get('email')">
               </ngx-inline-message>
@@ -43,7 +43,7 @@
               <label class="label">{{ 'user.column.imageUrl' | translate }}</label>
               <input id="imageUrl" nbInput autofocus fullWidth class="form-control" formControlName="imageUrl"
                      status="{{(this.userField.get('imageUrl').invalid
-                 &&this.userField.get('imageUrl')?.touched) ? 'danger' : null }}" trim="blur">
+                 &&this.userField.get('imageUrl')?.touched) ? 'danger' : null }}" trim="blur" ngxNullValue>
               <ngx-inline-message [message]="'user.column.imageUrl'"
                                   [formName]="userField.get('imageUrl')">
               </ngx-inline-message>
