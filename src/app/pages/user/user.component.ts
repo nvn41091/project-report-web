@@ -115,7 +115,7 @@ export class UserComponent implements OnInit {
           },
           (error) => {
             this.loading = false;
-            this.toastr.unknownError();
+            this.toastr.error(error.error.title);
           });
       }
     });
