@@ -11,7 +11,7 @@ import {
   NbButtonModule,
   NbSelectModule,
   NbIconModule,
-  NbThemeModule,
+  NbThemeModule, NbPopoverModule, NbCardModule,
 } from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {NbSecurityModule} from '@nebular/security';
@@ -41,6 +41,7 @@ import {DARK_THEME} from './styles/theme.dark';
 import {AuthSerivce} from '../../assets/service/auth.serivce';
 import {UserService} from '../../assets/service/user.service';
 import {CompanyService} from '../../assets/service/company.service';
+import {TranslateModule} from '@ngx-translate/core';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -79,7 +80,7 @@ const SERVICE = [
 ];
 
 @NgModule({
-  imports: [CommonModule, ...NB_MODULES],
+  imports: [CommonModule, ...NB_MODULES, NbPopoverModule, NbCardModule, TranslateModule],
   exports: [CommonModule, ...PIPES, ...COMPONENTS],
   declarations: [...COMPONENTS, ...PIPES],
   providers: [...SERVICE],

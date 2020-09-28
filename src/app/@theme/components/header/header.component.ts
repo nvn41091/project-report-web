@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService} from '@nebular/theme';
 
 import {LayoutService} from '../../../@core/utils';
@@ -18,6 +18,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userPictureOnly: boolean = false;
   tag = 'ngx-header';
   user: any;
+  requestAcceptCompany = [
+    {id: 1, userName: 'nvn41091', fullName: 'Nguyễn Văn Ngọc'},
+    {id: 2, userName: 'ngoc41099', fullName: 'Ngọc NV'},
+  ];
 
   themes = [
     {
