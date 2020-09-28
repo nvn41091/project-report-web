@@ -1,9 +1,10 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User, UserService} from '../../../../assets/service/user.service';
 import {NbDialogRef} from '@nebular/theme';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {CustomToastrService} from '../../../shared/services/custom-toastr.service';
+import {onlyCharacterValidator} from '../../../shared/directives/only-characters.directive';
 
 @Component({
   selector: 'ngx-user-update',
@@ -32,7 +33,7 @@ export class UserUpdateComponent implements OnInit {
     this.userField = this.fb.group({
       id: new FormControl(this.data?.id, []),
       userName: new FormControl(this.data?.userName, [Validators.required,
-        Validators.maxLength(50), Validators.minLength(6)]),
+        Validators.maxLength(50), Validators.minLength(6), onlyCharacterValidator(/^[A-Za-z0-9_]+$/)]),
       fullName: new FormControl(this.data?.fullName, [Validators.required,
         Validators.maxLength(200)]),
       passwordHash: new FormControl(this.data?.passwordHash, []),

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Company, CompanyService} from '../../../../assets/service/company.service';
 import {NbDialogRef} from '@nebular/theme';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomToastrService} from '../../../shared/services/custom-toastr.service';
 import {TranslateService} from '@ngx-translate/core';
+import {onlyCharacterValidator} from '../../../shared/directives/only-characters.directive';
 
 @Component({
   selector: 'ngx-company-update',
@@ -31,7 +32,7 @@ export class CompanyUpdateComponent implements OnInit {
   userFieldInit() {
     this.companyField = this.fb.group({
       id: new FormControl(this.data?.id, []),
-      code: new FormControl(this.data?.code, [Validators.required, Validators.maxLength(100)]),
+      code: new FormControl(this.data?.code, [Validators.required, Validators.maxLength(100), onlyCharacterValidator(/^[A-Za-z0-9_]+$/)]),
       name: new FormControl(this.data?.name, [Validators.required, Validators.maxLength(250)]),
       tel: new FormControl(this.data?.tel, [Validators.maxLength(30)]),
       email: new FormControl(this.data?.email, [Validators.maxLength(200), Validators.email]),

@@ -11,7 +11,7 @@ import {
   NbButtonModule,
   NbSelectModule,
   NbIconModule,
-  NbThemeModule, NbPopoverModule, NbCardModule,
+  NbThemeModule, NbPopoverModule, NbCardModule, NbTooltipModule,
 } from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {NbSecurityModule} from '@nebular/security';
@@ -80,7 +80,7 @@ const SERVICE = [
 ];
 
 @NgModule({
-  imports: [CommonModule, ...NB_MODULES, NbPopoverModule, NbCardModule, TranslateModule],
+  imports: [CommonModule, ...NB_MODULES, NbPopoverModule, NbCardModule, TranslateModule, NbTooltipModule],
   exports: [CommonModule, ...PIPES, ...COMPONENTS],
   declarations: [...COMPONENTS, ...PIPES],
   providers: [...SERVICE],

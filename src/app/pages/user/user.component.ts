@@ -44,10 +44,7 @@ export class UserComponent implements OnInit {
               private fb: FormBuilder,
               private dialog: NbDialogService,
               private toastr: CustomToastrService) {
-    this.themeService.onThemeChange()
-      .subscribe((theme: any) => {
-        this.theme = theme.name;
-      });
+    this.themeService.onThemeChange().subscribe((theme: any) => { this.theme = theme.name; });
   }
   ngOnInit(): void {
     this.search();

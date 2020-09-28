@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {AuthSerivce} from '../../../assets/service/auth.serivce';
 import {Router} from '@angular/router';
 import {passwordsMatchValidator} from '../../share-lib-module/password-validator';
+import {onlyCharacterValidator} from '../../shared/directives/only-characters.directive';
 
 @Component({
   selector: 'ngx-register',
@@ -25,9 +26,11 @@ export class NgxRegisterComponent implements OnInit {
 
   formRegister = this.fb.group({
     fullName: new FormControl(null, [Validators.required, Validators.maxLength(200)]),
-    userName: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(50)]),
+    userName: new FormControl(null, [Validators.required, Validators.minLength(6),
+      Validators.maxLength(50), onlyCharacterValidator(/^[A-Za-z0-9_]+$/)]),
     email: new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(200)]),
-    passwordHash: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(60)]),
+    passwordHash: new FormControl(null, [Validators.required, Validators.minLength(6),
+      Validators.maxLength(60), onlyCharacterValidator(/^[A-Za-z0-9_]+$/)]),
     rePassword: new FormControl(null, []),
   }, {
     validators: passwordsMatchValidator,

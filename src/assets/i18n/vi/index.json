@@ -4,6 +4,10 @@
     "user_menu": {
       "profile": "Thông tin tài khoản",
       "logout": "Đăng xuất"
+    },
+    "request_company": {
+      "title": "Yêu cầu truy cập",
+      "empty_request": "Không có yêu cầu"
     }
   }
 }
