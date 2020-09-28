@@ -26,11 +26,11 @@ export class CompanyComponent implements OnInit {
   columns = [
     {name: 'company.column.index', prop: 'index', flexGrow: 0.3, minWidth: 30},
     {name: 'company.column.code', prop: 'code', flexGrow: 0.7, minWidth: 70},
-    {name: 'company.column.name', prop: 'name', flexGrow: 1.2, minWidth: 120},
+    {name: 'company.column.name', prop: 'name', flexGrow: 1, minWidth: 100},
     {name: 'company.column.tel', prop: 'tel', flexGrow: 1, minWidth: 100},
     {name: 'company.column.email', prop: 'email', flexGrow: 1, minWidth: 100},
     {name: 'company.column.updateTime', prop: 'updateTime', flexGrow: 1, minWidth: 100},
-    {name: 'company.column.status', prop: 'status', flexGrow: 0.6, minWidth: 60},
+    {name: 'company.column.status', prop: 'status', flexGrow: 0.9, minWidth: 90},
     {name: 'company.column.action', prop: 'action_btn', flexGrow: 0.6, minWidth: 60},
   ];
   lstStatus = [

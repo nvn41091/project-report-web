@@ -42,9 +42,9 @@ export class CompanyUpdateComponent implements OnInit {
 
   save() {
     this.loading = true;
-    const user = Object.assign({}, this.companyField.value);
-    if (user.id) {
-      this.companyService.update(user).subscribe(res => {
+    const company = Object.assign({}, this.companyField.value);
+    if (company.id) {
+      this.companyService.update(company).subscribe(res => {
         this.toastr.success('company.label.update_success', true);
         this.ref.close({result: 'complete'});
       }, err => {
@@ -52,7 +52,7 @@ export class CompanyUpdateComponent implements OnInit {
         this.toastr.error(err.error.title);
       });
     } else {
-      this.companyService.insert(user).subscribe(res => {
+      this.companyService.insert(company).subscribe(res => {
         this.toastr.success('company.label.insert_success', true);
         this.ref.close({result: 'complete'});
       }, err => {

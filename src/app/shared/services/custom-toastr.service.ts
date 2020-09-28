@@ -26,6 +26,6 @@ export class CustomToastrService {
   }
 
   unknownError() {
-    this.error('unknown_error', true);
+    this.error('common.label.unknown_error', true);
   }
 }
