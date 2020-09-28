@@ -4,7 +4,11 @@
     "label": {
       "delete": "Xác nhận xóa doanh nghiệp",
       "message_delete": "Bạn có chắc muốn xóa doanh nghiệp",
-      "delete_success": "Xóa thành công"
+      "delete_success": "Xóa thành công",
+      "insert": "Thêm mới doanh nghiệp",
+      "update": "Cập nhật thông tin doanh nghiệp",
+      "update_success": "Cập nhật thông tin thành công",
+      "insert_success": "Thêm mới thành công"
     },
     "column": {
       "index": "STT",
@@ -14,6 +18,7 @@
       "tel": "Số điện thoại",
       "status": "Trạng thái",
       "updateTime": "Ngày cập nhật",
+      "description": "Mô tả",
       "action": "Hành động"
     }
   }

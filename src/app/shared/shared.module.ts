@@ -7,9 +7,10 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import {InlineMessageComponent} from './directives/inline-message/inline-message.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgxResizeWatcherDirective} from './directives/ngx-resize-watcher.directive';
+import {UppercaseDirective} from './directives/uppercase.directive';
 
 @NgModule({
-  declarations: [KpiMapComponent, InlineMessageComponent, NgxResizeWatcherDirective],
+  declarations: [KpiMapComponent, InlineMessageComponent, NgxResizeWatcherDirective, UppercaseDirective],
   imports: [
     CommonModule,
     FormsModule,
@@ -24,6 +25,7 @@ import {NgxResizeWatcherDirective} from './directives/ngx-resize-watcher.directi
   exports: [
     InlineMessageComponent,
     NgxResizeWatcherDirective,
+    UppercaseDirective,
   ],
   providers: [],
 })

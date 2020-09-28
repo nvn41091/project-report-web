@@ -6,13 +6,13 @@ import {
   NbCardModule,
   NbIconModule, NbInputModule,
   NbSelectModule,
-  NbSpinnerModule,
+  NbSpinnerModule, NbToggleModule,
 } from '@nebular/theme';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
-import {SharedModule} from "../../shared/shared.module";
+import {SharedModule} from '../../shared/shared.module';
 import { CompanyUpdateComponent } from './company-update/company-update.component';
 
 @NgModule({
@@ -30,6 +30,7 @@ import { CompanyUpdateComponent } from './company-update/company-update.componen
     NbButtonModule,
     NbInputModule,
     SharedModule,
+    NbToggleModule,
   ],
 })
 export class CompanyModule { }

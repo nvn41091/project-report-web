@@ -46,4 +46,5 @@ export class Company {
   email: string;
   description: string;
   updateTime: number;
+  status: boolean;
 }
