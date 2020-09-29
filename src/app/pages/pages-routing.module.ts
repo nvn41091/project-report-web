@@ -6,6 +6,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {NgxAuthBlockComponent} from '../auth/auth-block/auth-block.component';
 import {UserComponent} from './user/user.component';
 import {CompanyComponent} from './company/company.component';
+import { ActionComponent } from './action/action.component';
+import {ModuleComponent} from './module/module.component';
+import {RoleComponent} from './role/role.component';
 
 const routes: Routes = [{
   path: '',
@@ -13,7 +16,6 @@ const routes: Routes = [{
   children: [
     {
       path: 'home',
-      component: DashboardComponent,
     },
     {
       path: 'user',
@@ -22,6 +24,18 @@ const routes: Routes = [{
     {
       path: 'company',
       component: CompanyComponent,
+    },
+    {
+      path: 'action',
+      component: ActionComponent,
+    },
+    {
+      path: 'module',
+      component: ModuleComponent,
+    },
+    {
+      path: 'role',
+      component: RoleComponent,
     },
     {
       path: '',

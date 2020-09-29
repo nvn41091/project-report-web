@@ -1,0 +1,23 @@
+{
+  "action": {
+    "title": "Quản lý hành động",
+    "column": {
+      "index": "STT",
+      "code": "Mã hành động",
+      "name": "Tên hành động",
+      "update_time": "Ngày cập nhật",
+      "description": "Mô tả",
+      "status": "Trạng thái",
+      "action": "Hành động"
+    },
+    "label": {
+      "delete": "Xác nhận xóa hành động",
+      "insert": "Thêm mới hành động",
+      "update": "Cập nhật hành động",
+      "update_success": "Cập nhật thành công",
+      "insert_success": "Thêm mới thành công",
+      "message_delete": "Bạn có chắc muốn xóa hành động",
+      "delete_success": "Xóa thành công"
+    }
+  }
+}

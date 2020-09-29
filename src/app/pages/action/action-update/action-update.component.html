@@ -1,0 +1,58 @@
+<div class="row" [nbSpinner]="loading">
+  <div class="col-lg-12">
+    <form [formGroup]="actionField">
+      <nb-card>
+        <nb-card-header>
+          <label>{{(actionField.value.id ? 'action.label.insert' : 'action.label.update') | translate}}</label>
+          <span>
+          <button ghost size="tiny" nbButton class="objLink float-right" (click)="cancel()">
+            <nb-icon icon="close-outline"></nb-icon>
+          </button>
+        </span>
+        </nb-card-header>
+        <nb-card-body>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label class="label">{{ 'action.column.code' | translate }}<span
+                class="text-danger ml-2">*</span></label>
+              <input id="code" nbInput autofocus fullWidth class="form-control" formControlName="code"
+                     status="{{(this.actionField.get('code').invalid
+                 && this.actionField.get('code')?.touched) ? 'danger' : null }}" trim="blur" ngxUppercase ngxNullValue>
+              <ngx-inline-message [message]="'action.column.code'"
+                                  [formName]="actionField.get('code')">
+              </ngx-inline-message>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="label">{{ 'action.column.name' | translate }}<span
+                class="text-danger ml-2">*</span></label>
+              <input id="name" nbInput autofocus fullWidth class="form-control" formControlName="name"
+                     status="{{(this.actionField.get('name').invalid
+                 &&this.actionField.get('name')?.touched) ? 'danger' : null }}" trim="blur" ngxNullValue>
+              <ngx-inline-message [message]="'action.column.name'"
+                                  [formName]="actionField.get('name')">
+              </ngx-inline-message>
+            </div>
+            <div class="form-group col-md-9">
+              <label class="label w-100">{{ 'action.column.description' | translate }}</label>
+              <textarea nbInput fullWidth formControlName="description" ngxNullValue></textarea>
+            </div>
+            <div class="form-group col-md-3">
+              <label class="label w-100">{{ 'action.column.status' | translate }} <span
+                class="text-danger ml-2">*</span> </label>
+              <nb-toggle fullWidth formControlName="status"></nb-toggle>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 text-center">
+              <button nbButton size="small" type="submit" (click)="save()"
+                      [disabled]="actionField.invalid">{{'common.label.save'|translate}}
+                <nb-icon icon="save-outline"></nb-icon>
+              </button>
+              <button nbButton class="ml-2" size="small" (click)="cancel()">{{'common.label.cancel'|translate}}</button>
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </form>
+  </div>
+</div>
