@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Action} from '../../../../assets/service/action.service';
+import {Action, ActionService} from '../../../../assets/service/action.service';
 import {NbDialogRef} from '@nebular/theme';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomToastrService} from '../../../shared/services/custom-toastr.service';
 import {TranslateService} from '@ngx-translate/core';
-import {CompanyService} from '../../../../assets/service/company.service';
 import {onlyCharacterValidator} from '../../../shared/directives/only-characters.directive';
 
 @Component({
@@ -20,7 +19,7 @@ export class ActionUpdateComponent implements OnInit {
               private fb: FormBuilder,
               private toastr: CustomToastrService,
               private translate: TranslateService,
-              private companyService: CompanyService) {
+              private actionService: ActionService) {
   }
 
   actionField: FormGroup;
@@ -44,7 +43,7 @@ export class ActionUpdateComponent implements OnInit {
     this.loading = true;
     const company = Object.assign({}, this.actionField.value);
     if (company.id) {
-      this.companyService.update(company).subscribe(res => {
+      this.actionService.update(company).subscribe(res => {
         this.toastr.success('action.label.update_success', true);
         this.ref.close({result: 'complete'});
       }, err => {
@@ -52,7 +51,7 @@ export class ActionUpdateComponent implements OnInit {
         this.toastr.error(err.error.title);
       });
     } else {
-      this.companyService.insert(company).subscribe(res => {
+      this.actionService.insert(company).subscribe(res => {
         this.toastr.success('action.label.insert_success', true);
         this.ref.close({result: 'complete'});
       }, err => {
