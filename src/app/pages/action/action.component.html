@@ -13,13 +13,13 @@
           <label class="label">
             {{ 'action.column.code' | translate }}
           </label>
-          <input autofocus (keyup.enter)="search()" formControlName="code" nbInput fullWidth trim="blur">
+          <input autofocus (keyup.enter)="search()" formControlName="code" nbInput fullWidth trim="blur" ngxNullValue>
         </div>
         <div class="col-lg-4 form-group">
           <label class="label">
             {{ 'action.column.name' | translate }}
           </label>
-          <input (keyup.enter)="search()" formControlName="name" nbInput fullWidth trim="blur">
+          <input (keyup.enter)="search()" formControlName="name" nbInput fullWidth trim="blur" ngxNullValue>
         </div>
         <div class="col-lg-4 form-group">
           <label class="label">

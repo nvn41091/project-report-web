@@ -13,19 +13,19 @@
           <label class="label">
             {{ 'user.userName' | translate }}
           </label>
-          <input autofocus (keyup.enter)="search()" formControlName="userName" nbInput fullWidth trim="blur">
+          <input autofocus (keyup.enter)="search()" formControlName="userName" nbInput fullWidth trim="blur" ngxNullValue>
         </div>
         <div class="col-lg-4 form-group">
           <label class="label">
             {{ 'user.fullName' | translate }}
           </label>
-          <input (keyup.enter)="search()" formControlName="fullName" nbInput fullWidth trim="blur">
+          <input (keyup.enter)="search()" formControlName="fullName" nbInput fullWidth trim="blur" ngxNullValue>
         </div>
         <div class="col-lg-4 form-group">
           <label class="label">
             {{ 'user.email' | translate }}
           </label>
-          <input (keyup.enter)="search()" formControlName="email" nbInput fullWidth trim="blur">
+          <input (keyup.enter)="search()" formControlName="email" nbInput fullWidth trim="blur" ngxNullValue>
         </div>
         <div class="col-lg-4 form-group">
           <label class="label">
