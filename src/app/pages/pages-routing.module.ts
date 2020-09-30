@@ -1,14 +1,12 @@
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
 
-import { PagesComponent } from './pages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import {PagesComponent} from './pages.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 import {NgxAuthBlockComponent} from '../auth/auth-block/auth-block.component';
 import {UserComponent} from './user/user.component';
 import {CompanyComponent} from './company/company.component';
-import { ActionComponent } from './action/action.component';
-import {ModuleComponent} from './module/module.component';
-import {RoleComponent} from './role/role.component';
+import {ActionComponent} from './action/action.component';
 
 const routes: Routes = [{
   path: '',
@@ -30,12 +28,14 @@ const routes: Routes = [{
       component: ActionComponent,
     },
     {
-      path: 'module',
-      component: ModuleComponent,
+      path: 'role',
+      loadChildren: () => import('./role/role.module')
+        .then(m => m.RoleModule),
     },
     {
-      path: 'role',
-      component: RoleComponent,
+      path: 'module',
+      loadChildren: () => import('./module/module.module')
+        .then(m => m.ModuleModule),
     },
     {
       path: '',

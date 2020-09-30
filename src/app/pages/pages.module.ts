@@ -8,8 +8,6 @@ import { PagesRoutingModule } from './pages-routing.module';
 import {UserModule} from './user/user.module';
 import {CompanyModule} from './company/company.module';
 import {ActionModule} from './action/action.module';
-import {ModuleModule} from './module/module.module';
-import {RoleModule} from './role/role.module';
 
 @NgModule({
   imports: [
@@ -22,8 +20,6 @@ import {RoleModule} from './role/role.module';
     UserModule,
     CompanyModule,
     ActionModule,
-    ModuleModule,
-    RoleModule,
   ],
   declarations: [
     PagesComponent,

@@ -3,7 +3,7 @@
     <form [formGroup]="companyField">
       <nb-card>
         <nb-card-header>
-          <label>{{(companyField.value.id ? 'company.label.insert' : 'company.label.update') | translate}}</label>
+          <label>{{(companyField.value.id ? 'company.label.update' : 'company.label.insert') | translate}}</label>
           <span>
           <button ghost size="tiny" nbButton class="objLink float-right" (click)="cancel()">
             <nb-icon icon="close-outline"></nb-icon>

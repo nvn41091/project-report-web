@@ -1,0 +1,24 @@
+{
+  "module": {
+    "title": "Quản lý menu",
+    "column": {
+      "index": "STT",
+      "code": "Mã menu",
+      "name": "Tên menu",
+      "description": "Mô tả",
+      "status": "Trạng thái",
+      "path_url": "Đường dẫn",
+      "icon": "Icon",
+      "parent_id": "Menu cha",
+      "update_time": "Ngày cập nhật",
+      "action": "Hành động"
+    },
+    "isGroup": {
+      "true": "Nhóm",
+      "false": "Đường dẫn"
+    },
+    "label": {
+      "clean": " --- Chọn Menu cha --- "
+    }
+  }
+}
