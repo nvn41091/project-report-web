@@ -20,6 +20,7 @@ export class ModuleUpdateComponent implements OnInit {
               private toastr: CustomToastrService,
               private translate: TranslateService,
               private moduleService: ModuleService) {
+    this.translate.currentLang;
   }
 
   moduleField: FormGroup;
@@ -39,6 +40,7 @@ export class ModuleUpdateComponent implements OnInit {
       icon: new FormControl(this.data?.icon, [Validators.maxLength(150)]),
       parentId: new FormControl(this.data?.parentId, []),
       status: new FormControl(this.data?.status ? this.data?.status : false, [Validators.required]),
+      isGroup: new FormControl(!this.data?.parentId),
     });
   }
 

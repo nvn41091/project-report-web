@@ -11,7 +11,8 @@
       "icon": "Icon",
       "parent_id": "Menu cha",
       "update_time": "Ngày cập nhật",
-      "action": "Hành động"
+      "action": "Hành động",
+      "is_group": "Là nhóm menu"
     },
     "isGroup": {
       "true": "Nhóm",
