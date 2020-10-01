@@ -47,12 +47,11 @@
               <nb-toggle fullWidth formControlName="status"></nb-toggle>
             </div>
             <div class="form-group col-md-2">
-              <label class="label w-100">{{ 'module.column.is_group' | translate }} <span
-                class="text-danger ml-2">*</span> </label>
+              <label class="label w-100">{{ 'module.column.is_group' | translate }}</label>
               <nb-toggle fullWidth formControlName="isGroup"></nb-toggle>
             </div>
             <div class="form-group col-md-4" *ngIf="this.moduleField.get('isGroup').value != true">
-              <label class="label">{{ 'module.column.path_url' | translate }}</label>
+              <label class="label">{{ 'module.column.path_url' | translate }} <span class="text-danger ml-2">*</span></label>
               <input nbInput autofocus fullWidth class="form-control" formControlName="pathUrl"
                      status="{{(this.moduleField.get('pathUrl').invalid
                  &&this.moduleField.get('pathUrl')?.touched) ? 'danger' : null }}" trim="blur" ngxNullValue>
@@ -62,9 +61,11 @@
             </div>
             <div class="form-group col-md-4" *ngIf="this.moduleField.get('isGroup').value != true">
               <label class="label">{{ 'module.column.parent_id' | translate }}</label>
-              <input nbInput autofocus fullWidth class="form-control" formControlName="parentId"
-                     status="{{(this.moduleField.get('parentId').invalid
-                 &&this.moduleField.get('parentId')?.touched) ? 'danger' : null }}" trim="blur" ngxNullValue>
+              <nb-select fullWidth formControlName="parentId" [placeholder]="'module.label.clean' | translate">
+                <nb-option [value]="undefined">{{ 'module.label.clean' | translate }}</nb-option>
+                <nb-option *ngFor="let parent of parents"
+                           [value]="parent.id">{{ parent.name }}</nb-option>
+              </nb-select>
               <ngx-inline-message [message]="'module.column.parent_id'"
                                   [formName]="moduleField.get('parentId')">
               </ngx-inline-message>
@@ -74,6 +75,8 @@
               <textarea nbInput fullWidth formControlName="description" ngxNullValue></textarea>
             </div>
           </div>
+
+          {{ this.moduleField.errors }}
           <div class="row mt-3">
             <div class="col-12 text-center">
               <button nbButton size="small" type="submit" (click)="save()"

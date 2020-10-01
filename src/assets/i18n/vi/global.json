@@ -6,6 +6,9 @@
     "label": {
       "token_expired": "Phiên làm việc đã hết hạn",
       "notice": "Thông báo",
+      "update_success": "Cập nhật thành công",
+      "insert_success": "Thêm mới thành công",
+      "delete_success": "Xóa thành công",
       "error": "Lỗi",
       "unknown_error": "Lỗi không xác định!",
       "record": "bản ghi",

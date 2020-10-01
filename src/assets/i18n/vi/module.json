@@ -19,7 +19,11 @@
       "false": "Đường dẫn"
     },
     "label": {
-      "clean": " --- Chọn Menu cha --- "
+      "clean": " --- Chọn Menu cha --- ",
+      "message_delete": "Bạn có chắc muốn xóa ",
+      "delete": "Xác nhận xóa Menu",
+      "update": "Sửa thông tin Menu",
+      "insert": "Thêm mới Menu"
     }
   }
 }

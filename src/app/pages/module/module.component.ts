@@ -103,6 +103,7 @@ export class ModuleComponent implements OnInit {
     this.dialog.open(ModuleUpdateComponent, {
       context: {
         data: data,
+        parents: this.parents,
       },
       dialogClass: 'modal-full',
       hasScroll: true,
@@ -124,7 +125,7 @@ export class ModuleComponent implements OnInit {
       if (res === 'confirm') {
         this.loading = true;
         this.moduleService.delete(data).subscribe((success) => {
-            this.toastr.success('module.label.delete_success', true);
+            this.toastr.success('common.label.delete_success', true);
             this.setPage({offset: 0});
             this.searchParent(data.id);
           },
