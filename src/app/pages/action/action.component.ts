@@ -53,8 +53,6 @@ export class ActionComponent implements OnInit {
   formSearch = this.fb.group({
     code: new FormControl(null),
     name: new FormControl(null),
-    email: new FormControl(null),
-    tel: new FormControl(null),
     status: new FormControl(null),
   });
 

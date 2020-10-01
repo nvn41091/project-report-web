@@ -1,0 +1,58 @@
+<div class="row" [nbSpinner]="loading">
+  <div class="col-lg-12">
+    <form [formGroup]="roleField">
+      <nb-card>
+        <nb-card-header>
+          <label>{{(roleField.value.id ? 'role.label.update' : 'role.label.insert') | translate}}</label>
+          <span>
+          <button ghost size="tiny" nbButton class="objLink float-right" (click)="cancel()">
+            <nb-icon icon="close-outline"></nb-icon>
+          </button>
+        </span>
+        </nb-card-header>
+        <nb-card-body>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label class="label">{{ 'role.column.code' | translate }}<span
+                class="text-danger ml-2">*</span></label>
+              <input id="code" nbInput autofocus fullWidth class="form-control" formControlName="code"
+                     status="{{(this.roleField.get('code').invalid
+                 && this.roleField.get('code')?.touched) ? 'danger' : null }}" trim="blur" ngxUppercase ngxNullValue>
+              <ngx-inline-message [message]="'role.column.code'"
+                                  [formName]="roleField.get('code')">
+              </ngx-inline-message>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="label">{{ 'role.column.name' | translate }}<span
+                class="text-danger ml-2">*</span></label>
+              <input id="name" nbInput autofocus fullWidth class="form-control" formControlName="name"
+                     status="{{(this.roleField.get('name').invalid
+                 &&this.roleField.get('name')?.touched) ? 'danger' : null }}" trim="blur" ngxNullValue>
+              <ngx-inline-message [message]="'role.column.name'"
+                                  [formName]="roleField.get('name')">
+              </ngx-inline-message>
+            </div>
+            <div class="form-group col-md-9">
+              <label class="label w-100">{{ 'role.column.description' | translate }}</label>
+              <textarea nbInput fullWidth formControlName="description" ngxNullValue></textarea>
+            </div>
+            <div class="form-group col-md-3">
+              <label class="label w-100">{{ 'role.column.status' | translate }} <span
+                class="text-danger ml-2">*</span> </label>
+              <nb-toggle fullWidth formControlName="status"></nb-toggle>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 text-center">
+              <button nbButton size="small" type="submit" (click)="save()"
+                      [disabled]="roleField.invalid">{{'common.label.save'|translate}}
+                <nb-icon icon="save-outline"></nb-icon>
+              </button>
+              <button nbButton class="ml-2" size="small" (click)="cancel()">{{'common.label.cancel'|translate}}</button>
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </form>
+  </div>
+</div>
