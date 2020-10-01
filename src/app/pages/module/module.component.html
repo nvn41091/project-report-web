@@ -66,16 +66,12 @@
                    [columns]="columns"
                    [scrollbarH]="true"
                    rowHeight="auto"
-                   [externalPaging]="true"
-                   [count]="page.count"
-                   [offset]="page.offset"
                    [limit]="page.limit"
                    [treeFromRelation]="'parentId'"
                    [treeToRelation]="'id'"
                    [footerHeight]="50"
                    [headerHeight]="50"
                    (treeAction)="onTreeAction($event)"
-                   (page)="pageCallback($event)"
                    [messages]="{ emptyMessage: 'common.select.notFoundText' | translate, totalMessage: 'common.label.record' | translate }">
       <ng-container *ngFor="let col of columns">
         <ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flexGrow" [sortable]="false"

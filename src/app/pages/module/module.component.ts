@@ -26,7 +26,7 @@ export class ModuleComponent implements OnInit {
   dataSearch;
   columns = [
     {name: 'module.column.index', prop: 'index', flexGrow: 0.3, minWidth: 30},
-    {name: 'module.column.code', prop: 'code', flexGrow: 0.7, minWidth: 70},
+    {name: 'module.column.code', prop: 'code', flexGrow: 1.4, minWidth: 140},
     {name: 'module.column.name', prop: 'name', flexGrow: 1, minWidth: 100},
     {name: 'module.column.path_url', prop: 'pathUrl', flexGrow: 1, minWidth: 100},
     {name: 'module.column.update_time', prop: 'updateTime', flexGrow: 1, minWidth: 100},
