@@ -70,13 +70,16 @@
                    [count]="page.count"
                    [offset]="page.offset"
                    [limit]="page.limit"
+                   [treeFromRelation]="'parentId'"
+                   [treeToRelation]="'id'"
                    [footerHeight]="50"
                    [headerHeight]="50"
+                   (treeAction)="onTreeAction($event)"
                    (page)="pageCallback($event)"
                    [messages]="{ emptyMessage: 'common.select.notFoundText' | translate, totalMessage: 'common.label.record' | translate }">
       <ng-container *ngFor="let col of columns">
         <ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flexGrow" [sortable]="false"
-                              [minWidth]="col.minWidth">
+                              [minWidth]="col.minWidth" [isTreeColumn]="col.prop === 'code'">
           <ng-template let-column="column" ngx-datatable-header-template>
             {{ column.name | translate }}
           </ng-template>
@@ -85,8 +88,8 @@
               {{ page.offset * page.limit + rowIndex + 1 }}
             </ng-container>
             <ng-container
-              *ngIf="col.prop !=='module_btn' && col.prop !=='updateTime' && col.prop !=='description' && col.prop !=='status'
-                   && col.prop !== 'code' && col.prop !== 'name' && col.prop !== 'isGroup'">
+              *ngIf="col.prop !=='action' && col.prop !=='updateTime' && col.prop !=='description' && col.prop !=='status'
+                   && col.prop !== 'code' && col.prop !== 'name' && col.prop !== 'map'" >
               <span class="row-data-show" title="{{value}}">{{ value }}</span>
             </ng-container>
             <ng-container *ngIf="col.prop ==='description' || col.prop === 'code' || col.prop === 'name' "

@@ -43,7 +43,9 @@
     "select": {
       "placeHolder": "Lựa chọn",
       "notFoundText": "Không tìm thấy kết quả",
-      "clearAllText": "Xoá"
+      "clearAllText": "Xoá",
+      "totalMessage": "Bản ghi",
+      "selectedMessage": "được chọn"
     }
   }
 }

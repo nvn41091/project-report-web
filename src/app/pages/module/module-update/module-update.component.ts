@@ -5,6 +5,8 @@ import {CustomToastrService} from '../../../shared/services/custom-toastr.servic
 import {TranslateService} from '@ngx-translate/core';
 import {onlyCharacterValidator} from '../../../shared/directives/only-characters.directive';
 import {ModuleService, Module} from 'assets/service/module.service';
+import {Action, ActionService} from '../../../../assets/service/action.service';
+import {ModuleActionService} from '../../../../assets/service/module-action.service';
 
 @Component({
   selector: 'ngx-module-update',
@@ -15,12 +17,15 @@ export class ModuleUpdateComponent implements OnInit {
   data: Module;
   loading: boolean = false;
   parents: Module[] = [];
+  actions: Action[] = [];
 
   constructor(private ref: NbDialogRef<ModuleUpdateComponent>,
               private fb: FormBuilder,
               private toastr: CustomToastrService,
               private translate: TranslateService,
               private moduleService: ModuleService,
+              private moduleActionService: ModuleActionService,
+              private actionService: ActionService,
               private cd: ChangeDetectorRef) {
     this.translate.currentLang;
   }
@@ -30,8 +35,13 @@ export class ModuleUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.translate.currentLang;
     this.moduleFieldInit();
+    this.onIsGroup(this.moduleField.get('isGroup').value);
     this.moduleField.get('isGroup').valueChanges.subscribe(x => this.onIsGroup(x));
-    this.parents = this.parents.filter(module => module.id !== this.data.id);
+    this.parents = this.parents.filter(module => module?.id !== this.data?.id);
+    this.actionService.getAll().subscribe(res => this.actions = res.body || []);
+    this.moduleActionService.getByModuleId(this.data.id).subscribe(res => {
+      this.moduleField.get('action').setValue(res.body.map(({actionId}) => actionId));
+    });
   }
 
   moduleFieldInit() {
@@ -45,6 +55,7 @@ export class ModuleUpdateComponent implements OnInit {
       parentId: new FormControl(this.data?.parentId, []),
       status: new FormControl(this.data?.status ? this.data?.status : false, [Validators.required]),
       isGroup: new FormControl((!this.data?.parentId && !this.data?.pathUrl)),
+      action: new FormControl(null),
     });
   }
 
@@ -64,9 +75,11 @@ export class ModuleUpdateComponent implements OnInit {
   save() {
     this.loading = true;
     const module = Object.assign({}, this.moduleField.value);
+    module.actionId = module.action.toString();
     if (module.isGroup === true) {
       module.pathUrl = null;
       module.parentId = null;
+      module.actionId = null;
     }
     if (module.id) {
       this.moduleService.update(module).subscribe(res => {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {NbDialogService, NbThemeService} from '@nebular/theme';
 import {FormBuilder, FormControl} from '@angular/forms';
@@ -28,7 +28,7 @@ export class ModuleComponent implements OnInit {
     {name: 'module.column.index', prop: 'index', flexGrow: 0.3, minWidth: 30},
     {name: 'module.column.code', prop: 'code', flexGrow: 0.7, minWidth: 70},
     {name: 'module.column.name', prop: 'name', flexGrow: 1, minWidth: 100},
-    {name: 'module.column.path_url', prop: 'tel', flexGrow: 1, minWidth: 100},
+    {name: 'module.column.path_url', prop: 'pathUrl', flexGrow: 1, minWidth: 100},
     {name: 'module.column.update_time', prop: 'updateTime', flexGrow: 1, minWidth: 100},
     {name: 'module.column.status', prop: 'status', flexGrow: 0.9, minWidth: 90},
     {name: 'module.column.action', prop: 'action', flexGrow: 0.6, minWidth: 60},
@@ -55,10 +55,21 @@ export class ModuleComponent implements OnInit {
     this.searchParent();
   }
 
+  formatData(data) {
+    const arr = [];
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].parentId !== null) {
+        data[i].treeStatus = 'disabled';
+      }
+      arr.push(data[i]);
+    }
+    return arr;
+  }
+
   searchParent(id?: number) {
     this.moduleService.getAllParent().subscribe((res: HttpResponse<Module[]>) => {
       this.parents = res.body || [];
-      if ( id && this.formSearch.get('parentId').value === id) {
+      if (id && this.formSearch.get('parentId').value === id) {
         this.formSearch.get('parentId').setValue(null);
       }
     });
@@ -78,18 +89,28 @@ export class ModuleComponent implements OnInit {
     }
   }
 
+  onTreeAction(event: any) {
+    const row = event.row;
+    if (row.treeStatus === 'expanded') {
+      row.treeStatus = 'collapsed';
+    } else {
+      row.treeStatus = 'expanded';
+    }
+    this.rows = [...this.rows];
+  }
+
   setPage(pageInfo) {
     this.loading = true;
     const pageToLoad: number = pageInfo.offset;
     this.moduleService.doSearch(this.dataSearch, {
       page: pageToLoad,
       size: this.page.limit,
-    }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad),
+    }).subscribe(res => this.onSuccess(this.formatData(res.body), res.headers, pageToLoad),
       err => this.loading = false);
   }
 
   protected onSuccess(data: any | null, headers: HttpHeaders, page: number): void {
-    this.page.count = Number(headers.get('X-Total-Count'));
+    this.page.count = data.length;
     this.page.offset = page || 0;
     this.rows = data || [];
     this.loading = false;

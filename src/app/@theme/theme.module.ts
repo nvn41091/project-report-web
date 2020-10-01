@@ -44,6 +44,7 @@ import {CompanyService} from '../../assets/service/company.service';
 import {TranslateModule} from '@ngx-translate/core';
 import {ActionService} from '../../assets/service/action.service';
 import {ModuleService} from '../../assets/service/module.service';
+import {ModuleActionService} from '../../assets/service/module-action.service';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -81,6 +82,7 @@ const SERVICE = [
   CompanyService,
   ActionService,
   ModuleService,
+  ModuleActionService,
 ];
 
 @NgModule({

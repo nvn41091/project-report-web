@@ -18,7 +18,6 @@ import {SharedModule} from '../../shared/shared.module';
 import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
 import { ModuleUpdateComponent } from './module-update/module-update.component';
 
-
 @NgModule({
   declarations: [ModuleComponent, ModuleUpdateComponent],
     imports: [

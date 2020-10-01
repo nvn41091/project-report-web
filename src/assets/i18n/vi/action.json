@@ -8,7 +8,7 @@
       "update_time": "Ngày cập nhật",
       "description": "Mô tả",
       "status": "Trạng thái",
-      "action": "Hành động"
+      "action": "Thao tác"
     },
     "label": {
       "delete": "Xác nhận xóa hành động",

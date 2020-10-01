@@ -41,17 +41,9 @@
                                   [formName]="moduleField.get('icon')">
               </ngx-inline-message>
             </div>
-            <div class="form-group col-md-2">
-              <label class="label w-100">{{ 'module.column.status' | translate }} <span
-                class="text-danger ml-2">*</span> </label>
-              <nb-toggle fullWidth formControlName="status"></nb-toggle>
-            </div>
-            <div class="form-group col-md-2">
-              <label class="label w-100">{{ 'module.column.is_group' | translate }}</label>
-              <nb-toggle fullWidth formControlName="isGroup"></nb-toggle>
-            </div>
             <div class="form-group col-md-4" *ngIf="this.moduleField.get('isGroup').value != true">
-              <label class="label">{{ 'module.column.path_url' | translate }} <span class="text-danger ml-2">*</span></label>
+              <label class="label">{{ 'module.column.path_url' | translate }} <span
+                class="text-danger ml-2">*</span></label>
               <input nbInput autofocus fullWidth class="form-control" formControlName="pathUrl"
                      status="{{(this.moduleField.get('pathUrl').invalid
                  &&this.moduleField.get('pathUrl')?.touched) ? 'danger' : null }}" trim="blur" ngxNullValue>
@@ -70,9 +62,29 @@
                                   [formName]="moduleField.get('parentId')">
               </ngx-inline-message>
             </div>
-            <div class="form-group" [ngClass]="this.moduleField.get('isGroup').value != true ? 'col-md-12' : 'col-md-8'">
+            <div class="form-group col-md-4" *ngIf="this.moduleField.get('isGroup').value != true">
+              <label class="label">{{ 'module.column.action' | translate }}</label>
+              <nb-select fullWidth multiple formControlName="action" [placeholder]="'module.label.action_clean' | translate">
+                <nb-option *ngFor="let action of actions" [value]="action.id">{{ action.name }}</nb-option>
+              </nb-select>
+              <ngx-inline-message [message]="'module.column.parent_id'"
+                                  [formName]="moduleField.get('parentId')">
+              </ngx-inline-message>
+            </div>
+            <div class="form-group col-md-10">
               <label class="label w-100">{{ 'module.column.description' | translate }}</label>
-              <textarea nbInput fullWidth formControlName="description" ngxNullValue></textarea>
+              <textarea nbInput fullWidth formControlName="description" rows="5" ngxNullValue></textarea>
+            </div>
+
+            <div class="form-group col-md-2">
+              <div class="col-sm-12">
+                <label class="label w-100">{{ 'module.column.status' | translate }} <span class="text-danger ml-2">*</span> </label>
+                <nb-toggle fullWidth formControlName="status"></nb-toggle>
+              </div>
+              <div class="col-sm-12">
+                <label class="label w-100">{{ 'module.column.is_group' | translate }}</label>
+                <nb-toggle fullWidth formControlName="isGroup"></nb-toggle>
+              </div>
             </div>
           </div>
 

@@ -54,4 +54,5 @@ export class Module {
   icon: string;
   updateTime: number;
   parentId: number;
+  action: string;
 }

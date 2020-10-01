@@ -9,9 +9,10 @@
       "status": "Trạng thái",
       "path_url": "Đường dẫn",
       "icon": "Icon",
+      "map": "Hành động",
       "parent_id": "Menu cha",
       "update_time": "Ngày cập nhật",
-      "action": "Hành động",
+      "action": "Thao tác",
       "is_group": "Là nhóm menu"
     },
     "isGroup": {
@@ -23,7 +24,9 @@
       "message_delete": "Bạn có chắc muốn xóa ",
       "delete": "Xác nhận xóa Menu",
       "update": "Sửa thông tin Menu",
-      "insert": "Thêm mới Menu"
+      "insert": "Thêm mới Menu",
+      "map": "Hành động tương ứng với menu",
+      "action_clean": "--- Chọn thao tác ---"
     }
   }
 }

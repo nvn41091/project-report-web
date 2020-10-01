@@ -36,6 +36,12 @@ export class ActionService {
     });
   }
 
+  getAll(): Observable<HttpResponse<Array<Action>>> {
+    return this.http.get<Array<Action>>(`${environment.api}/action/getAll`, {
+      observe: 'response',
+    });
+  }
+
 }
 
 export class Action {
