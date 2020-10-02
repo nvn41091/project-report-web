@@ -12,6 +12,7 @@ import {
 import {DefaultTreeviewI18n} from 'app/@theme/directives/DefaultTreeviewI8n';
 import {RoleModuleService} from '../../../../assets/service/role-module.service';
 import {formatTree} from '../../../@theme/directives/common';
+import {CustomToastrService} from '../../../shared/services/custom-toastr.service';
 
 @Component({
   selector: 'ngx-role-module',
@@ -36,7 +37,8 @@ export class RoleModuleComponent implements OnInit {
   selected: any[] = [];
 
   constructor(private ref: NbDialogRef<RoleModuleComponent>,
-              private roleModuleService: RoleModuleService) {
+              private roleModuleService: RoleModuleService,
+              private toastr: CustomToastrService) {
   }
 
   ngOnInit(): void {
@@ -49,7 +51,13 @@ export class RoleModuleComponent implements OnInit {
       roleId: this.role.id,
       moduleId: x.parentId,
       actionId: Number(x.id.replace('#', '')),
+      updateTime: new Date(),
     }));
+    this.roleModuleService.save(data, this.role.id).subscribe(
+      res => this.toastr.success('common.label.update_success', true),
+      error => this.toastr.unknownError(),
+      () => this.ref.close('confirm'),
+    );
   }
 
   cancel() {

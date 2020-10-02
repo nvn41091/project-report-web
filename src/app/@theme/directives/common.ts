@@ -9,7 +9,7 @@ export function formatTree(data, parentId, key) {
       value: data[i],
       parentId: data[i].parentId,
       children: [],
-      checked: false,
+      checked: data[i].checked,
     };
     // tslint:disable-next-line
     if ( (!parentId || parentId.substring(0, 1) !== '#') && dataItem.parentId == parentId) {

@@ -15,4 +15,10 @@ export class RoleModuleService {
     });
   }
 
+  save(data, roleId) {
+    return this.http.post<any>(`${environment.api}/roleModule/save/${roleId}`, data, {
+      observe: 'response',
+    });
+  }
+
 }
