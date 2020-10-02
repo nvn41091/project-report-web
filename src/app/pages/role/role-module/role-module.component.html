@@ -10,8 +10,10 @@
         </span>
       </nb-card-header>
       <nb-card-body>
-        <ngx-treeview></ngx-treeview>
-        <div class="row mt-3">
+        <ngx-treeview [items]="items" (selectedChange)="onSelectedChange($event)" [config]="config"></ngx-treeview>
+      </nb-card-body>
+      <nb-card-footer>
+        <div class="row">
           <div class="col-12 text-center">
             <button nbButton size="small" type="submit" (click)="save()">{{'common.label.save'|translate}}
               <nb-icon icon="save-outline"></nb-icon>
@@ -19,7 +21,7 @@
             <button nbButton class="ml-2" size="small" (click)="cancel()">{{'common.label.cancel'|translate}}</button>
           </div>
         </div>
-      </nb-card-body>
+      </nb-card-footer>
     </nb-card>
   </div>
 </div>

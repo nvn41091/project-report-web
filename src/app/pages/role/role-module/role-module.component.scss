@@ -1,7 +1,7 @@
 @import '../../../@theme/styles/themes';
 @include nb-install-component() {
   nb-card {
-    min-width: 75%;
+    min-width: 35vw;
     max-width: 1152px;
     max-height: 70vh;
   }
