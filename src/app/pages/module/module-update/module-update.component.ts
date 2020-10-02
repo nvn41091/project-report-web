@@ -39,9 +39,11 @@ export class ModuleUpdateComponent implements OnInit {
     this.moduleField.get('isGroup').valueChanges.subscribe(x => this.onIsGroup(x));
     this.parents = this.parents.filter(module => module?.id !== this.data?.id);
     this.actionService.getAll().subscribe(res => this.actions = res.body || []);
-    this.moduleActionService.getByModuleId(this.data.id).subscribe(res => {
-      this.moduleField.get('action').setValue(res.body.map(({actionId}) => actionId));
-    });
+    if (this.data?.id) {
+      this.moduleActionService.getByModuleId(this.data.id).subscribe(res => {
+        this.moduleField.get('action').setValue(res.body.map(({actionId}) => actionId));
+      });
+    }
   }
 
   moduleFieldInit() {
@@ -75,7 +77,9 @@ export class ModuleUpdateComponent implements OnInit {
   save() {
     this.loading = true;
     const module = Object.assign({}, this.moduleField.value);
-    module.actionId = module.action.toString();
+    if (module.actionId) {
+      module.actionId = module.action.toString();
+    }
     if (module.isGroup === true) {
       module.pathUrl = null;
       module.parentId = null;

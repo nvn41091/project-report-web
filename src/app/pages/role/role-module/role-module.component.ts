@@ -47,6 +47,7 @@ export class RoleModuleComponent implements OnInit {
   }
 
   save() {
+    this.loading = true;
     const data = this.selected.map(x => new Object({
       roleId: this.role.id,
       moduleId: x.parentId,
@@ -55,7 +56,7 @@ export class RoleModuleComponent implements OnInit {
     }));
     this.roleModuleService.save(data, this.role.id).subscribe(
       res => this.toastr.success('common.label.update_success', true),
-      error => this.toastr.unknownError(),
+      error => { this.toastr.unknownError(); this.loading = false; },
       () => this.ref.close('confirm'),
     );
   }

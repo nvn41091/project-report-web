@@ -60,6 +60,8 @@ export class ModuleComponent implements OnInit {
     for (let i = 0; i < data.length; i++) {
       if (data[i].parentId !== null) {
         data[i].treeStatus = 'disabled';
+      } else {
+        data[i].treeStatus = 'expanded';
       }
       arr.push(data[i]);
     }
