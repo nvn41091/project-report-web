@@ -7,6 +7,7 @@ import {HttpHeaders} from '@angular/common/http';
 import {ConfirmDialogComponent} from '../../share-lib-module/confirm-dialog/confirm-dialog.component';
 import { RoleService, Role } from 'assets/service/role.service';
 import {RoleUpdateComponent} from './role-update/role-update.component';
+import {RoleModuleComponent} from './role-module/role-module.component';
 
 @Component({
   selector: 'ngx-role',
@@ -28,6 +29,7 @@ export class RoleComponent implements OnInit {
     {name: 'role.column.code', prop: 'code', flexGrow: 0.7, minWidth: 70},
     {name: 'role.column.name', prop: 'name', flexGrow: 1, minWidth: 100},
     {name: 'role.column.update_time', prop: 'updateTime', flexGrow: 1, minWidth: 100},
+    {name: 'role.column.map_module', prop: 'mapModule', flexGrow: 0.8, minWidth: 80},
     {name: 'role.column.status', prop: 'status', flexGrow: 0.9, minWidth: 90},
     {name: 'role.column.action', prop: 'action_btn', flexGrow: 0.6, minWidth: 60},
   ];
@@ -117,4 +119,11 @@ export class RoleComponent implements OnInit {
     });
   }
 
+  openMapRole(role: Role) {
+    this.dialog.open(RoleModuleComponent, {
+      context: {
+        role: role,
+      },
+    });
+  }
 }

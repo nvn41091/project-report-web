@@ -46,6 +46,15 @@
       "clearAllText": "Xoá",
       "totalMessage": "Bản ghi",
       "selectedMessage": "được chọn"
+    },
+    "tree_view": {
+      "all": "Tất cả",
+      "select_option": "Chọn mục",
+      "options_selected": "mục đã được chọn.",
+      "filter": "Lọc",
+      "no_item_found": "Không có mục nào được tìm thấy",
+      "expand": "Mở rộng",
+      "collapse": "Thu lại"
     }
   }
 }

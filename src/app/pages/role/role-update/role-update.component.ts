@@ -26,14 +26,14 @@ export class RoleUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.translate.currentLang;
-    this.userFieldInit();
+    this.roleFieldInit();
   }
 
-  userFieldInit() {
+  roleFieldInit() {
     this.roleField = this.fb.group({
       id: new FormControl(this.data?.id, []),
       code: new FormControl(this.data?.code, [Validators.required, Validators.maxLength(100), onlyCharacterValidator(/^[A-Za-z0-9_]+$/)]),
-      name: new FormControl(this.data?.name, [Validators.required, Validators.maxLength(250)]),
+      name: new FormControl(this.data?.name, [Validators.required, Validators.maxLength(300)]),
       description: new FormControl(this.data?.description, [Validators.maxLength(500)]),
       status: new FormControl(this.data?.status ? this.data?.status : false, [Validators.required]),
     });
@@ -44,7 +44,7 @@ export class RoleUpdateComponent implements OnInit {
     const company = Object.assign({}, this.roleField.value);
     if (company.id) {
       this.roleService.update(company).subscribe(res => {
-        this.toastr.success('role.label.update_success', true);
+        this.toastr.success('common.label.update_success', true);
         this.ref.close({result: 'complete'});
       }, err => {
         this.loading = false;
@@ -52,7 +52,7 @@ export class RoleUpdateComponent implements OnInit {
       });
     } else {
       this.roleService.insert(company).subscribe(res => {
-        this.toastr.success('role.label.insert_success', true);
+        this.toastr.success('common.label.insert_success', true);
         this.ref.close({result: 'complete'});
       }, err => {
         this.loading = false;
