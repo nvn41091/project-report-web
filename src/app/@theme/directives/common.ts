@@ -11,7 +11,8 @@ export function formatTree(data, parentId, key) {
       children: [],
       checked: false,
     };
-    if (dataItem.parentId === parentId) {
+    // tslint:disable-next-line
+    if ( (!parentId || parentId.substring(0, 1) !== '#') && dataItem.parentId == parentId) {
       const children = formatTree(data, dataItem.value.id, key);
       if (children.length > 0) {
         dataItem.children = children;

@@ -10,7 +10,7 @@
         </span>
       </nb-card-header>
       <nb-card-body>
-        <ngx-treeview [items]="items" (selectedChange)="onSelectedChange($event)" [config]="config"></ngx-treeview>
+        <ngx-treeview [items]="items" (selectedChange)="selected = $event" [config]="config"></ngx-treeview>
       </nb-card-body>
       <nb-card-footer>
         <div class="row">

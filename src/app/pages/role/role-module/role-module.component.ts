@@ -6,38 +6,34 @@ import {
   TreeviewI18n,
   TreeviewEventParser,
   TreeviewItem,
-  OrderDownlineTreeviewEventParser,
   DownlineTreeviewItem,
+  DefaultTreeviewEventParser,
 } from 'ngx-treeview';
 import {DefaultTreeviewI18n} from 'app/@theme/directives/DefaultTreeviewI8n';
 import {RoleModuleService} from '../../../../assets/service/role-module.service';
 import {formatTree} from '../../../@theme/directives/common';
-
-@Injectable()
-export class RoleModuleTreeviewConfig extends TreeviewConfig {
-  hasAllCheckBox = true;
-  hasFilter = true;
-  hasCollapseExpand = false;
-  maxHeight: null;
-}
 
 @Component({
   selector: 'ngx-role-module',
   templateUrl: './role-module.component.html',
   styleUrls: ['./role-module.component.scss'],
   providers: [
-    {provide: TreeviewConfig, useClass: RoleModuleTreeviewConfig},
+    TreeviewConfig,
     {provide: TreeviewI18n, useClass: DefaultTreeviewI18n},
-    {provide: TreeviewEventParser, useClass: OrderDownlineTreeviewEventParser},
+    {provide: TreeviewEventParser, useClass: DefaultTreeviewEventParser},
   ],
 })
 export class RoleModuleComponent implements OnInit {
   role: Role;
   loading: boolean = false;
   items: TreeviewItem[] = [];
-  config = {
-    maxHeight: null,
-  };
+  config: TreeviewConfig = TreeviewConfig.create({
+    hasAllCheckBox: false,
+    hasFilter: true,
+    hasCollapseExpand: false,
+    maxHeight: undefined,
+  });
+  selected: any[] = [];
 
   constructor(private ref: NbDialogRef<RoleModuleComponent>,
               private roleModuleService: RoleModuleService) {
@@ -48,11 +44,12 @@ export class RoleModuleComponent implements OnInit {
       res => this.items = formatTree(res.body, null, 'name'));
   }
 
-  onSelectedChange(selected: DownlineTreeviewItem[]) {
-  }
-
   save() {
-    this.ref.close();
+    const data = this.selected.map(x => new Object({
+      roleId: this.role.id,
+      moduleId: x.parentId,
+      actionId: Number(x.id.replace('#', '')),
+    }));
   }
 
   cancel() {
