@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService} from '@nebular/theme';
 
 import {LayoutService} from '../../../@core/utils';
@@ -6,6 +6,7 @@ import {map, takeUntil, filter} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {NbTokenService} from '@nebular/auth';
 import {TranslateService} from '@ngx-translate/core';
+import {User, UserService} from '../../../../assets/service/user.service';
 
 @Component({
   selector: 'ngx-header',
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
   tag = 'ngx-header';
-  user: any;
+  user: User;
   requestAcceptCompany = [
     {id: 1, userName: 'nvn41091', fullName: 'Nguyễn Văn Ngọc'},
     {id: 2, userName: 'ngoc41099', fullName: 'Ngọc NV'},
@@ -55,7 +56,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService,
               private tokenService: NbTokenService,
-              public translate: TranslateService) {
+              public translate: TranslateService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
@@ -78,6 +80,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
+
+    this.userService.updateUser.subscribe(res => this.user = res);
+    this.userService.getUserInfo().subscribe(res => this.userService.changeUser(res.body));
   }
 
   ngOnDestroy() {

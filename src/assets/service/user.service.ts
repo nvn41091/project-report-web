@@ -1,12 +1,20 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {createRequestOption} from '../../app/shared/util/request-util';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {Module} from './module.service';
 
 @Injectable()
 export class UserService {
+  private user: BehaviorSubject<User> = new BehaviorSubject(null);
+  updateUser = this.user.asObservable();
 
   constructor(private http: HttpClient) {
+  }
+
+  changeUser(user: User) {
+    this.user.next(user);
   }
 
   doSearch(data: any, req?: any) {
@@ -35,6 +43,12 @@ export class UserService {
     });
   }
 
+  getUserInfo(): Observable<HttpResponse<User>> {
+    return this.http.get<User>(`${environment.api}/getUserInfo`, {
+      observe: 'response',
+    });
+  }
+
 }
 
 export class User {
@@ -54,4 +68,6 @@ export class User {
   lastModifiedBy: string;
   lastModifiedDate: Date;
   fingerprint: string;
+  roles: string[];
+  menus: Module[];
 }
