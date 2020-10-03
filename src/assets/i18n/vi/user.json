@@ -32,9 +32,11 @@
       "fullName": "Tên đầy đủ",
       "email": "Email",
       "imageUrl": "Đường dẫn",
-      "status": "Trạng thái"
+      "status": "Trạng thái",
+      "role": "Quyền người dùng"
     },
     "label": {
+      "role": "--- Chọn quyền ---",
       "save": "Lưu lại",
       "cancel": "Hủy bỏ"
     }

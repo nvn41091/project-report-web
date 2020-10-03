@@ -5,6 +5,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {CustomToastrService} from '../../../shared/services/custom-toastr.service';
 import {onlyCharacterValidator} from '../../../shared/directives/only-characters.directive';
+import {Role, RoleService} from '../../../../assets/service/role.service';
+import {UserRoleService} from '../../../../assets/service/user-role.service';
 
 @Component({
   selector: 'ngx-user-update',
@@ -14,12 +16,15 @@ import {onlyCharacterValidator} from '../../../shared/directives/only-characters
 export class UserUpdateComponent implements OnInit {
   data: User;
   loading: boolean = false;
+  roles: Role[] = [];
 
   constructor(private ref: NbDialogRef<UserUpdateComponent>,
               private fb: FormBuilder,
               private toastr: CustomToastrService,
               private translate: TranslateService,
-              private userService: UserService) {
+              private userService: UserService,
+              private roleService: RoleService,
+              private userRoleService: UserRoleService) {
   }
 
   userField: FormGroup;
@@ -27,6 +32,12 @@ export class UserUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.translate.currentLang;
     this.userFieldInit();
+    this.roleService.getAll().subscribe(res => this.roles = res.body);
+    if (this.data?.id) {
+      this.userRoleService.getByUserId(this.data.id).subscribe(
+        res => this.userField.get('lstRole').setValue(res.body.map(x => x.roleId)),
+      );
+    }
   }
 
   userFieldInit() {
@@ -49,12 +60,16 @@ export class UserUpdateComponent implements OnInit {
       lastModifiedBy: new FormControl(this.data?.lastModifiedBy, []),
       lastModifiedDate: new FormControl(this.data?.lastModifiedDate, []),
       fingerprint: new FormControl(this.data?.fingerprint, []),
+      lstRole: new FormControl([], []),
     });
   }
 
   save() {
     this.loading = true;
     const user = Object.assign({}, this.userField.value);
+    if (user.lstRole) {
+      user.lstRole = user.lstRole.toString();
+    }
     if (user.id) {
       this.userService.update(user).subscribe(res => {
         this.toastr.success('user.update_complete', true);

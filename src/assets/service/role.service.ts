@@ -36,6 +36,11 @@ export class RoleService {
     });
   }
 
+  getAll(): Observable<HttpResponse<Array<Role>>> {
+    return this.http.get<Array<Role>>(`${environment.api}/role/getAll`, {
+      observe: 'response',
+    });
+  }
 }
 
 export class Role {
