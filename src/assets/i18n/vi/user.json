@@ -31,7 +31,7 @@
       "userName": "Tên đăng nhập",
       "fullName": "Tên đầy đủ",
       "email": "Email",
-      "imageUrl": "Đường dẫn",
+      "imageUrl": "Đường dẫn ảnh",
       "status": "Trạng thái",
       "role": "Quyền người dùng"
     },
