@@ -4,6 +4,7 @@
   },
   "common": {
     "label": {
+      "forbidden": "Quyền người dùng đã bị thay đổi",
       "token_expired": "Phiên làm việc đã hết hạn",
       "notice": "Thông báo",
       "update_success": "Cập nhật thành công",

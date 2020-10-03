@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../assets/service/user.service';
 import {Module} from '../../assets/service/module.service';
 import {NbMenuItem} from '@nebular/theme';
+import {DataUserService} from '../shared/services/data-user.service';
 
 @Component({
   selector: 'ngx-pages',
@@ -17,11 +18,12 @@ import {NbMenuItem} from '@nebular/theme';
 export class PagesComponent implements OnInit {
   menu: NbMenuItem[] = [];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private dataUserService: DataUserService) {
   }
 
   ngOnInit(): void {
-    this.userService.updateUser.subscribe(
+    this.dataUserService.updateUser.subscribe(
       res => {
         const menu = this.formatMenu(res?.menus, null);
         menu.unshift({

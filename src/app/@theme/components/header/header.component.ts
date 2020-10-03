@@ -7,6 +7,7 @@ import {Subject} from 'rxjs';
 import {NbTokenService} from '@nebular/auth';
 import {TranslateService} from '@ngx-translate/core';
 import {User, UserService} from '../../../../assets/service/user.service';
+import {DataUserService} from '../../../shared/services/data-user.service';
 
 @Component({
   selector: 'ngx-header',
@@ -57,7 +58,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private breakpointService: NbMediaBreakpointsService,
               private tokenService: NbTokenService,
               public translate: TranslateService,
-              private userService: UserService) {
+              private userService: UserService,
+              private dataUserService: DataUserService) {
   }
 
   ngOnInit() {
@@ -80,10 +82,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
-    this.userService.updateUser.subscribe(res => this.user = res);
-    this.userService.getUserInfo().subscribe(
-      (res) => this.userService.changeUser(res.body),
-    );
+    this.dataUserService.updateUser.subscribe(res => this.user = res);
   }
 
   ngOnDestroy() {

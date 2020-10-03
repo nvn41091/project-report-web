@@ -43,7 +43,8 @@ import {NgxRegisterComponent} from './auth/register/register.component';
 import {SharedModule} from './shared/shared.module';
 import {NbRoleProvider, NbSecurityModule} from '@nebular/security';
 import {LoginAuth} from './auth/login-auth';
-import { of } from 'rxjs';
+import {of} from 'rxjs';
+import {ForbiddenInterceptor} from './auth/forbidden.interceptor';
 
 registerLocaleData(vi, 'vi-VI', viEt);
 
@@ -95,9 +96,10 @@ export function CreateTranslateLoader(http: HttpClient) {
     {provide: HTTP_INTERCEPTORS, useClass: AuthExpiredInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: FingerPrintInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: NbAuthJWTInterceptor, multi: true},
-    {provide: NbRoleProvider, useValue: { getRole: () => of('user') } },
+    {provide: HTTP_INTERCEPTORS, useClass: ForbiddenInterceptor, multi: true},
+    {provide: NbRoleProvider, useValue: {getRole: () => of('user')}},
     {provide: APP_BASE_HREF, useValue: '/'},
-    { provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: (req) => false },
+    {provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: (req) => false},
   ],
 })
 export class AppModule {

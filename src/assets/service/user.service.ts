@@ -1,26 +1,14 @@
-import {ApplicationRef, ChangeDetectorRef, Injectable, ViewContainerRef, Inject} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {createRequestOption} from '../../app/shared/util/request-util';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Module} from './module.service';
-import {NbAclService} from '@nebular/security';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class UserService {
-  private user: BehaviorSubject<User> = new BehaviorSubject(null);
-  updateUser = this.user.asObservable();
 
-  constructor(private http: HttpClient,
-              private nbAciService: NbAclService,
-              private af: ApplicationRef) {
-  }
-
-  changeUser(user: User) {
-    this.user.next(user);
-    this.nbAciService.register('user', null, {['access']: user?.roles});
+  constructor(private http: HttpClient) {
   }
 
   doSearch(data: any, req?: any) {
