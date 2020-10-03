@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {NbDialogService, NbThemeService} from '@nebular/theme';
 import {FormBuilder, FormControl} from '@angular/forms';
@@ -7,6 +7,7 @@ import {HttpHeaders, HttpResponse} from '@angular/common/http';
 import {ConfirmDialogComponent} from '../../share-lib-module/confirm-dialog/confirm-dialog.component';
 import {Module, ModuleService} from 'assets/service/module.service';
 import {ModuleUpdateComponent} from './module-update/module-update.component';
+import {NbAccessChecker} from '@nebular/security';
 
 @Component({
   selector: 'ngx-module',
@@ -17,6 +18,9 @@ export class ModuleComponent implements OnInit {
   theme;
   loading = false;
   rows: Object[];
+  grandSearch: boolean = false;
+  grandUpdate: boolean = false;
+  grandInsert: boolean = false;
   parents: Module[] = [];
   page = {
     limit: 5,
@@ -44,15 +48,31 @@ export class ModuleComponent implements OnInit {
               private moduleService: ModuleService,
               private fb: FormBuilder,
               private dialog: NbDialogService,
-              private toastr: CustomToastrService) {
+              private toastr: CustomToastrService,
+              private accessChecker: NbAccessChecker) {
     this.themeService.onThemeChange().subscribe((theme: any) => {
       this.theme = theme.name;
     });
   }
 
   ngOnInit(): void {
+    this.authorSearch().then(r => {});
+    this.authorUpdate().then(r => {});
+    this.authorInsert().then(r => {});
     this.search();
     this.searchParent();
+  }
+
+  async authorSearch() {
+    await this.accessChecker.isGranted('access', 'MODULE#SEARCH').subscribe(grand => this.grandSearch = grand);
+  }
+
+  async authorUpdate() {
+    await this.accessChecker.isGranted('access', 'MODULE#UPDATE').subscribe(grand => this.grandUpdate = grand);
+  }
+
+  async authorInsert() {
+    await this.accessChecker.isGranted('access', 'MODULE#INSERT').subscribe(grand => this.grandInsert = grand);
   }
 
   formatData(data) {
@@ -69,12 +89,14 @@ export class ModuleComponent implements OnInit {
   }
 
   searchParent(id?: number) {
-    this.moduleService.getAllParent().subscribe((res: HttpResponse<Module[]>) => {
-      this.parents = res.body || [];
-      if (id && this.formSearch.get('parentId').value === id) {
-        this.formSearch.get('parentId').setValue(null);
-      }
-    });
+    if (this.grandSearch || this.grandUpdate || this.grandInsert) {
+      this.moduleService.getAllParent().subscribe((res: HttpResponse<Module[]>) => {
+        this.parents = res.body || [];
+        if (id && this.formSearch.get('parentId').value === id) {
+          this.formSearch.get('parentId').setValue(null);
+        }
+      });
+    }
   }
 
   formSearch = this.fb.group({
@@ -102,13 +124,15 @@ export class ModuleComponent implements OnInit {
   }
 
   setPage(pageInfo) {
-    this.loading = true;
     const pageToLoad: number = pageInfo.offset;
-    this.moduleService.doSearch(this.dataSearch, {
-      page: pageToLoad,
-      size: this.page.limit,
-    }).subscribe(res => this.onSuccess(this.formatData(res.body), res.headers, pageToLoad),
-      err => this.loading = false);
+    if (this.grandSearch) {
+      this.loading = true;
+      this.moduleService.doSearch(this.dataSearch, {
+        page: pageToLoad,
+        size: this.page.limit,
+      }).subscribe(res => this.onSuccess(this.formatData(res.body), res.headers, pageToLoad),
+        () => this.loading = false);
+    }
   }
 
   protected onSuccess(data: any | null, headers: HttpHeaders, page: number): void {
@@ -116,10 +140,6 @@ export class ModuleComponent implements OnInit {
     this.page.offset = page || 0;
     this.rows = data || [];
     this.loading = false;
-  }
-
-  pageCallback(pageInfo: { count?: number, pageSize?: number, limit?: number, offset?: number, page?: number }) {
-    this.setPage(pageInfo);
   }
 
   edit(data) {
@@ -147,7 +167,7 @@ export class ModuleComponent implements OnInit {
     }).onClose.subscribe(res => {
       if (res === 'confirm') {
         this.loading = true;
-        this.moduleService.delete(data).subscribe((success) => {
+        this.moduleService.delete(data).subscribe(() => {
             this.toastr.success('common.label.delete_success', true);
             this.setPage({offset: 0});
             this.searchParent(data.id);

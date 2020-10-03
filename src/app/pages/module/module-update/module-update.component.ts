@@ -77,7 +77,7 @@ export class ModuleUpdateComponent implements OnInit {
   save() {
     this.loading = true;
     const module = Object.assign({}, this.moduleField.value);
-    if (module.actionId) {
+    if (module.action) {
       module.actionId = module.action.toString();
     }
     if (module.isGroup === true) {

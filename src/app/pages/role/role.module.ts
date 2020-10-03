@@ -19,26 +19,28 @@ import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
 import { RoleUpdateComponent } from './role-update/role-update.component';
 import { RoleModuleComponent } from './role-module/role-module.component';
 import {TreeviewModule} from 'ngx-treeview';
+import {NbSecurityModule} from '@nebular/security';
 
 
 @NgModule({
   declarations: [RoleComponent, RoleUpdateComponent, RoleModuleComponent],
-  imports: [
-    CommonModule,
-    RoleRoutingModule,
-    NbIconModule,
-    TranslateModule,
-    NgxDatatableModule,
-    NbSpinnerModule,
-    NbCardModule,
-    NbSelectModule,
-    ReactiveFormsModule,
-    NbButtonModule,
-    SharedModule,
-    NgxTrimDirectiveModule,
-    NbInputModule,
-    NbToggleModule,
-    TreeviewModule.forRoot(),
-  ],
+    imports: [
+        CommonModule,
+        RoleRoutingModule,
+        NbIconModule,
+        TranslateModule,
+        NgxDatatableModule,
+        NbSpinnerModule,
+        NbCardModule,
+        NbSelectModule,
+        ReactiveFormsModule,
+        NbButtonModule,
+        SharedModule,
+        NgxTrimDirectiveModule,
+        NbInputModule,
+        NbToggleModule,
+        TreeviewModule.forRoot(),
+        NbSecurityModule,
+    ],
 })
 export class RoleModule { }

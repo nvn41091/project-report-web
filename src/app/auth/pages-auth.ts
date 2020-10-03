@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CanActivate, Router} from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {NbAuthService} from '@nebular/auth';
 import {User, UserService} from '../../assets/service/user.service';
 import {NbAclService} from '@nebular/security';
@@ -15,11 +15,11 @@ export class PagesAuth implements CanActivate {
               private dataUserService: DataUserService) {
   }
 
-  canActivate() {
-    return this.isAuthenticate();
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    return this.isAuthenticate(route, state);
   }
 
-  async isAuthenticate() {
+  async isAuthenticate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let isAuth: boolean = false;
     await this.authService.isAuthenticated().subscribe(res => isAuth = res);
     if (isAuth) {
@@ -27,6 +27,19 @@ export class PagesAuth implements CanActivate {
       await this.getUserInfo().then(r => user = r);
       this.dataUserService.setUser(user);
       this.nbAciService.register('user', null, {['access']: user?.roles});
+      if (state.url === '/pages/home' || state.url === '/pages/404') {
+        return true;
+      }
+      let check = false;
+      for (let i = 0; i < user.menus.length; i ++) {
+        const path =  state.url.substring(0, user.menus[i]?.pathUrl?.length);
+        if (user.menus[i].pathUrl === path) {
+          check = true;
+        }
+      }
+      if (!check) {
+        await this.router.navigate(['/pages/home']);
+      }
     } else {
       this.router.navigate(['auth/login']).then(r => {});
     }

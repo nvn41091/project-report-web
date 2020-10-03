@@ -6,7 +6,7 @@
       {{ 'user.add_btn' | translate }}
     </button>
   </nb-card-header>
-  <nb-card-body>
+  <nb-card-body *nbIsGranted="['access', 'USER#SEARCH']">
     <form [formGroup]="formSearch">
       <div class="row">
         <div class="col-lg-4 form-group">
@@ -47,7 +47,7 @@
   </nb-card-body>
 </nb-card>
 
-<nb-card>
+<nb-card *nbIsGranted="['access', 'USER#SEARCH']">
   <nb-card-header>
     {{ 'user.search_result' | translate }}
   </nb-card-header>
@@ -98,11 +98,11 @@
             </ng-container>
             <ng-container *ngIf="col.prop ==='action_btn'" class="text-right">
               <div>
-                <button class="p-1" nbButton status="info" ghost title="{{ 'user.edit' | translate }}"
+                <button class="p-1" *nbIsGranted="['access', 'USER#UPDATE']" nbButton status="info" ghost title="{{ 'user.edit' | translate }}"
                         (click)="edit(row)">
                   <nb-icon icon="edit-outline" pack="eva" size="tiny"></nb-icon>
                 </button>
-                <button class="p-1" nbButton status="danger" ghost title="{{ 'user.delete' | translate }}"
+                <button class="p-1" *nbIsGranted="['access', 'USER#DELETE']" nbButton status="danger" ghost title="{{ 'user.delete' | translate }}"
                         (click)="delete(row)">
                   <nb-icon icon="trash-2-outline" pack="eva" size="tiny"></nb-icon>
                 </button>

@@ -16,7 +16,7 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {ThemeModule} from '../../@theme/theme.module';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import {SharedModule} from '../../shared/shared.module';
-import {NbSecurityModule} from "@nebular/security";
+import {NbSecurityModule} from '@nebular/security';
 
 @NgModule({
     imports: [

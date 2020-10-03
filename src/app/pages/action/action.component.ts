@@ -7,6 +7,7 @@ import {HttpHeaders} from '@angular/common/http';
 import {ConfirmDialogComponent} from '../../share-lib-module/confirm-dialog/confirm-dialog.component';
 import {Action, ActionService} from '../../../assets/service/action.service';
 import {ActionUpdateComponent} from './action-update/action-update.component';
+import {NbAccessChecker} from '@nebular/security';
 
 @Component({
   selector: 'ngx-action',
@@ -16,6 +17,7 @@ import {ActionUpdateComponent} from './action-update/action-update.component';
 export class ActionComponent implements OnInit {
   theme;
   loading = false;
+  grand: boolean = false;
   rows: Object[];
   page = {
     limit: 5,
@@ -42,13 +44,20 @@ export class ActionComponent implements OnInit {
               private actionService: ActionService,
               private fb: FormBuilder,
               private dialog: NbDialogService,
-              private toastr: CustomToastrService) {
+              private toastr: CustomToastrService,
+              private accessChecker: NbAccessChecker) {
     this.themeService.onThemeChange().subscribe((theme: any) => { this.theme = theme.name; });
   }
 
   ngOnInit(): void {
+    this.author().then(r => {});
     this.search();
   }
+
+  async author() {
+    await this.accessChecker.isGranted('access', 'ACTION#SEARCH').subscribe(grand => this.grand = grand);
+  }
+
 
   formSearch = this.fb.group({
     code: new FormControl(null),
@@ -64,13 +73,15 @@ export class ActionComponent implements OnInit {
   }
 
   setPage(pageInfo) {
-    this.loading = true;
     const pageToLoad: number = pageInfo.offset;
-    this.actionService.doSearch(this.dataSearch, {
-      page: pageToLoad,
-      size: this.page.limit,
-    }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad),
-      err => this.loading = false);
+    if (this.grand) {
+      this.loading = true;
+      this.actionService.doSearch(this.dataSearch, {
+        page: pageToLoad,
+        size: this.page.limit,
+      }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad),
+        err => this.loading = false);
+    }
   }
 
   protected onSuccess(data: any | null, headers: HttpHeaders, page: number): void {

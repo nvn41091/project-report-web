@@ -7,6 +7,7 @@ import {FormBuilder, FormControl} from '@angular/forms';
 import {ConfirmDialogComponent} from '../../share-lib-module/confirm-dialog/confirm-dialog.component';
 import {UserUpdateComponent} from './user-update/user-update.component';
 import {CustomToastrService} from '../../shared/services/custom-toastr.service';
+import {NbAccessChecker} from '@nebular/security';
 
 @Component({
   selector: 'ngx-user',
@@ -16,6 +17,7 @@ import {CustomToastrService} from '../../shared/services/custom-toastr.service';
 })
 export class UserComponent implements OnInit {
   theme;
+  grand: boolean = false;
   loading = false;
   rows: Object[];
   page = {
@@ -43,10 +45,19 @@ export class UserComponent implements OnInit {
               private userService: UserService,
               private fb: FormBuilder,
               private dialog: NbDialogService,
-              private toastr: CustomToastrService) {
-    this.themeService.onThemeChange().subscribe((theme: any) => { this.theme = theme.name; });
+              private toastr: CustomToastrService,
+              public accessChecker: NbAccessChecker) {
+    this.themeService.onThemeChange().subscribe((theme: any) => {
+      this.theme = theme.name;
+    });
   }
+
+  async author() {
+    await this.accessChecker.isGranted('access', 'USER#SEARCH').subscribe(grand => this.grand = grand);
+  }
+
   ngOnInit(): void {
+    this.author().then(r => {});
     this.search();
   }
 
@@ -65,13 +76,15 @@ export class UserComponent implements OnInit {
   }
 
   setPage(pageInfo) {
-    this.loading = true;
     const pageToLoad: number = pageInfo.offset;
-    this.userService.doSearch(this.dataSearch, {
-      page: pageToLoad,
-      size: this.page.limit,
-    }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad),
-      err => this.loading = false );
+    if (this.grand) {
+      this.loading = true;
+      this.userService.doSearch(this.dataSearch, {
+        page: pageToLoad,
+        size: this.page.limit,
+      }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad),
+        err => this.loading = false);
+    }
   }
 
   protected onSuccess(data: any | null, headers: HttpHeaders, page: number): void {

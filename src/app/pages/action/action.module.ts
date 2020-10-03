@@ -15,25 +15,27 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {NgxTrimDirectiveModule} from "ngx-trim-directive";
 import { ActionUpdateComponent } from './action-update/action-update.component';
 import {SharedModule} from "../../shared/shared.module";
+import {NbSecurityModule} from "@nebular/security";
 
 
 
 @NgModule({
   declarations: [ActionComponent, ActionUpdateComponent],
-  imports: [
-    CommonModule,
-    NbIconModule,
-    TranslateModule,
-    NgxDatatableModule,
-    NbSpinnerModule,
-    NbCardModule,
-    NbSelectModule,
-    ReactiveFormsModule,
-    NbButtonModule,
-    NbInputModule,
-    NgxTrimDirectiveModule,
-    SharedModule,
-    NbToggleModule
-  ]
+    imports: [
+        CommonModule,
+        NbIconModule,
+        TranslateModule,
+        NgxDatatableModule,
+        NbSpinnerModule,
+        NbCardModule,
+        NbSelectModule,
+        ReactiveFormsModule,
+        NbButtonModule,
+        NbInputModule,
+        NgxTrimDirectiveModule,
+        SharedModule,
+        NbToggleModule,
+        NbSecurityModule
+    ]
 })
 export class ActionModule { }

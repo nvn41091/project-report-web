@@ -8,6 +8,7 @@ import {ConfirmDialogComponent} from '../../share-lib-module/confirm-dialog/conf
 import { RoleService, Role } from 'assets/service/role.service';
 import {RoleUpdateComponent} from './role-update/role-update.component';
 import {RoleModuleComponent} from './role-module/role-module.component';
+import {NbAccessChecker} from '@nebular/security';
 
 @Component({
   selector: 'ngx-role',
@@ -18,6 +19,7 @@ export class RoleComponent implements OnInit {
   theme;
   loading = false;
   rows: Object[];
+  grandSearch: boolean = false;
   page = {
     limit: 5,
     count: 0,
@@ -44,12 +46,18 @@ export class RoleComponent implements OnInit {
               private roleService: RoleService,
               private fb: FormBuilder,
               private dialog: NbDialogService,
-              private toastr: CustomToastrService) {
+              private toastr: CustomToastrService,
+              private accessChecker: NbAccessChecker) {
     this.themeService.onThemeChange().subscribe((theme: any) => { this.theme = theme.name; });
   }
 
   ngOnInit(): void {
+    this.authorSearch().then(r => {});
     this.search();
+  }
+
+  async authorSearch() {
+    await this.accessChecker.isGranted('access', 'ROLE#SEARCH').subscribe(grand => this.grandSearch = grand);
   }
 
   formSearch = this.fb.group({
@@ -66,13 +74,15 @@ export class RoleComponent implements OnInit {
   }
 
   setPage(pageInfo) {
-    this.loading = true;
     const pageToLoad: number = pageInfo.offset;
-    this.roleService.doSearch(this.dataSearch, {
-      page: pageToLoad,
-      size: this.page.limit,
-    }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad),
-      err => this.loading = false);
+    if (this.grandSearch) {
+      this.loading = true;
+      this.roleService.doSearch(this.dataSearch, {
+        page: pageToLoad,
+        size: this.page.limit,
+      }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad),
+        err => this.loading = false);
+    }
   }
 
   protected onSuccess(data: any | null, headers: HttpHeaders, page: number): void {

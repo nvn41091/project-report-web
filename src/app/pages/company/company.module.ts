@@ -14,23 +14,25 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
 import {SharedModule} from '../../shared/shared.module';
 import { CompanyUpdateComponent } from './company-update/company-update.component';
+import {NbSecurityModule} from '@nebular/security';
 
 @NgModule({
   declarations: [CompanyComponent, CompanyUpdateComponent],
-  imports: [
-    CommonModule,
-    NbIconModule,
-    TranslateModule,
-    NgxDatatableModule,
-    NbCardModule,
-    ReactiveFormsModule,
-    NbSelectModule,
-    NbSpinnerModule,
-    NgxTrimDirectiveModule,
-    NbButtonModule,
-    NbInputModule,
-    SharedModule,
-    NbToggleModule,
-  ],
+    imports: [
+        CommonModule,
+        NbIconModule,
+        TranslateModule,
+        NgxDatatableModule,
+        NbCardModule,
+        ReactiveFormsModule,
+        NbSelectModule,
+        NbSpinnerModule,
+        NgxTrimDirectiveModule,
+        NbButtonModule,
+        NbInputModule,
+        SharedModule,
+        NbToggleModule,
+        NbSecurityModule,
+    ],
 })
 export class CompanyModule { }

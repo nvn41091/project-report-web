@@ -1,12 +1,12 @@
 <nb-card>
   <nb-card-header class="d-flex">
     <label> {{ 'company.title' | translate }}</label>
-    <button nbButton status="primary" size="tiny" outline class="ml-auto" (click)="edit(null)">
+    <button *nbIsGranted="['access', 'COMPANY#INSERT']" nbButton status="primary" size="tiny" outline class="ml-auto" (click)="edit(null)">
       <nb-icon icon="plus" pack="eva"></nb-icon>
       {{ 'common.label.insert_btn' | translate }}
     </button>
   </nb-card-header>
-  <nb-card-body>
+  <nb-card-body *nbIsGranted="['access', 'COMPANY#SEARCH']">
     <form [formGroup]="formSearch">
       <div class="row">
         <div class="col-lg-4 form-group">
@@ -53,7 +53,7 @@
   </nb-card-body>
 </nb-card>
 
-<nb-card>
+<nb-card *nbIsGranted="['access', 'COMPANY#SEARCH']">
   <nb-card-header>
     {{ 'common.label.gridTitle' | translate }}
   </nb-card-header>
@@ -105,11 +105,11 @@
             <ng-container *ngIf="col.prop ==='action_btn'" class="text-right">
               <div>
                 <button class="p-1" nbButton status="info" ghost title="{{ 'common.label.edit' | translate }}"
-                        (click)="edit(row)">
+                        (click)="edit(row)" *nbIsGranted="['access', 'COMPANY#UPDATE']">
                   <nb-icon icon="edit-outline" pack="eva" size="tiny"></nb-icon>
                 </button>
                 <button class="p-1" nbButton status="danger" ghost title="{{ 'common.label.delete' | translate }}"
-                        (click)="delete(row)">
+                        (click)="delete(row)" *nbIsGranted="['access', 'COMPANY#DELETE']">
                   <nb-icon icon="trash-2-outline" pack="eva" size="tiny"></nb-icon>
                 </button>
               </div>

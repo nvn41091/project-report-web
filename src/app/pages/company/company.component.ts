@@ -7,6 +7,7 @@ import {HttpHeaders} from '@angular/common/http';
 import {ConfirmDialogComponent} from '../../share-lib-module/confirm-dialog/confirm-dialog.component';
 import {Company, CompanyService} from 'assets/service/company.service';
 import {CompanyUpdateComponent} from './company-update/company-update.component';
+import {NbAccessChecker} from '@nebular/security';
 
 @Component({
   selector: 'ngx-company',
@@ -16,6 +17,7 @@ import {CompanyUpdateComponent} from './company-update/company-update.component'
 export class CompanyComponent implements OnInit {
   theme;
   loading = false;
+  grand: boolean = false;
   rows: Object[];
   page = {
     limit: 5,
@@ -44,12 +46,21 @@ export class CompanyComponent implements OnInit {
               private companyService: CompanyService,
               private fb: FormBuilder,
               private dialog: NbDialogService,
-              private toastr: CustomToastrService) {
-    this.themeService.onThemeChange().subscribe((theme: any) => { this.theme = theme.name; });
+              private toastr: CustomToastrService,
+              public accessChecker: NbAccessChecker) {
+    this.themeService.onThemeChange().subscribe((theme: any) => {
+      this.theme = theme.name;
+    });
   }
 
   ngOnInit(): void {
+    this.author().then(r => {
+    });
     this.search();
+  }
+
+  async author() {
+    await this.accessChecker.isGranted('access', 'USER#SEARCH').subscribe(grand => this.grand = grand);
   }
 
   formSearch = this.fb.group({
@@ -68,13 +79,15 @@ export class CompanyComponent implements OnInit {
   }
 
   setPage(pageInfo) {
-    this.loading = true;
     const pageToLoad: number = pageInfo.offset;
-    this.companyService.doSearch(this.dataSearch, {
-      page: pageToLoad,
-      size: this.page.limit,
-    }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad),
-      err => this.loading = false);
+    if (this.grand) {
+      this.loading = true;
+      this.companyService.doSearch(this.dataSearch, {
+        page: pageToLoad,
+        size: this.page.limit,
+      }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad),
+        err => this.loading = false);
+    }
   }
 
   protected onSuccess(data: any | null, headers: HttpHeaders, page: number): void {
