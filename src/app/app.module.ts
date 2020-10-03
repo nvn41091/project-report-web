@@ -41,8 +41,9 @@ import vi from '@angular/common/locales/vi';
 import viEt from '@angular/common/locales/extra/vi';
 import {NgxRegisterComponent} from './auth/register/register.component';
 import {SharedModule} from './shared/shared.module';
-import {NbSecurityModule} from '@nebular/security';
+import {NbRoleProvider, NbSecurityModule} from '@nebular/security';
 import {LoginAuth} from './auth/login-auth';
+import { of } from 'rxjs';
 
 registerLocaleData(vi, 'vi-VI', viEt);
 
@@ -94,6 +95,7 @@ export function CreateTranslateLoader(http: HttpClient) {
     {provide: HTTP_INTERCEPTORS, useClass: AuthExpiredInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: FingerPrintInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: NbAuthJWTInterceptor, multi: true},
+    {provide: NbRoleProvider, useValue: { getRole: () => of('user') } },
     {provide: APP_BASE_HREF, useValue: '/'},
     { provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: (req) => false },
   ],

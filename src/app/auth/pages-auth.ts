@@ -6,7 +6,8 @@ import {tap} from 'rxjs/operators';
 @Injectable()
 export class PagesAuth implements CanActivate {
 
-  constructor(private authService: NbAuthService, private router: Router) {
+  constructor(private authService: NbAuthService,
+              private router: Router) {
   }
 
   canActivate() {

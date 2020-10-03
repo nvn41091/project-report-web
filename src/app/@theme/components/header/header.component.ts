@@ -80,9 +80,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
-
     this.userService.updateUser.subscribe(res => this.user = res);
-    this.userService.getUserInfo().subscribe(res => this.userService.changeUser(res.body));
+    this.userService.getUserInfo().subscribe(
+      (res) => this.userService.changeUser(res.body),
+    );
   }
 
   ngOnDestroy() {

@@ -1,7 +1,7 @@
 <nb-card>
   <nb-card-header class="d-flex">
     <label> {{ 'module.title' | translate }}</label>
-    <button nbButton status="primary" size="tiny" outline class="ml-auto" (click)="edit(null)">
+    <button *nbIsGranted="['access', 'MODULE#INSERT']" nbButton status="primary" size="tiny" outline class="ml-auto" (click)="edit(null)">
       <nb-icon icon="plus" pack="eva"></nb-icon>
       {{ 'common.label.insert_btn' | translate }}
     </button>

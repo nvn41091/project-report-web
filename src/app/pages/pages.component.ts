@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 
-import {MENU_ITEMS} from './pages-menu';
 import {UserService} from '../../assets/service/user.service';
 import {Module} from '../../assets/service/module.service';
 import {NbMenuItem} from '@nebular/theme';
@@ -10,7 +9,7 @@ import {NbMenuItem} from '@nebular/theme';
   styleUrls: ['pages.component.scss'],
   template: `
     <ngx-one-column-layout>
-      <nb-menu [items]="menu" [autoCollapse]="false"></nb-menu>
+      <nb-menu [items]="menu"></nb-menu>
       <router-outlet></router-outlet>
     </ngx-one-column-layout>
   `,

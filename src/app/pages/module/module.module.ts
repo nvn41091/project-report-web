@@ -17,6 +17,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../../shared/shared.module';
 import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
 import { ModuleUpdateComponent } from './module-update/module-update.component';
+import {NbSecurityModule} from "@nebular/security";
 
 @NgModule({
   declarations: [ModuleComponent, ModuleUpdateComponent],
@@ -35,6 +36,7 @@ import { ModuleUpdateComponent } from './module-update/module-update.component';
         SharedModule,
         NgxTrimDirectiveModule,
         NbToggleModule,
+        NbSecurityModule,
     ],
 })
 export class ModuleModule { }

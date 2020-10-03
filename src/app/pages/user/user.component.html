@@ -1,7 +1,7 @@
 <nb-card>
   <nb-card-header class="d-flex">
     <label> {{ 'user.title' | translate }}</label>
-    <button nbButton status="primary" size="tiny" outline class="ml-auto" (click)="edit(null)">
+    <button *nbIsGranted="['access', 'USER#INSERT']"  nbButton status="primary" size="tiny" outline class="ml-auto" (click)="edit(null)">
       <nb-icon icon="plus" pack="eva"></nb-icon>
       {{ 'user.add_btn' | translate }}
     </button>
