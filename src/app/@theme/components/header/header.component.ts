@@ -1,5 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService} from '@nebular/theme';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {NbMediaBreakpointsService, NbMenuItem, NbMenuService, NbSidebarService, NbThemeService} from '@nebular/theme';
 
 import {LayoutService} from '../../../@core/utils';
 import {map, takeUntil, filter} from 'rxjs/operators';
@@ -46,9 +46,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [
-    {title: 'Profile', icon: 'person-outline', data: 'profile'},
-    {title: 'Log out', icon: 'log-out-outline', data: 'logout'},
+  userMenu: NbMenuItem[] = [
+    {title: 'Profile', icon: 'person-outline', data: 'index.user_menu.profile'},
+    {title: 'Log out', icon: 'log-out-outline', data: 'index.user_menu.logout'},
   ];
 
   constructor(private sidebarService: NbSidebarService,
@@ -59,7 +59,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private tokenService: NbTokenService,
               public translate: TranslateService,
               private userService: UserService,
-              private dataUserService: DataUserService) {
+              private dataUserService: DataUserService,
+              private cd: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -83,6 +84,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
       )
       .subscribe(themeName => this.currentTheme = themeName);
     this.dataUserService.updateUser.subscribe(res => this.user = res);
+    this.translate.onLangChange.subscribe( event => this.translateMenuItems() );
+    this.translateMenuItems();
+  }
+
+  translateMenuItems() {
+    this.userMenu.forEach( item => this.translateMenuItem( item ) );
+  }
+
+  translateMenuItem( menuItem: NbMenuItem ) {
+    if ( menuItem.children != null ) {
+      menuItem.children.forEach( item => this.translateMenuItem( item ) );
+    }
+     this.translate.get(menuItem.data).subscribe((translate: string) => menuItem.title = translate);
   }
 
   ngOnDestroy() {
@@ -107,7 +121,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onMenuClick(item) {
     switch (item.data) {
-      case 'logout':
+      case 'index.user_menu.logout':
         this.tokenService.clear();
         window.location.reload();
         break;
