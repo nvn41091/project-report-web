@@ -101,7 +101,7 @@
             </ng-container>
             <ng-container *ngIf="col.prop ==='role'">
               <button class="p-1" nbButton status="info" ghost title="{{ 'common.label.edit' | translate }}"
-                      (click)="edit(row)" *nbIsGranted="['access', 'COMPANY#UPDATE']">
+                      (click)="edit(row)" *nbIsGranted="['access', 'COMPANY#ROLE']">
                 <nb-icon icon="globe-outline" pack="eva" size="tiny"></nb-icon>
               </button>
             </ng-container>
