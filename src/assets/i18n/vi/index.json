@@ -8,6 +8,13 @@
     "request_company": {
       "title": "Yêu cầu truy cập",
       "empty_request": "Không có yêu cầu"
+    },
+    "label": {
+      "404": {
+        "title": "404 Không tìm thấy trang yêu cầu",
+        "content": "Trang bạn đang tìm kiếm không tồn tại",
+        "redirect_home": "Về trang chủ"
+      }
     }
   }
 }

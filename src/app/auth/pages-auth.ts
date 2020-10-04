@@ -39,7 +39,7 @@ export class PagesAuth implements CanActivate {
         }
       }
       if (!check) {
-        await this.router.navigate(['/pages/home']);
+        await this.router.navigate(['/pages/404']);
       }
     } else {
       this.router.navigate(['auth/login']).then(() => {});

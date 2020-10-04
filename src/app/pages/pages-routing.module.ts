@@ -2,7 +2,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 
 import {PagesComponent} from './pages.component';
-import {NgxAuthBlockComponent} from '../auth/auth-block/auth-block.component';
 import {UserComponent} from './user/user.component';
 import {CompanyComponent} from './company/company.component';
 import {ActionComponent} from './action/action.component';
@@ -27,6 +26,11 @@ const routes: Routes = [{
       component: ActionComponent,
     },
     {
+      path: '404',
+      loadChildren: () => import('./miscellaneous/miscellaneous.module')
+        .then(m => m.MiscellaneousModule),
+    },
+    {
       path: 'role',
       loadChildren: () => import('./role/role.module')
         .then(m => m.RoleModule),
@@ -48,7 +52,7 @@ const routes: Routes = [{
     },
     {
       path: '**',
-      component: NgxAuthBlockComponent,
+      redirectTo: '404',
     },
   ],
 }];
