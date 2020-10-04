@@ -88,6 +88,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.translateMenuItems();
   }
 
+  reload() {
+    window.location.reload();
+  }
+
   translateMenuItems() {
     this.userMenu.forEach( item => this.translateMenuItem( item ) );
   }
