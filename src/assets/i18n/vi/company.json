@@ -19,7 +19,8 @@
       "status": "Trạng thái",
       "updateTime": "Ngày cập nhật",
       "description": "Mô tả",
-      "action": "Thao tác"
+      "action": "Thao tác",
+      "role": "Gán quyền"
     }
   }
 }

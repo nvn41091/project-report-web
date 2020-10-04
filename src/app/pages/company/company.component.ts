@@ -31,6 +31,7 @@ export class CompanyComponent implements OnInit {
     {name: 'company.column.name', prop: 'name', flexGrow: 1, minWidth: 100},
     {name: 'company.column.tel', prop: 'tel', flexGrow: 1, minWidth: 100},
     {name: 'company.column.email', prop: 'email', flexGrow: 1, minWidth: 100},
+    {name: 'company.column.role', prop: 'role', flexGrow: 0.4, minWidth: 40},
     {name: 'company.column.updateTime', prop: 'updateTime', flexGrow: 1, minWidth: 100},
     {name: 'company.column.status', prop: 'status', flexGrow: 0.9, minWidth: 90},
     {name: 'company.column.action', prop: 'action_btn', flexGrow: 0.6, minWidth: 60},
