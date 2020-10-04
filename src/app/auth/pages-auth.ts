@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {NbAuthService} from '@nebular/auth';
+import {NbAuthService, NbTokenService} from '@nebular/auth';
 import {User, UserService} from '../../assets/service/user.service';
 import {NbAclService} from '@nebular/security';
 import {DataUserService} from '../shared/services/data-user.service';
@@ -12,7 +12,8 @@ export class PagesAuth implements CanActivate {
               private router: Router,
               private userService: UserService,
               private nbAciService: NbAclService,
-              private dataUserService: DataUserService) {
+              private dataUserService: DataUserService,
+              private tokenService: NbTokenService) {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
@@ -41,16 +42,20 @@ export class PagesAuth implements CanActivate {
         await this.router.navigate(['/pages/home']);
       }
     } else {
-      this.router.navigate(['auth/login']).then(r => {});
+      this.router.navigate(['auth/login']).then(() => {});
     }
     return isAuth;
   }
 
   async getUserInfo()  {
     let user: User = null;
-    await this.userService.getUserInfo().toPromise().then(res => {
-      user = res.body;
-    });
+    await this.userService.getUserInfo().toPromise().then(
+      res => user = res.body,
+      () => {
+        this.tokenService.clear();
+        window.location.reload();
+      },
+    );
     return user;
   }
 }
