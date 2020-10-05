@@ -47,7 +47,10 @@
               "node_modules/@swimlane/ngx-datatable/themes/material.scss",
               "node_modules/@swimlane/ngx-datatable/themes/bootstrap.scss",
               "node_modules/@swimlane/ngx-datatable/themes/dark.scss",
-              "node_modules/@swimlane/ngx-datatable/assets/icons.css"
+              "node_modules/@swimlane/ngx-datatable/assets/icons.css",
+              "node_modules/jsuites/dist/jsuites.css",
+              "node_modules/jexcel/dist/jexcel.css",
+              "node_modules/jexcel/src/css/jexcel.datatables.css"
             ],
             "scripts": [
               "node_modules/pace-js/pace.min.js",
@@ -58,7 +61,9 @@
               "node_modules/tinymce/plugins/table/plugin.min.js",
               "node_modules/echarts/dist/echarts.min.js",
               "node_modules/echarts/dist/extension/bmap.min.js",
-              "node_modules/chart.js/dist/Chart.min.js"
+              "node_modules/chart.js/dist/Chart.min.js",
+              "node_modules/jsuites/dist/jsuites.js",
+              "node_modules/jexcel/dist/jexcel.js"
             ],
             "allowedCommonJsDependencies": [
               "angular2-chartjs",
