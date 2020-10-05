@@ -2,11 +2,75 @@
   <div class="col-lg-12">
     <nb-card>
       <nb-card-header>
-        {{ 'Gán quyền' }}
+        {{ 'company.role.title' | translate }}<span class="font-weight-bold text-danger">{{ ' ' + company.name }}</span>
       </nb-card-header>
       <nb-card-body>
-
+        <div class="mb-4">
+          <div class="row">
+            <div class="col-lg-4 form-group">
+              <label class="label">
+                {{ 'company.role.input' | translate }}
+              </label>
+              <input (keyup.enter)="search()" nbInput fullWidth [(ngModel)]="searchParam.name">
+            </div>
+            <div class="form-group col-lg-4 align-items-end d-flex">
+              <button nbButton (click)="search()">{{ 'common.label.search' | translate }}
+                <nb-icon icon="search-outline"></nb-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ngx-datatable class="fullscreen"
+                       ngxResizeWatcher
+                       [ngClass]="theme === 'default' || theme === 'corporate' ? 'material' : 'bootstrap'"
+                       [columnMode]="'flex'"
+                       [rows]="rows"
+                       [columns]="columns"
+                       [selected]="selectedUI"
+                       [scrollbarH]="true"
+                       [selectionType]="'checkbox'"
+                       (select)="onSelect($event)"
+                       rowHeight="auto"
+                       [limit]="5"
+                       [footerHeight]="50"
+                       [headerHeight]="50"
+                       [messages]="{ emptyMessage: 'common.select.notFoundText' | translate, totalMessage: 'common.label.record' | translate, selectedMessage: 'common.select.selectedMessage' | translate }">
+          <ng-container *ngFor="let col of columns">
+            <ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flexGrow" [sortable]="false"
+                                  [minWidth]="col.minWidth" [checkboxable]="col.prop === 'selected'"
+                                  [headerCheckboxable]="col.prop === 'selected'">
+              <ng-template let-column="column" ngx-datatable-header-template>
+                {{ column.name | translate }}
+              </ng-template>
+              <ng-template let-value="value" ngx-datatable-cell-template let-row="row" let-rowIndex='rowIndex'>
+                <ng-container *ngIf="col.prop ==='index'" class="index-col">
+                  {{ rowIndex + 1 }}
+                </ng-container>
+                <ng-container
+                  *ngIf="col.prop !=='action_btn' && col.prop !=='updateTime' && col.prop !=='description' && col.prop !=='status'
+                   && col.prop !== 'code' && col.prop !== 'name' && col.prop !== 'role'">
+                  <span class="row-data-show" title="{{value}}">{{ value }}</span>
+                </ng-container>
+                <ng-container *ngIf="col.prop ==='description' || col.prop === 'code' || col.prop === 'name' "
+                              class="text-right">
+                  <span class="row-data-show"
+                        title="{{value}}">{{value.length > 50 ? value.substring(0, 50).concat('...') : value}}</span>
+                </ng-container>
+                <ng-container *ngIf="col.prop ==='status'">
+                  {{ 'common.status.' + value | translate }}
+                </ng-container>
+                <ng-container *ngIf="col.prop ==='updateTime'">
+                  {{value | date:'dd/MM/yyyy HH:mm:ss'}}
+                </ng-container>
+              </ng-template>
+            </ngx-datatable-column>
+          </ng-container>
+        </ngx-datatable>
       </nb-card-body>
+      <nb-card-footer class="text-right">
+        <button nbButton type="button" status="primary" (click)="submit()" id="dialogCancelBtn">{{ 'common.label.save' | translate }}</button>
+        <button nbButton type="button" (click)="cancel()" class="ml-2"> {{ 'common.label.cancel' | translate }} </button>
+      </nb-card-footer>
     </nb-card>
   </div>
 </div>

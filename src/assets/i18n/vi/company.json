@@ -21,6 +21,10 @@
       "description": "Mô tả",
       "action": "Thao tác",
       "role": "Gán quyền"
+    },
+    "role": {
+      "title": "Gán quyền cho doanh nghiệp: ",
+      "input": "Mã quyền - Tên quyền: "
     }
   }
 }

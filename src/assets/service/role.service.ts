@@ -41,6 +41,12 @@ export class RoleService {
       observe: 'response',
     });
   }
+
+  searchByCodeOrName(data: any) {
+    return this.http.post<Array<Role>>(`${environment.api}/role/searchByCodeOrName`, data, {
+      observe: 'response',
+    });
+  }
 }
 
 export class Role {

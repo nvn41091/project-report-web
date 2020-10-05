@@ -48,6 +48,7 @@ import {ModuleActionService} from '../../assets/service/module-action.service';
 import {RoleService} from '../../assets/service/role.service';
 import {RoleModuleService} from '../../assets/service/role-module.service';
 import {UserRoleService} from '../../assets/service/user-role.service';
+import {CompanyRoleService} from '../../assets/service/company-role.service';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -89,6 +90,7 @@ const SERVICE = [
   RoleService,
   RoleModuleService,
   UserRoleService,
+  CompanyRoleService,
 ];
 
 @NgModule({

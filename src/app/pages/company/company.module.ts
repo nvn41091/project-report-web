@@ -10,7 +10,7 @@ import {
 } from '@nebular/theme';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
 import {SharedModule} from '../../shared/shared.module';
 import { CompanyUpdateComponent } from './company-update/company-update.component';
@@ -34,6 +34,7 @@ import { CompanyRoleComponent } from './company-role/company-role.component';
         SharedModule,
         NbToggleModule,
         NbSecurityModule,
+        FormsModule,
     ],
 })
 export class CompanyModule { }
