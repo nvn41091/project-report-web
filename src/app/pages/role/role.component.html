@@ -84,11 +84,6 @@
                   <span class="row-data-show"
                         title="{{value}}">{{value.length > 50 ? value.substring(0, 50).concat('...') : value}}</span>
             </ng-container>
-            <ng-container *ngIf="col.prop === 'mapModule'">
-              <button *nbIsGranted="['access', 'ROLE#ROLE']" nbButton ghost status="success" class="p-1" [title]="'role.column.map_module' | translate" (click)="openMapRole(row)">
-                <nb-icon icon="globe-outline" pack="eva" size="tiny"></nb-icon>
-              </button>
-            </ng-container>
             <ng-container *ngIf="col.prop ==='status'">
               {{ 'common.status.' + value | translate }}
             </ng-container>
@@ -100,6 +95,9 @@
                 <button class="p-1" nbButton status="info" ghost title="{{ 'common.label.edit' | translate }}"
                         (click)="edit(row)" *nbIsGranted="['access', 'ROLE#UPDATE']">
                   <nb-icon icon="edit-outline" pack="eva" size="tiny"></nb-icon>
+                </button>
+                <button *nbIsGranted="['access', 'ROLE#ROLE']" nbButton ghost status="success" class="p-1" [title]="'role.column.map_module' | translate" (click)="openMapRole(row)">
+                  <nb-icon icon="globe-outline" pack="eva" size="tiny"></nb-icon>
                 </button>
                 <button class="p-1" nbButton status="danger" ghost title="{{ 'common.label.delete' | translate }}"
                         (click)="delete(row)" *nbIsGranted="['access', 'ROLE#DELETE']">

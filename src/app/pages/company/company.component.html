@@ -108,8 +108,8 @@
                         (click)="edit(row)" *nbIsGranted="['access', 'COMPANY#UPDATE']">
                   <nb-icon icon="edit-outline" pack="eva" size="tiny"></nb-icon>
                 </button>
-                <button class="p-1" nbButton status="success" ghost title="{{ 'common.label.role' | translate }}"
-                        (click)="edit(row)" *nbIsGranted="['access', 'COMPANY#ROLE']">
+                <button class="p-1" nbButton status="success" ghost title="{{ 'company.column.role' | translate }}"
+                        (click)="updateRole(row)" *nbIsGranted="['access', 'COMPANY#ROLE']">
                   <nb-icon icon="globe-outline" pack="eva" size="tiny"></nb-icon>
                 </button>
                 <button class="p-1" nbButton status="danger" ghost title="{{ 'common.label.delete' | translate }}"

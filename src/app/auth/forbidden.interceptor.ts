@@ -31,8 +31,9 @@ export class ForbiddenInterceptor implements HttpInterceptor {
               message: this.translate.instant('common.label.forbidden'),
               hideCancel: true,
               title: this.translate.instant('common.label.notice'),
+              okTitle: this.translate.instant('index.reload'),
             },
-          }).onClose.subscribe(res => window.location.reload());
+          }).onClose.subscribe(() => window.location.reload());
           return of(error);
         } else {
           return throwError(error);

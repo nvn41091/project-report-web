@@ -8,6 +8,7 @@ import {ConfirmDialogComponent} from '../../share-lib-module/confirm-dialog/conf
 import {Company, CompanyService} from 'assets/service/company.service';
 import {CompanyUpdateComponent} from './company-update/company-update.component';
 import {NbAccessChecker} from '@nebular/security';
+import {CompanyRoleComponent} from './company-role/company-role.component';
 
 @Component({
   selector: 'ngx-company',
@@ -54,7 +55,7 @@ export class CompanyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.author().then(r => {
+    this.author().then(() => {
     });
     this.search();
   }
@@ -86,7 +87,7 @@ export class CompanyComponent implements OnInit {
         page: pageToLoad,
         size: this.page.limit,
       }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad),
-        err => this.loading = false);
+        () => this.loading = false);
     }
   }
 
@@ -122,7 +123,7 @@ export class CompanyComponent implements OnInit {
     }).onClose.subscribe(res => {
       if (res === 'confirm') {
         this.loading = true;
-        this.companyService.delete(data).subscribe((success) => {
+        this.companyService.delete(data).subscribe(() => {
             this.toastr.success('company.label.delete_success', true);
             this.setPage({offset: 0});
           },
@@ -131,6 +132,14 @@ export class CompanyComponent implements OnInit {
             this.toastr.error(error.error.title);
           });
       }
+    });
+  }
+
+  updateRole(company: Company) {
+    this.dialog.open(CompanyRoleComponent, {
+      context: {
+        company: company,
+      },
     });
   }
 }

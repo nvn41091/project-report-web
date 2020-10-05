@@ -15,9 +15,10 @@ import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
 import {SharedModule} from '../../shared/shared.module';
 import { CompanyUpdateComponent } from './company-update/company-update.component';
 import {NbSecurityModule} from '@nebular/security';
+import { CompanyRoleComponent } from './company-role/company-role.component';
 
 @NgModule({
-  declarations: [CompanyComponent, CompanyUpdateComponent],
+  declarations: [CompanyComponent, CompanyUpdateComponent, CompanyRoleComponent],
     imports: [
         CommonModule,
         NbIconModule,
