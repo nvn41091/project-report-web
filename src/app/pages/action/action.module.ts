@@ -7,17 +7,16 @@ import {
   NbIconModule,
   NbInputModule,
   NbSelectModule,
-  NbSpinnerModule, NbToggleModule
-} from "@nebular/theme";
-import {TranslateModule} from "@ngx-translate/core";
-import {NgxDatatableModule} from "@swimlane/ngx-datatable";
-import {ReactiveFormsModule} from "@angular/forms";
-import {NgxTrimDirectiveModule} from "ngx-trim-directive";
+  NbSpinnerModule,
+  NbToggleModule,
+} from '@nebular/theme';
+import {TranslateModule} from '@ngx-translate/core';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {ReactiveFormsModule} from '@angular/forms';
+import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
 import { ActionUpdateComponent } from './action-update/action-update.component';
-import {SharedModule} from "../../shared/shared.module";
-import {NbSecurityModule} from "@nebular/security";
-
-
+import {SharedModule} from '../../shared/shared.module';
+import {NbSecurityModule} from '@nebular/security';
 
 @NgModule({
   declarations: [ActionComponent, ActionUpdateComponent],
@@ -35,7 +34,7 @@ import {NbSecurityModule} from "@nebular/security";
         NgxTrimDirectiveModule,
         SharedModule,
         NbToggleModule,
-        NbSecurityModule
-    ]
+        NbSecurityModule,
+    ],
 })
 export class ActionModule { }

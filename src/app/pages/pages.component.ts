@@ -45,6 +45,7 @@ export class PagesComponent implements OnInit {
           title: modules[i].name,
           icon: modules[i].icon,
           link: modules[i].pathUrl,
+          data: modules[i],
         };
         if (children.length > 0) {
           menu.children = children;

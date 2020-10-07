@@ -1,1 +1,9 @@
-<p>project-information works!</p>
+<nb-card>
+  <nb-card-header class="d-flex">
+    <label> {{ 'prj-information.title' | translate }}</label>
+    <button *nbIsGranted="['access', 'PRI#INSERT']" nbButton status="primary" size="tiny" outline class="ml-auto">
+      <nb-icon icon="plus" pack="eva"></nb-icon>
+      {{ 'common.label.insert_btn' | translate }}
+    </button>
+  </nb-card-header>
+</nb-card>
