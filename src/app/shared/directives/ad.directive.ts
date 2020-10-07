@@ -1,7 +1,7 @@
 import {Directive, ViewContainerRef} from '@angular/core';
 
 @Directive({
-  selector: '[ngx-ad]'
+  selector: '[ngx-ad]',
 })
 export class AdDirective {
 
