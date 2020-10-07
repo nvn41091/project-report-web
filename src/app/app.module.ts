@@ -45,6 +45,7 @@ import {NbRoleProvider, NbSecurityModule} from '@nebular/security';
 import {LoginAuth} from './auth/login-auth';
 import {of} from 'rxjs';
 import {ForbiddenInterceptor} from './auth/forbidden.interceptor';
+import { RequestPasswordComponent } from './auth/request-password/request-password.component';
 
 registerLocaleData(vi, 'vi-VI', viEt);
 
@@ -53,7 +54,7 @@ export function CreateTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, NgxLoginComponent, NgxRegisterComponent],
+  declarations: [AppComponent, NgxLoginComponent, NgxRegisterComponent, RequestPasswordComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

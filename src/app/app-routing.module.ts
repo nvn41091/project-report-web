@@ -7,6 +7,7 @@ import {PagesAuth} from './auth/pages-auth';
 import {NgxLoginComponent} from './auth/login/login.component';
 import {NgxRegisterComponent} from './auth/register/register.component';
 import {LoginAuth} from './auth/login-auth';
+import { RequestPasswordComponent } from './auth/request-password/request-password.component';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,10 @@ export const routes: Routes = [
       {
         path: 'login',
         component: NgxLoginComponent,
+      },
+      {
+        path: 'request-password',
+        component: RequestPasswordComponent,
       },
       {
         path: 'register',
