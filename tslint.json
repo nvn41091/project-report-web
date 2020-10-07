@@ -46,9 +46,6 @@
       "timeEnd",
       "trace"
     ],
-	number-leading-zero: [
-	false,
-	],
     "no-construct": true,
     "no-debugger": true,
     "no-duplicate-super": true,
