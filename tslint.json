@@ -6,6 +6,7 @@
     "deprecation": {
       "severity": "warning"
     },
+	"number-leading-zero": [2, "never"],
     "trailing-comma": [
       false,
       {
