@@ -107,8 +107,7 @@
     "directive-selector": [
       true,
       "attribute",
-      "ngx",
-      "camelCase"
+      "ngx"
     ],
     "component-selector": [
       true,
