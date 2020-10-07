@@ -3,7 +3,7 @@
     "node_modules/codelyzer"
   ],
   "rules": {
-	"number-leading-zero": [0, "never"],
+	"number-leading-zero": [5, "always"],
     "trailing-comma": [
       false,
       {
