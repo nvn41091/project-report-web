@@ -46,6 +46,11 @@ const routes: Routes = [{
         .then(m => m.ProjectModule),
     },
     {
+      path: 'change-password',
+      loadChildren: () => import('./change-password/change-password.module')
+        .then(m => m.ChangePasswordModule),
+    },
+    {
       path: '',
       redirectTo: 'home',
       pathMatch: 'full',

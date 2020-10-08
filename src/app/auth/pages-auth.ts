@@ -28,7 +28,7 @@ export class PagesAuth implements CanActivate {
       await this.getUserInfo().then(r => user = r);
       this.dataUserService.setUser(user);
       this.nbAciService.register('user', null, {['access']: user?.roles});
-      if (state.url === '/pages/home' || state.url === '/pages/404') {
+      if (state.url === '/pages/home' || state.url === '/pages/404' || state.url === '/pages/change-password') {
         return true;
       }
       let check = false;

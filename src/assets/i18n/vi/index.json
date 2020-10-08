@@ -3,6 +3,7 @@
     "title": "Ahihi đồ ngốc",
     "user_menu": {
       "profile": "Thông tin tài khoản",
+      "password": "Đổi mật khẩu",
       "logout": "Đăng xuất"
     },
     "reload": "Tải lại",

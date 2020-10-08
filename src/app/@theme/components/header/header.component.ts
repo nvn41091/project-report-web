@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NbMediaBreakpointsService, NbMenuItem, NbMenuService, NbSidebarService, NbThemeService} from '@nebular/theme';
 
 import {LayoutService} from '../../../@core/utils';
@@ -8,6 +8,7 @@ import {NbTokenService} from '@nebular/auth';
 import {TranslateService} from '@ngx-translate/core';
 import {User, UserService} from '../../../../assets/service/user.service';
 import {DataUserService} from '../../../shared/services/data-user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'ngx-header',
@@ -48,6 +49,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   userMenu: NbMenuItem[] = [
     {title: 'Profile', icon: 'person-outline', data: 'index.user_menu.profile'},
+    {title: 'Change Password', icon: 'lock-outline', data: 'index.user_menu.password'},
     {title: 'Log out', icon: 'log-out-outline', data: 'index.user_menu.logout'},
   ];
 
@@ -60,7 +62,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
               public translate: TranslateService,
               private userService: UserService,
               private dataUserService: DataUserService,
-              private cd: ChangeDetectorRef) {
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -125,6 +127,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onMenuClick(item) {
     switch (item.data) {
+      case 'index.user_menu.password':
+        this.router.navigateByUrl('/pages/change-password').then(() => {});
+        break;
       case 'index.user_menu.logout':
         this.tokenService.clear();
         window.location.reload();
