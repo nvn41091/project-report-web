@@ -190,7 +190,9 @@
             "tsConfig": [
               "e2e/tsconfig.e2e.json"
             ],
-            "exclude": []
+            "exclude": [
+              "**/*.scss"
+            ]
           }
         }
       }
