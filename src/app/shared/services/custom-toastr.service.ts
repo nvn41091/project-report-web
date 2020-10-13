@@ -28,4 +28,16 @@ export class CustomToastrService {
   unknownError() {
     this.error('common.label.unknown_error', true);
   }
+
+  updateSuccess() {
+    this.success('common.label.update_success', true);
+  }
+
+  insertSuccess() {
+    this.success('common.label.insert_success', true);
+  }
+
+  deleteSuccess() {
+    this.success('common.label.delete_success', true);
+  }
 }

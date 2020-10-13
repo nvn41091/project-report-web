@@ -60,7 +60,7 @@ export class RequestPasswordComponent implements OnInit {
         this.cd.detectChanges();
         setTimeout(() => {
           return this.router.navigateByUrl('/pages/change-password', {
-            state: { request: true},
+            state: { resetKey: this.resetKeyForm.get('resetKey').value },
           });
         }, 3000);
       },
