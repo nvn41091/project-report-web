@@ -14,7 +14,7 @@ export class ChangePasswordService {
 
   resetPassword(data: any, req?: any): Observable<HttpResponse<any>> {
     const options = createRequestOption(req);
-    return this.http.post<any>(`${environment.api}/changePassword`, data, {
+    return this.http.post<any>(`${environment.api}/resetPassword`, data, {
       params: options,
       observe: 'response',
     });
