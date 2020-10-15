@@ -112,11 +112,7 @@
       true,
       "eval",
       "fit",
-      "fdescribe",
-      {
-        "name": "$",
-        "message": "please don't"
-      }
+      "fdescribe"
     ],
     "no-inputs-metadata-property": true,
     "no-outputs-metadata-property": true,
