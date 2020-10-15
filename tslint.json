@@ -107,12 +107,7 @@
       "attribute",
       "ngx"
     ],
-    "component-selector": [
-      true,
-      "element",
-      "ngx",
-      "kebab-case"
-    ],
+    "component-selector": false,
     "ban": [
       true,
       "eval",

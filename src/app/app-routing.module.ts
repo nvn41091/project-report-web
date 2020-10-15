@@ -17,6 +17,11 @@ export const routes: Routes = [
       .then(m => m.PagesModule),
   },
   {
+    path: '',
+    loadChildren: () => import('./home/home.module')
+      .then(m => m.HomeModule)
+  },
+  {
     path: 'auth',
     component: NbAuthComponent,
     canActivate: [LoginAuth],
@@ -39,8 +44,8 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
-  { path: '**', redirectTo: 'pages' },
+  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '**', redirectTo: '' },
 ];
 
 const config: ExtraOptions = {
