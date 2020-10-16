@@ -2058,7 +2058,7 @@ header.header-three .header-nav::before {
   content: "";
   width: 100%;
   height: 100%;
-  background-image: url(../img/lines/09.png);
+  background-image: url(~assets/img/lines/09.png);
   background-repeat: no-repeat;
   background-position: right bottom;
 }
@@ -2557,7 +2557,7 @@ header.header-three .header-nav::before {
   content: '';
   height: 500px;
   width: 530px;
-  background-image: url(../img/lines/11.png);
+  background-image: url(~assets/img/lines/11.png);
   z-index: -1;
 }
 
@@ -2669,7 +2669,7 @@ header.header-three .header-nav::before {
   top: 200px;
   content: '';
   z-index: -1;
-  background-image: url(../img/icons/star.png);
+  background-image: url(~assets/img/icons/star.png);
   height: 50px;
   width: 50px;
   background-position: center;
@@ -2704,7 +2704,7 @@ header.header-three .header-nav::before {
   top: 150px;
   content: '';
   z-index: -1;
-  background-image: url(../img/icons/star.png);
+  background-image: url(~assets/img/icons/star.png);
   height: 40px;
   width: 40px;
   background-position: center;
@@ -3192,7 +3192,7 @@ header.header-three .header-nav::before {
 
 .wcu-section .wcu-video::before {
   content: "";
-  background-image: url(../img/lines/11.png);
+  background-image: url(~assets/img/lines/11.png);
   z-index: 1;
   background-position: 0 -45%;
   background-repeat: no-repeat;
@@ -3336,7 +3336,7 @@ header.header-three .header-nav::before {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-image: url(../img/lines/05.png);
+  background-image: url(~assets/img/lines/05.png);
   background-position: left top;
   background-size: auto;
   background-repeat: no-repeat;
@@ -3413,7 +3413,7 @@ header.header-three .header-nav::before {
   top: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../img/lines/15.png);
+  background-image: url(~assets/img/lines/15.png);
   background-size: cover;
   content: '';
   opacity: 0;
@@ -3472,7 +3472,7 @@ header.header-three .header-nav::before {
   height: 100%;
   z-index: -1;
   content: '';
-  background-image: url(../img/lines/13.png);
+  background-image: url(~assets/img/lines/13.png);
   background-size: cover;
   background-position: center;
 }
@@ -3829,7 +3829,7 @@ header.header-three .header-nav::before {
   -webkit-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
   content: '';
-  background-image: url(../img/lines/14.png);
+  background-image: url(~assets/img/lines/14.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -4130,7 +4130,7 @@ header.header-three .header-nav::before {
   background-size: auto;
   content: '';
   background-position: right bottom;
-  background-image: url(../img/lines/06.png);
+  background-image: url(~assets/img/lines/06.png);
   background-repeat: no-repeat;
   z-index: -1;
 }
@@ -4604,7 +4604,7 @@ header.header-three .header-nav::before {
   width: 50px;
   height: 30px;
   content: "";
-  background-image: url(../img/icons/down-arrow.png);
+  background-image: url(~assets/img/icons/down-arrow.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -5019,7 +5019,7 @@ header.header-three .header-nav::before {
   height: 100%;
   z-index: -1;
   content: "";
-  background-image: url(../img/icons/quote-line.png);
+  background-image: url(~assets/img/icons/quote-line.png);
   opacity: 0.06;
   background-size: auto;
   background-position: 38% 50%;
@@ -6400,7 +6400,7 @@ header.header-three .header-nav::before {
   bottom: 0;
   width: 370px;
   height: 330px;
-  background-image: url(../img/lines/12.png);
+  background-image: url(~assets/img/lines/12.png);
   content: '';
   background-size: cover;
   z-index: -1;
@@ -6864,7 +6864,7 @@ header.header-three .header-nav::before {
   height: 100%;
   z-index: -1;
   content: "";
-  background-image: url(../img/icons/quote-line.png);
+  background-image: url(~assets/img/icons/quote-line.png);
   opacity: 0.06;
   background-size: auto;
   background-position: 38% 50%;

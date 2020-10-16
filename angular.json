@@ -50,7 +50,8 @@
               "node_modules/jsuites/dist/jsuites.css",
               "node_modules/jexcel/dist/jexcel.css",
               "node_modules/jexcel/src/css/jexcel.datatables.css",
-              "src/assets/css/font-awesome.min.css"
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/flaticon.css"
             ],
             "scripts": [
               "node_modules/pace-js/pace.min.js",
