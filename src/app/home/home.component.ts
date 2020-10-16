@@ -7,8 +7,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
   template: `
     <app-preloader></app-preloader>
     <router-outlet></router-outlet>
-  `,
-  encapsulation: ViewEncapsulation.None
+  `
 })
 export class HomeComponent {
 }

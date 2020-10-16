@@ -1,13 +1,14 @@
-@import '../../assets/css/slick.css';
-@import '../../assets/css/style.css';
-@import '../../assets/css/magnific-popup.css';
-@import '../../assets/css/jquery-ui.min.css';
-@import '../../assets/css/flaticon.css';
-@import '../../assets/css/bootstrap.min.css';
-@import '../../assets/css/animate.min.css';
+:host ::ng-deep {
+  @import "~assets/css/style";
+  @import '~assets/css/slick';
+  @import '~assets/css/style';
+  @import '~assets/css/magnific-popup';
+  @import '~assets/css/jquery-ui.min';
+  @import '~assets/css/flaticon';
+  @import '~assets/css/bootstrap.min';
+  @import '~assets/css/animate.min';
+}
 
-@import '../@theme/styles/themes';
-
-.spinner {
+::ng-deep.spinner {
   display: none;
 }
