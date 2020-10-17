@@ -17,7 +17,12 @@ export const routes: Routes = [
       .then(m => m.PagesModule),
   },
   {
-    path: '',
+    path: 'demo',
+    loadChildren: () => import('./demo/demo.module')
+      .then(m => m.DemoModule)
+  },
+  {
+    path: 'home',
     loadChildren: () => import('./home/home.module')
       .then(m => m.HomeModule)
   },
@@ -44,8 +49,8 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: '', pathMatch: 'full' },
-  { path: '**', redirectTo: '' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home/404' },
 ];
 
 const config: ExtraOptions = {
