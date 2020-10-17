@@ -10,3 +10,7 @@
 ::ng-deep.spinner {
   display: none;
 }
+
+::ng-deep.nb-theme-default .menu-items a {
+  font-size: 18px !important;
+}

@@ -50,8 +50,14 @@
               "node_modules/jsuites/dist/jsuites.css",
               "node_modules/jexcel/dist/jexcel.css",
               "node_modules/jexcel/src/css/jexcel.datatables.css",
+              "src/assets/css/animate.min.css",
+              "src/assets/css/bootstrap.min.css",
               "src/assets/css/font-awesome.min.css",
-              "src/assets/css/flaticon.css"
+              "src/assets/css/flaticon.css",
+              "src/assets/css/magnific-popup.css",
+              "src/assets/css/slick.css",
+              "src/assets/css/jquery-ui.min.css",
+              "src/assets/css/style.css"
             ],
             "scripts": [
               "node_modules/pace-js/pace.min.js",

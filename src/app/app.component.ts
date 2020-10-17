@@ -3,7 +3,7 @@
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {AnalyticsService, SeoService} from './@core/utils';
 import {NavigationCancel, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
@@ -18,7 +18,7 @@ declare let $: any;
       provide: LocationStrategy,
       useClass: PathLocationStrategy
     }
-  ]
+  ],
 })
 export class AppComponent implements OnInit {
   location: any;
