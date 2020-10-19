@@ -1,5 +1,7 @@
-::ng-deep {
-  .spinner {
-    display: none;
+@import './src/app/demo/demo.component';
+
+:host ::ng-deep {
+  header {
+    width: 100%;
   }
 }

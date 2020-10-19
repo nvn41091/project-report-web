@@ -5,6 +5,13 @@ import {HomeComponent} from './home.component';
 const routes: Routes = [{
   path: '',
   component: HomeComponent,
+  children: [
+    {
+      path: '',
+      loadChildren: () => import('./welcome/welcome.module')
+        .then(m => m.WelcomeModule),
+    }
+  ]
 }];
 
 @NgModule({
