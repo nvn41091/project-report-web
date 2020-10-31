@@ -49,10 +49,7 @@
               "node_modules/@swimlane/ngx-datatable/assets/icons.css",
               "node_modules/jsuites/dist/jsuites.css",
               "node_modules/jexcel/dist/jexcel.css",
-              "node_modules/jexcel/src/css/jexcel.datatables.css",
-              "src/assets/css/animate.min.css",
-              "src/assets/css/font-awesome.min.css",
-              "src/assets/css/flaticon.css"
+              "node_modules/jexcel/src/css/jexcel.datatables.css"
             ],
             "scripts": [
               "node_modules/pace-js/pace.min.js",
@@ -65,20 +62,7 @@
               "node_modules/echarts/dist/extension/bmap.min.js",
               "node_modules/chart.js/dist/Chart.min.js",
               "node_modules/jsuites/dist/jsuites.js",
-              "node_modules/jexcel/dist/jexcel.js",
-              "src/assets/js/vendor/modernizr-3.6.0.min.js",
-              "src/assets/js/vendor/jquery-1.12.4.min.js",
-              "src/assets/js/bootstrap.min.js",
-              "src/assets/js/popper.min.js",
-              "src/assets/js/slick.min.js",
-              "src/assets/js/isotope.pkgd.min.js",
-              "src/assets/js/jquery.magnific-popup.min.js",
-              "src/assets/js/jquery.inview.min.js",
-              "src/assets/js/jquery.countTo.js",
-              "src/assets/js/jquery.easypiechart.min.js",
-              "src/assets/js/jquery-ui.min.js",
-              "src/assets/js/wow.min.js",
-              "src/assets/js/main.js"
+              "node_modules/jexcel/dist/jexcel.js"
             ],
             "allowedCommonJsDependencies": [
               "angular2-chartjs",
