@@ -1,5 +1,13 @@
 {
   "prj-information": {
-    "title": "Thông tin dự án"
+    "title": "Thông tin dự án",
+    "column": {
+      "index": "STT",
+      "code": "Mã dự án",
+      "name": "Tên dự án",
+      "status": "Trạng thái",
+      "update_time": "Ngày cập nhật",
+      "action": "Hành động"
+    }
   }
 }
