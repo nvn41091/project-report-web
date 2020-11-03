@@ -51,6 +51,11 @@ const routes: Routes = [{
         .then(m => m.ChangePasswordModule),
     },
     {
+      path: 'app-param',
+      loadChildren: () => import('./app-param/app-param-routing.module')
+        .then(m => m.AppParamRoutingModule),
+    },
+    {
       path: '',
       redirectTo: 'home',
       pathMatch: 'full',

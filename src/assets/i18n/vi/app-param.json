@@ -1,0 +1,22 @@
+{
+  "app_param": {
+    "title": "Quản lý tham số",
+    "column": {
+      "index": "STT",
+      "code": "Mã tham số",
+      "name": "Tên tham số",
+      "type": "Loại tham số",
+      "value": "Giá trị",
+      "status": "Trạng thái",
+      "description": "Mô tả",
+      "update_time": "Ngày cập nhật",
+      "action_btn": "Hành động"
+    },
+    "label": {
+      "delete": "Xóa tham số",
+      "message_delete": "Bạn có chắc muốn xóa tham số ",
+      "update": "Cập nhật tham số",
+      "insert": "Thêm mới tham số"
+    }
+  }
+}
