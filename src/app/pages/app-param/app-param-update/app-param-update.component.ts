@@ -17,6 +17,7 @@ export class AppParamUpdateComponent implements OnInit {
   data: AppParam;
   loading: boolean = false;
   types: string[] = [];
+  appParamField: FormGroup;
 
   constructor(private ref: NbDialogRef<AppParamUpdateComponent>,
               private fb: FormBuilder,
@@ -24,8 +25,6 @@ export class AppParamUpdateComponent implements OnInit {
               private translate: TranslateService,
               private appParamService: AppParamService) {
   }
-
-  appParamField: FormGroup;
 
   ngOnInit(): void {
     this.translate.currentLang;

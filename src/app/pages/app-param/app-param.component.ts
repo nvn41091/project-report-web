@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {NbDialogService, NbThemeService} from '@nebular/theme';
 import {FormBuilder, FormControl} from '@angular/forms';
@@ -55,11 +55,14 @@ export class AppParamComponent implements OnInit {
     });
   }
 
+  autoFocus() {
+    this.autoCompleteType(null).subscribe(res => this.types = res.body);
+  }
+
   ngOnInit(): void {
     this.author().then(() => {
     });
     this.search();
-    this.autoCompleteType(null).subscribe(res => this.types = res.body);
     this.formSearch.get('type').valueChanges.pipe(
       debounceTime(1000),
       switchMap((value: string) => {

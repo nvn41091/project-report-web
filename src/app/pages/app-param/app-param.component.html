@@ -21,7 +21,7 @@
           <label class="label">
             {{ 'app_param.column.type' | translate }}
           </label>
-          <input (keyup.enter)="search()" formControlName="type"
+          <input (keyup.enter)="search()" formControlName="type" (focus)="autoFocus()"
                  nbInput fullWidth trim="blur" ngxNullValue [nbAutocomplete]="autoInsertType">
 
           <nb-autocomplete #autoInsertType>
