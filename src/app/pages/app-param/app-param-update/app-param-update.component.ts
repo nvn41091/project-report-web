@@ -29,7 +29,6 @@ export class AppParamUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.translate.currentLang;
     this.userFieldInit();
-    this.autoCompleteType('').subscribe(res => this.types = res.body);
     this.appParamField.get('type').valueChanges.pipe(
       debounceTime(1000),
       switchMap((value: string) => {
@@ -38,6 +37,9 @@ export class AppParamUpdateComponent implements OnInit {
     ).subscribe(value => this.types = value.body);
   }
 
+  autoCompleteFocus() {
+    this.autoCompleteType('').subscribe(res => this.types = res.body);
+  }
   autoCompleteType(type: string) {
     return this.appParamService.autoCompleteType({
       type: type
