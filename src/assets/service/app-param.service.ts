@@ -44,14 +44,19 @@ export class AppParamService {
     });
   }
 
+  getValueByType(type: string): Observable<HttpResponse<Array<AppParam>>> {
+    return this.http.post<Array<AppParam>>(`${environment.api}/app-param/getValueByType`, {type: type}, {
+      observe: 'response',
+    });
+  }
 }
 
 export class AppParam {
-  id: number;
-  name: string;
-  type: string;
-  value: string;
-  description: string;
-  updateTime: number;
-  status: boolean;
+  id?: number;
+  name?: string;
+  type?: string;
+  value?: string;
+  description?: string;
+  updateTime?: number;
+  status?: boolean;
 }

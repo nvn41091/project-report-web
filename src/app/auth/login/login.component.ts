@@ -6,6 +6,7 @@ import {AuthSerivce} from '../../../assets/service/auth.serivce';
 import {HttpResponse} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {TranslateService} from '@ngx-translate/core';
+import {LocalStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'ngx-login',
@@ -14,7 +15,7 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class NgxLoginComponent implements OnInit {
 
-  redirectDelay: number = 3000;
+  redirectDelay: number = 500;
 
   errors: string[] = [];
   messages: string[] = [];
@@ -25,6 +26,7 @@ export class NgxLoginComponent implements OnInit {
   constructor(private service: AuthSerivce,
               private translate: TranslateService,
               private jwtService: NbTokenService,
+              private store: LocalStorageService,
               protected cd: ChangeDetectorRef,
               protected router: Router) {
   }
@@ -46,7 +48,7 @@ export class NgxLoginComponent implements OnInit {
     this.submitted = true;
     this.service.login(this.loginForm.value).subscribe((result: HttpResponse<any>) => {
         this.messages.push(this.translate.instant('login.success'));
-        this.jwtService.set(new NbAuthJWTToken(result.headers.get('Authorization'), result.body.username));
+        this.jwtService.set(new NbAuthJWTToken(result.headers.get('Authorization'), 'token'));
         this.cd.detectChanges();
         const redirect = environment.homePage;
         if (redirect) {
@@ -55,7 +57,7 @@ export class NgxLoginComponent implements OnInit {
           }, this.redirectDelay);
         }
       },
-      (error) => {
+      () => {
         this.errors.push(this.translate.instant('login.login-fail'));
         this.submitted = false;
         this.cd.detectChanges();

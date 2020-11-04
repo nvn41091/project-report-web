@@ -12,16 +12,16 @@ import {ThemeModule} from './@theme/theme.module';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {
-    NbAlertModule,
-    NbButtonModule,
-    NbCardModule,
-    NbChatModule, NbCheckboxModule,
-    NbDatepickerModule,
-    NbDialogModule, NbInputModule,
-    NbMenuModule,
-    NbSidebarModule, NbSpinnerModule, NbStepperModule,
-    NbToastrModule,
-    NbWindowModule,
+  NbAlertModule,
+  NbButtonModule,
+  NbCardModule,
+  NbChatModule, NbCheckboxModule,
+  NbDatepickerModule,
+  NbDialogModule, NbInputModule,
+  NbMenuModule,
+  NbSidebarModule, NbSpinnerModule, NbStepperModule,
+  NbToastrModule,
+  NbWindowModule,
 } from '@nebular/theme';
 import {PagesAuth} from './auth/pages-auth';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -45,7 +45,8 @@ import {NbRoleProvider, NbSecurityModule} from '@nebular/security';
 import {LoginAuth} from './auth/login-auth';
 import {of} from 'rxjs';
 import {ForbiddenInterceptor} from './auth/forbidden.interceptor';
-import { RequestPasswordComponent } from './auth/request-password/request-password.component';
+import {RequestPasswordComponent} from './auth/request-password/request-password.component';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 
 registerLocaleData(vi, 'vi-VI', viEt);
 
@@ -55,43 +56,44 @@ export function CreateTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [AppComponent, NgxLoginComponent, NgxRegisterComponent, RequestPasswordComponent],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        AppRoutingModule,
-        NbSidebarModule.forRoot(),
-        NbMenuModule.forRoot(),
-        NbDatepickerModule.forRoot(),
-        NbDialogModule.forRoot(),
-        NbWindowModule.forRoot(),
-        NbToastrModule.forRoot(),
-        NbChatModule.forRoot({
-            messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
-        }),
-        CoreModule.forRoot(),
-        ThemeModule.forRoot(),
-        NbAuthModule.forRoot(),
-        NbSecurityModule.forRoot(),
-        NbCardModule,
-        FormsModule,
-        NbInputModule,
-        NbButtonModule,
-        NbCheckboxModule,
-        NbAlertModule,
-        ReactiveFormsModule,
-        NbSpinnerModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: (CreateTranslateLoader),
-                deps: [HttpClient],
-            },
-            defaultLanguage: 'vi',
-        }),
-        SharedModule,
-        NbStepperModule,
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    NbSidebarModule.forRoot(),
+    NbMenuModule.forRoot(),
+    NbDatepickerModule.forRoot(),
+    NbDialogModule.forRoot(),
+    NbWindowModule.forRoot(),
+    NbToastrModule.forRoot(),
+    NbChatModule.forRoot({
+      messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
+    }),
+    CoreModule.forRoot(),
+    ThemeModule.forRoot(),
+    NbAuthModule.forRoot(),
+    NbSecurityModule.forRoot(),
+    NbCardModule,
+    FormsModule,
+    NbInputModule,
+    NbButtonModule,
+    NbCheckboxModule,
+    NbAlertModule,
+    ReactiveFormsModule,
+    NgxWebstorageModule.forRoot(),
+    NbSpinnerModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (CreateTranslateLoader),
+        deps: [HttpClient],
+      },
+      defaultLanguage: 'vi',
+    }),
+    SharedModule,
+    NbStepperModule,
+  ],
   bootstrap: [AppComponent],
   providers: [PagesAuth, DecimalPipe, LoginAuth,
     {provide: LOCALE_ID, useValue: 'vi-VI'},

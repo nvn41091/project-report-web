@@ -1,7 +1,7 @@
 <nb-card>
   <nb-card-header class="d-flex">
     <label> {{ 'prj-information.title' | translate }}</label>
-    <button *nbIsGranted="['access', 'PRI#INSERT']" nbButton status="primary" size="tiny" outline class="ml-auto">
+    <button *nbIsGranted="['access', 'PRI#INSERT']" (click)="edit(null)" nbButton status="primary" size="tiny" outline class="ml-auto">
       <nb-icon icon="plus" pack="eva"></nb-icon>
       {{ 'common.label.insert_btn' | translate }}
     </button>
@@ -28,7 +28,7 @@
           </label>
           <nb-select fullWidth formControlName="status" [placeholder]="'common.status.clean' | translate">
             <nb-option *ngFor="let status of lstStatus"
-                       [value]="status.value">{{ status.name | translate }}</nb-option>
+                       [value]="status.id">{{ status.value | translate }}</nb-option>
           </nb-select>
         </div>
         <div class="form-group col-lg-12 text-center mb-0">
@@ -86,7 +86,7 @@
                         title="{{value}}">{{value.length > 50 ? value.substring(0, 50).concat('...') : value}}</span>
             </ng-container>
             <ng-container *ngIf="col.prop ==='status'">
-              {{ 'prj-information.status.' + value | translate }}
+              {{ value | translate }}
             </ng-container>
             <ng-container *ngIf="col.prop ==='updateTime'">
               {{value | date:'dd/MM/yyyy HH:mm:ss'}}

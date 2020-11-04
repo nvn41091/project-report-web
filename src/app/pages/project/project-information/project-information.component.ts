@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Module, ModuleService} from '../../../../assets/service/module.service';
 import {TranslateService} from '@ngx-translate/core';
 import {NbDialogService, NbThemeService} from '@nebular/theme';
 import {FormBuilder, FormControl} from '@angular/forms';
@@ -7,6 +6,10 @@ import {CustomToastrService} from '../../../shared/services/custom-toastr.servic
 import {NbAccessChecker} from '@nebular/security';
 import {HttpHeaders} from '@angular/common/http';
 import {ConfirmDialogComponent} from '../../../share-lib-module/confirm-dialog/confirm-dialog.component';
+import {AppParam, AppParamService} from '../../../../assets/service/app-param.service';
+import {ProjectInformation, ProjectInformationService} from '../../../../assets/service/project-information.service';
+import {AppParamUpdateComponent} from '../../app-param/app-param-update/app-param-update.component';
+import {ProjectInformationUpdateComponent} from './project-information-update/project-information-update.component';
 
 @Component({
   selector: 'ngx-project-information',
@@ -18,8 +21,6 @@ export class ProjectInformationComponent implements OnInit {
   loading = false;
   rows: Object[];
   grandSearch: boolean = false;
-  grandUpdate: boolean = false;
-  grandInsert: boolean = false;
   page = {
     limit: 5,
     count: 0,
@@ -34,16 +35,15 @@ export class ProjectInformationComponent implements OnInit {
     {name: 'prj-information.column.status', prop: 'status', flexGrow: 0.9, minWidth: 90},
     {name: 'prj-information.column.action', prop: 'action_btn', flexGrow: 0.6, minWidth: 60},
   ];
-  lstStatus = [
-    {value: null, name: 'common.status.clean'},
-    {value: true, name: 'prj-information.status.1'},
-    {value: false, name: 'prj-information.status.0'},
+  lstStatus: AppParam[] = [
+    {id: null, value: 'common.status.clean'},
   ];
 
   constructor(private translate: TranslateService,
               private themeService: NbThemeService,
-              private moduleService: ModuleService,
+              private projectInformationService: ProjectInformationService,
               private fb: FormBuilder,
+              private appParamService: AppParamService,
               private dialog: NbDialogService,
               private toastr: CustomToastrService,
               private accessChecker: NbAccessChecker) {
@@ -54,21 +54,13 @@ export class ProjectInformationComponent implements OnInit {
 
   ngOnInit(): void {
     this.authorSearch().then(() => {});
-    this.authorUpdate().then(() => {});
-    this.authorInsert().then(() => {});
+    this.appParamService.getValueByType('TYPE_STATUS')
+      .subscribe(res => Array.prototype.push.apply(this.lstStatus, res.body));
     this.search();
   }
 
   async authorSearch() {
     await this.accessChecker.isGranted('access', 'PRI#SEARCH').subscribe(grand => this.grandSearch = grand);
-  }
-
-  async authorUpdate() {
-    await this.accessChecker.isGranted('access', 'PRI#UPDATE').subscribe(grand => this.grandUpdate = grand);
-  }
-
-  async authorInsert() {
-    await this.accessChecker.isGranted('access', 'PRI#INSERT').subscribe(grand => this.grandInsert = grand);
   }
 
   formSearch = this.fb.group({
@@ -89,7 +81,7 @@ export class ProjectInformationComponent implements OnInit {
     const pageToLoad: number = pageInfo.offset;
     if (this.grandSearch) {
       this.loading = true;
-      this.moduleService.doSearch(this.dataSearch, {
+      this.projectInformationService.doSearch(this.dataSearch, {
         page: pageToLoad,
         size: this.page.limit,
       }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad),
@@ -109,9 +101,18 @@ export class ProjectInformationComponent implements OnInit {
   }
 
   edit(data) {
+    this.dialog.open(ProjectInformationUpdateComponent, {
+      context: {
+        data: data,
+      },
+      dialogClass: 'modal-full',
+      hasScroll: true,
+    }).onClose.subscribe(res => {
+      res?.result === 'complete' ? this.setPage({offset: 0}) : {};
+    });
   }
 
-  delete(data: Module) {
+  delete(data: ProjectInformation) {
     this.dialog.open(ConfirmDialogComponent, {
       context: {
         title: this.translate.instant('module.label.delete'),
@@ -120,7 +121,7 @@ export class ProjectInformationComponent implements OnInit {
     }).onClose.subscribe(res => {
       if (res === 'confirm') {
         this.loading = true;
-        this.moduleService.delete(data).subscribe(() => {
+        this.projectInformationService.delete(data).subscribe(() => {
             this.toastr.success('common.label.delete_success', true);
             this.setPage({offset: 0});
           },

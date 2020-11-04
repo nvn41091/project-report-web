@@ -18,9 +18,10 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {SharedModule} from '../../shared/shared.module';
 import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
+import { ProjectInformationUpdateComponent } from './project-information/project-information-update/project-information-update.component';
 
 @NgModule({
-  declarations: [ProjectComponent, ProjectInformationComponent],
+  declarations: [ProjectComponent, ProjectInformationComponent, ProjectInformationUpdateComponent],
   imports: [
     CommonModule,
     ProjectRoutingModule,
