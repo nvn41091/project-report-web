@@ -4,11 +4,12 @@ import {NbMediaBreakpointsService, NbMenuItem, NbMenuService, NbSidebarService, 
 import {LayoutService} from '../../../@core/utils';
 import {map, takeUntil, filter} from 'rxjs/operators';
 import {Subject} from 'rxjs';
-import {NbTokenService} from '@nebular/auth';
+import {NbAuthJWTToken, NbTokenService} from '@nebular/auth';
 import {TranslateService} from '@ngx-translate/core';
 import {User, UserService} from '../../../../assets/service/user.service';
 import {DataUserService} from '../../../shared/services/data-user.service';
 import {Router} from '@angular/router';
+import {LocalStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'ngx-header',
@@ -19,6 +20,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
+  lstToken: Token[] = [];
+  tokenSelected: string;
   tag = 'ngx-header';
   user: User;
   requestAcceptCompany = [
@@ -44,7 +47,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       name: 'Corporate',
     },
   ];
-
   currentTheme = 'default';
 
   userMenu: NbMenuItem[] = [
@@ -58,6 +60,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private themeService: NbThemeService,
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService,
+              private localStore: LocalStorageService,
               private tokenService: NbTokenService,
               public translate: TranslateService,
               private userService: UserService,
@@ -86,8 +89,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
       )
       .subscribe(themeName => this.currentTheme = themeName);
     this.dataUserService.updateUser.subscribe(res => this.user = res);
-    this.translate.onLangChange.subscribe( event => this.translateMenuItems() );
+    this.translate.onLangChange.subscribe(() => this.translateMenuItems());
     this.translateMenuItems();
+    this.lstToken = this.localStore.retrieve('token');
+    this.tokenService.get().subscribe(res => this.tokenSelected = res.getValue());
   }
 
   reload() {
@@ -95,14 +100,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   translateMenuItems() {
-    this.userMenu.forEach( item => this.translateMenuItem( item ) );
+    this.userMenu.forEach(item => this.translateMenuItem(item));
   }
 
-  translateMenuItem( menuItem: NbMenuItem ) {
-    if ( menuItem.children != null ) {
-      menuItem.children.forEach( item => this.translateMenuItem( item ) );
+  translateMenuItem(menuItem: NbMenuItem) {
+    if (menuItem.children != null) {
+      menuItem.children.forEach(item => this.translateMenuItem(item));
     }
-     this.translate.get(menuItem.data).subscribe((translate: string) => menuItem.title = translate);
+    this.translate.get(menuItem.data).subscribe((translate: string) => menuItem.title = translate);
   }
 
   ngOnDestroy() {
@@ -128,7 +133,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onMenuClick(item) {
     switch (item.data) {
       case 'index.user_menu.password':
-        this.router.navigateByUrl('/pages/change-password').then(() => {});
+        this.router.navigateByUrl('/pages/change-password').then(() => {
+        });
         break;
       case 'index.user_menu.logout':
         this.tokenService.clear();
@@ -136,4 +142,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
         break;
     }
   }
+
+  tokenChange(e) {
+    this.tokenService.set(new NbAuthJWTToken(e, 'token'));
+    window.location.reload();
+  }
+}
+
+export class Token {
+  companyId: number;
+  username: string;
+  companyName: string;
+  token: string;
 }

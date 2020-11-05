@@ -48,7 +48,8 @@ export class NgxLoginComponent implements OnInit {
     this.submitted = true;
     this.service.login(this.loginForm.value).subscribe((result: HttpResponse<any>) => {
         this.messages.push(this.translate.instant('login.success'));
-        this.jwtService.set(new NbAuthJWTToken(result.headers.get('Authorization'), 'token'));
+        this.store.store('token', result.body);
+        this.jwtService.set(new NbAuthJWTToken(result.body[0].token, 'token'));
         this.cd.detectChanges();
         const redirect = environment.homePage;
         if (redirect) {
