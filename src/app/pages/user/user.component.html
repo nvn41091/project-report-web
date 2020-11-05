@@ -98,11 +98,11 @@
             </ng-container>
             <ng-container *ngIf="col.prop ==='action_btn'" class="text-right">
               <div>
-                <button class="p-1" *nbIsGranted="['access', 'USER#UPDATE']" nbButton status="info" ghost title="{{ 'user.edit' | translate }}"
+                <button class="p-1" *nbIsGranted="['access', 'USER#UPDATE']" nbButton status="info" ghost title="{{ 'common.label.edit' | translate }}"
                         (click)="edit(row)">
                   <nb-icon icon="edit-outline" pack="eva" size="tiny"></nb-icon>
                 </button>
-                <button class="p-1" *nbIsGranted="['access', 'USER#DELETE']" nbButton status="danger" ghost title="{{ 'user.delete' | translate }}"
+                <button class="p-1" *nbIsGranted="['access', 'USER#DELETE']" nbButton status="danger" ghost title="{{ 'common.label.delete' | translate }}"
                         (click)="delete(row)">
                   <nb-icon icon="trash-2-outline" pack="eva" size="tiny"></nb-icon>
                 </button>

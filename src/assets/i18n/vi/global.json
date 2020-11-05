@@ -7,6 +7,7 @@
       "forbidden": "Quyền người dùng đã bị thay đổi",
       "token_expired": "Phiên làm việc đã hết hạn",
       "notice": "Thông báo",
+      "no_record": "Không có dữ liệu",
       "update_success": "Cập nhật thành công",
       "insert_success": "Thêm mới thành công",
       "delete_success": "Xóa thành công",
