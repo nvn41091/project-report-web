@@ -5,6 +5,7 @@ import {RequestPasswordService} from '../../../assets/service/request-password.s
 import {NbStepperComponent} from '@nebular/theme';
 import {NbAuthJWTToken, NbTokenService} from '@nebular/auth';
 import {Router} from '@angular/router';
+import {LocalStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'ngx-request-password',
@@ -22,6 +23,7 @@ export class RequestPasswordComponent implements OnInit {
               private translate: TranslateService,
               private requestPasswordService: RequestPasswordService,
               private cd: ChangeDetectorRef,
+              private store: LocalStorageService,
               private jwtService: NbTokenService,
               private router: Router) {
     this.translate.currentLang;
@@ -56,13 +58,14 @@ export class RequestPasswordComponent implements OnInit {
     }).subscribe(
       (result) => {
         this.success.push(this.translate.instant('request_password.reset_password_success'));
-        this.jwtService.set(new NbAuthJWTToken(result.headers.get('Authorization'), result.body.username));
+        this.store.store('token', result.body);
+        this.jwtService.set(new NbAuthJWTToken(result.body[0].token, 'token'));
         this.cd.detectChanges();
         setTimeout(() => {
           return this.router.navigateByUrl('/pages/change-password', {
             state: { resetKey: this.resetKeyForm.get('resetKey').value },
           });
-        }, 3000);
+        }, 500);
       },
       (error) => {
         this.errors.push(error.error.title);

@@ -16,10 +16,12 @@
     </nb-action>
     <nb-action class="control-item">
       <nb-select [(selected)]="tokenSelected" (selectedChange)="tokenChange($event)" status="primary">
-        <nb-option *ngFor="let token of lstToken" [value]="token.token" [disabled]="token.token === tokenSelected"> {{ token.companyName ? token.companyName : 'Không có kết quả' }}</nb-option>
+        <nb-option *ngFor="let token of lstToken" [value]="token.token"
+                   [disabled]="token.token === tokenSelected"> {{ token.companyName ? token.companyName : 'Không có kết quả' }}</nb-option>
       </nb-select>
     </nb-action>
-    <nb-action class="control-item" icon="refresh-outline" (click)="reload()" [title]="'index.reload' | translate"></nb-action>
+    <nb-action class="control-item" icon="refresh-outline" (click)="reload()"
+               [title]="'index.reload' | translate"></nb-action>
     <nb-action class="control-item" icon="bell-outline"
                badgeStatus="warning" badgeDot [nbPopover]="bellRef"></nb-action>
     <nb-action class="user-action">

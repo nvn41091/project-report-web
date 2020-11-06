@@ -41,7 +41,7 @@ export class NgxRegisterComponent implements OnInit {
     this.messages = [];
     this.errors = [];
     this.authService.register(this.formRegister.value).subscribe(
-      (success) => {
+      () => {
         this.messages.push(this.translate.instant('register.success'));
         setTimeout(() => {
           return this.router.navigateByUrl('/auth/login');

@@ -4,6 +4,7 @@ import {environment} from '../../environments/environment';
 import {createRequestOption} from '../../app/shared/util/request-util';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Module} from './module.service';
+import {Token} from '../../app/@theme/components';
 
 @Injectable()
 export class UserService {
@@ -39,6 +40,12 @@ export class UserService {
 
   getUserInfo(): Observable<HttpResponse<User>> {
     return this.http.get<User>(`${environment.api}/getUserInfo`, {
+      observe: 'response',
+    });
+  }
+
+  reloadToken(): Observable<HttpResponse<Array<Token>>> {
+    return this.http.get<Array<Token>>(`${environment.api}/reload-token`, {
       observe: 'response',
     });
   }
