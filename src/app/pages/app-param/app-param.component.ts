@@ -30,11 +30,11 @@ export class AppParamComponent implements OnInit {
   dataSearch;
   columns = [
     {name: 'app_param.column.index', prop: 'index', flexGrow: 0.3, minWidth: 30},
-    {name: 'app_param.column.name', prop: 'name', flexGrow: 0.7, minWidth: 70},
+    {name: 'app_param.column.name', prop: 'name', flexGrow: 0.9, minWidth: 90},
     {name: 'app_param.column.type', prop: 'type', flexGrow: 0.7, minWidth: 70},
-    {name: 'app_param.column.value', prop: 'value', flexGrow: 1, minWidth: 100},
-    {name: 'app_param.column.update_time', prop: 'updateTime', flexGrow: 1, minWidth: 100},
-    {name: 'app_param.column.status', prop: 'status', flexGrow: 0.9, minWidth: 90},
+    {name: 'app_param.column.value', prop: 'value', flexGrow: 1.3, minWidth: 130},
+    {name: 'app_param.column.update_time', prop: 'updateTime', flexGrow: 0.8, minWidth: 80},
+    {name: 'app_param.column.status', prop: 'status', flexGrow: 0.6, minWidth: 60},
     {name: 'app_param.column.action_btn', prop: 'action_btn', flexGrow: 0.6, minWidth: 60},
   ];
   lstStatus = [
