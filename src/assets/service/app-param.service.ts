@@ -57,6 +57,7 @@ export class AppParam {
   type?: string;
   value?: string;
   description?: string;
+  ord?: number;
   updateTime?: number;
   status?: boolean;
 }

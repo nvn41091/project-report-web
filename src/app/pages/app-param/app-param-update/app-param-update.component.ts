@@ -7,6 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {onlyCharacterValidator} from '../../../shared/directives/only-characters.directive';
 import {debounceTime, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
+import {numberValidator} from '../../../shared/directives/custome-number.directive';
 
 @Component({
   selector: 'ngx-app-param-update',
@@ -24,10 +25,10 @@ export class AppParamUpdateComponent implements OnInit {
               private toastr: CustomToastrService,
               private translate: TranslateService,
               private appParamService: AppParamService) {
+    this.translate.currentLang;
   }
 
   ngOnInit(): void {
-    this.translate.currentLang;
     this.userFieldInit();
     this.appParamField.get('type').valueChanges.pipe(
       debounceTime(1000),
@@ -53,6 +54,7 @@ export class AppParamUpdateComponent implements OnInit {
       type: new FormControl(this.data?.type, [Validators.required, Validators.maxLength(200), onlyCharacterValidator(/^[A-Za-z0-9_]+$/)]),
       value: new FormControl(this.data?.value, [Validators.required, Validators.maxLength(500)]),
       updateTime: new FormControl(this.data?.updateTime),
+      ord: new FormControl(this.data?.ord, [numberValidator(/\d+/)]),
       description: new FormControl(this.data?.description, [Validators.maxLength(500)]),
       status: new FormControl(this.data?.status ? this.data?.status : false, [Validators.required]),
     });

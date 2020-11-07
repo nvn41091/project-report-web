@@ -8,6 +8,7 @@
       "type": "Loại tham số",
       "value": "Giá trị",
       "status": "Trạng thái",
+      "ord": "Sắp xếp",
       "description": "Mô tả",
       "update_time": "Ngày cập nhật",
       "action_btn": "Hành động"
