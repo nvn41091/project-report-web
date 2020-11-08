@@ -97,9 +97,9 @@
                         (click)="edit(row)" *nbIsGranted="['access', 'PRI#UPDATE']">
                   <nb-icon icon="edit-outline" pack="eva" size="tiny"></nb-icon>
                 </button>
-                <button class="p-1" nbButton status="success" ghost title="{{ 'company.column.role' | translate }}"
-                        *nbIsGranted="['access', 'PRI#ROLE']">
-                  <nb-icon icon="globe-outline" pack="eva" size="tiny"></nb-icon>
+                <button class="p-1" nbButton status="success" ghost title="{{ 'common.label.view' | translate }}"
+                        *nbIsGranted="['access', 'PRI#VIEW']">
+                  <nb-icon icon="eye-outline" pack="eva" size="tiny"></nb-icon>
                 </button>
                 <button class="p-1" nbButton status="danger" ghost title="{{ 'common.label.delete' | translate }}"
                         (click)="delete(row)" *nbIsGranted="['access', 'PRI#DELETE']">

@@ -44,10 +44,14 @@ export class ProjectInformation {
   code?: string;
   name?: string;
   startDate?: Date;
-  endDate?: Date;
-  companyContracting?: string;
-  companyId?: string;
+  endDatePlan?: Date;
+  money?: number;
+  customerId?: number;
+  companyId?: number;
   description?: string;
   status?: any;
   updateTime: Date;
+  actualEndTime: Date;
+  customerName?: string;
+  statusValue?: string;
 }
