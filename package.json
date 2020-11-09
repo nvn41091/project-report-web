@@ -48,6 +48,7 @@
     "@ng-select/ng-select": "^5.0.1",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "@syncfusion/ej2-angular-diagrams": "^18.2.56",
     "@swimlane/ngx-charts": "^14.0.0",
     "@swimlane/ngx-datatable": "^18.0.0",
     "angular2-chartjs": "0.4.1",

@@ -53,6 +53,7 @@ export class Module {
   pathUrl: string;
   icon: string;
   updateTime: number;
+  accessUser: boolean;
   parentId: number;
   action: string;
 }

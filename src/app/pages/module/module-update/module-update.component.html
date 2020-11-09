@@ -71,19 +71,23 @@
                                   [formName]="moduleField.get('parentId')">
               </ngx-inline-message>
             </div>
-            <div class="form-group col-md-10">
+            <div class="form-group col-md-8">
               <label class="label w-100">{{ 'module.column.description' | translate }}</label>
-              <textarea nbInput fullWidth formControlName="description" rows="5" ngxNullValue></textarea>
+              <textarea nbInput fullWidth formControlName="description" rows="4" ngxNullValue></textarea>
             </div>
 
-            <div class="form-group col-md-2">
-              <div class="col-sm-12">
+            <div class="form-group col-md-4 row">
+              <div class="col-sm-6">
                 <label class="label w-100">{{ 'module.column.status' | translate }} <span class="text-danger ml-2">*</span> </label>
                 <nb-toggle fullWidth formControlName="status"></nb-toggle>
               </div>
-              <div class="col-sm-12">
+              <div class="col-sm-6">
                 <label class="label w-100">{{ 'module.column.is_group' | translate }}</label>
                 <nb-toggle fullWidth formControlName="isGroup"></nb-toggle>
+              </div>
+              <div class="col-sm-12" *ngIf="this.moduleField.get('isGroup').value != true">
+                <label class="label w-100">{{ 'module.column.access_user' | translate }}</label>
+                <nb-toggle fullWidth formControlName="accessUser"></nb-toggle>
               </div>
             </div>
           </div>

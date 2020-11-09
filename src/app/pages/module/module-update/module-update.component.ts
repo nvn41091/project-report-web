@@ -57,6 +57,7 @@ export class ModuleUpdateComponent implements OnInit {
       parentId: new FormControl(this.data?.parentId, []),
       status: new FormControl(this.data?.status ? this.data?.status : false, [Validators.required]),
       isGroup: new FormControl((!this.data?.parentId && !this.data?.pathUrl)),
+      accessUser: new FormControl(this.data?.accessUser ? this.data?.accessUser : false, []),
       action: new FormControl(null),
     });
   }

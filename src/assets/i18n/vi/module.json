@@ -13,7 +13,8 @@
       "parent_id": "Menu cha",
       "update_time": "Ngày cập nhật",
       "action": "Thao tác",
-      "is_group": "Là nhóm menu"
+      "is_group": "Là nhóm menu",
+      "access_user": "Cho phép người dùng truy cập"
     },
     "isGroup": {
       "true": "Nhóm",

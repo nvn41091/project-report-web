@@ -19,9 +19,10 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {SharedModule} from '../../shared/shared.module';
 import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
 import { ProjectInformationUpdateComponent } from './project-information/project-information-update/project-information-update.component';
+import { ProjectStageComponent } from './project-stage/project-stage.component';
 
 @NgModule({
-  declarations: [ProjectComponent, ProjectInformationComponent, ProjectInformationUpdateComponent],
+  declarations: [ProjectComponent, ProjectInformationComponent, ProjectInformationUpdateComponent, ProjectStageComponent],
   imports: [
     CommonModule,
     ProjectRoutingModule,
