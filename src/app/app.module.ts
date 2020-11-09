@@ -47,6 +47,8 @@ import {of} from 'rxjs';
 import {ForbiddenInterceptor} from './auth/forbidden.interceptor';
 import {RequestPasswordComponent} from './auth/request-password/request-password.component';
 import {NgxWebstorageModule} from 'ngx-webstorage';
+import { NbMomentDateModule } from '@nebular/moment';
+import { NbDateFnsDateModule } from '@nebular/date-fns';
 
 registerLocaleData(vi, 'vi-VI', viEt);
 
@@ -92,7 +94,12 @@ export function CreateTranslateLoader(http: HttpClient) {
       defaultLanguage: 'vi',
     }),
     SharedModule,
-    NbStepperModule
+    NbStepperModule,
+    NbMomentDateModule,
+    NbDateFnsDateModule.forRoot({
+      parseOptions: {useAdditionalWeekYearTokens: true, useAdditionalDayOfYearTokens: true},
+      formatOptions: {useAdditionalWeekYearTokens: true, useAdditionalDayOfYearTokens: true},
+    }),
   ],
   bootstrap: [AppComponent],
   providers: [PagesAuth, DecimalPipe, LoginAuth,
