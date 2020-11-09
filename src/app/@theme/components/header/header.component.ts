@@ -96,7 +96,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   reload() {
+    this.reloadToken().then(() => {});
     window.location.reload();
+  }
+
+  async reloadToken() {
+    await this.userService.reloadToken().subscribe(res => {
+      this.localStore.store('token', res.body);
+      this.tokenService.set(new NbAuthJWTToken(res.body[0].token, 'token'));
+    });
   }
 
   translateMenuItems() {
