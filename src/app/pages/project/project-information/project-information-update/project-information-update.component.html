@@ -1,1 +1,58 @@
-<p>project-information-update works!</p>
+<div class="row" [nbSpinner]="loading">
+  <div class="col-lg-12">
+    <form [formGroup]="infoField">
+      <nb-card>
+        <nb-card-header>
+          <label>{{(infoField.value.id ? 'prj-information.label.update' : 'prj-information.label.insert') | translate}}</label>
+          <span>
+          <button ghost size="tiny" nbButton class="objLink float-right" (click)="cancel()">
+            <nb-icon icon="close-outline"></nb-icon>
+          </button>
+        </span>
+        </nb-card-header>
+        <nb-card-body>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label class="label">{{ 'prj-information.column.code' | translate }}<span
+                class="text-danger ml-2">*</span></label>
+              <input id="code" nbInput autofocus fullWidth class="form-control" formControlName="code"
+                     status="{{(this.infoField.get('code').invalid
+                 && this.infoField.get('code')?.touched) ? 'danger' : null }}" trim="blur" ngxUppercase ngxNullValue>
+              <ngx-inline-message [message]="'prj-information.column.code'"
+                                  [formName]="infoField.get('code')">
+              </ngx-inline-message>
+            </div>
+            <div class="form-group col-md-4">
+              <label class="label">{{ 'prj-information.column.name' | translate }}<span
+                class="text-danger ml-2">*</span></label>
+              <input id="name" nbInput autofocus fullWidth class="form-control" formControlName="name"
+                     status="{{(this.infoField.get('name').invalid
+                 &&this.infoField.get('name')?.touched) ? 'danger' : null }}" trim="blur" ngxNullValue>
+              <ngx-inline-message [message]="'prj-information.column.name'"
+                                  [formName]="infoField.get('name')">
+              </ngx-inline-message>
+            </div>
+            <div class="form-group col-md-4">
+              <label class="label w-100">{{ 'prj-information.column.status' | translate }} <span
+                class="text-danger ml-2">*</span> </label>
+              <nb-toggle fullWidth formControlName="status"></nb-toggle>
+            </div>
+            <div class="form-group col-md-12">
+              <label class="label w-100">{{ 'prj-information.column.description' | translate }}</label>
+              <textarea nbInput fullWidth formControlName="description" ngxNullValue></textarea>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 text-center">
+              <button nbButton size="small" type="submit" (click)="save()"
+                      [disabled]="infoField.invalid">{{'common.label.save'|translate}}
+                <nb-icon icon="save-outline"></nb-icon>
+              </button>
+              <button nbButton class="ml-2" size="small" (click)="cancel()">{{'common.label.cancel'|translate}}</button>
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </form>
+  </div>
+</div>

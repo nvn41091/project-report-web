@@ -45,7 +45,7 @@ export class ProjectInformation {
   name?: string;
   startDate?: Date;
   endDatePlan?: Date;
-  money?: number;
+  money?: string;
   customerId?: number;
   companyId?: number;
   description?: string;

@@ -5,12 +5,12 @@ import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectComponent } from './project.component';
 import { ProjectInformationComponent } from './project-information/project-information.component';
 import {
-  NbButtonModule,
-  NbCardModule,
-  NbIconModule,
-  NbInputModule,
-  NbSelectModule,
-  NbSpinnerModule
+    NbButtonModule,
+    NbCardModule,
+    NbIconModule,
+    NbInputModule,
+    NbSelectModule,
+    NbSpinnerModule, NbToggleModule
 } from '@nebular/theme';
 import {TranslateModule} from '@ngx-translate/core';
 import {NbSecurityModule} from '@nebular/security';
@@ -40,6 +40,7 @@ import {ListViewModule} from "@syncfusion/ej2-angular-lists";
         NbInputModule,
         NgxTrimDirectiveModule,
         ListViewModule,
+        NbToggleModule,
     ],
 })
 export class ProjectModule { }

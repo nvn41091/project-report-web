@@ -28,11 +28,14 @@ export class ProjectInformationComponent implements OnInit {
   };
   dataSearch;
   columns = [
-    {name: 'prj-information.column.index', prop: 'index', flexGrow: 0.3, minWidth: 30},
-    {name: 'prj-information.column.code', prop: 'code', flexGrow: 1.4, minWidth: 140},
-    {name: 'prj-information.column.name', prop: 'name', flexGrow: 1, minWidth: 100},
-    {name: 'prj-information.column.update_time', prop: 'updateTime', flexGrow: 1, minWidth: 100},
-    {name: 'prj-information.column.status', prop: 'statusValue', flexGrow: 0.9, minWidth: 90},
+    {name: 'prj-information.column.index', prop: 'index', flexGrow: 0.2, minWidth: 20},
+    {name: 'prj-information.column.code', prop: 'code', flexGrow: 0.5, minWidth: 50},
+    {name: 'prj-information.column.name', prop: 'name', flexGrow: 1.0, minWidth: 100},
+    {name: 'prj-information.column.money', prop: 'money', flexGrow: 0.6, minWidth: 60},
+    {name: 'prj-information.column.start_date', prop: 'startDate', flexGrow: 0.6, minWidth: 60},
+    {name: 'prj-information.column.end_date_plan', prop: 'endDatePlan', flexGrow: 0.6, minWidth: 60},
+    {name: 'prj-information.column.actual_end_time', prop: 'actualEndTime', flexGrow: 0.6, minWidth: 60},
+    {name: 'prj-information.column.status', prop: 'statusValue', flexGrow: 0.5, minWidth: 50},
     {name: 'prj-information.column.action', prop: 'action_btn', flexGrow: 0.6, minWidth: 60},
   ];
   lstStatus: AppParam[] = [

@@ -77,7 +77,7 @@
             </ng-container>
             <ng-container
               *ngIf="col.prop !=='action_btn' && col.prop !=='updateTime' && col.prop !=='description' && col.prop !=='status'
-                   && col.prop !== 'code' && col.prop !== 'name' && col.prop !== 'role'">
+                   && col.prop !== 'code' && col.prop !== 'name' && col.prop !== 'role' && col.prop !=='startDate' && col.prop !=='endDatePlan' && col.prop !=='actualEndTime'"  >
               <span class="row-data-show" title="{{value}}">{{ value }}</span>
             </ng-container>
             <ng-container *ngIf="col.prop ==='description' || col.prop === 'code' || col.prop === 'name' "
@@ -90,6 +90,9 @@
             </ng-container>
             <ng-container *ngIf="col.prop ==='updateTime'">
               {{value | date:'dd/MM/yyyy HH:mm:ss'}}
+            </ng-container>
+            <ng-container *ngIf="col.prop ==='startDate' || col.prop ==='endDatePlan' || col.prop ==='actualEndTime'">
+              {{ value | date:'dd/MM/yyyy'}}
             </ng-container>
             <ng-container *ngIf="col.prop ==='action_btn'" class="text-right">
               <div>
