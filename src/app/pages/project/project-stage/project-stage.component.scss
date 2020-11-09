@@ -1,0 +1,83 @@
+.e-listview:not(.e-list-template) .e-list-item {
+  height: 36px;
+  line-height: 36px;
+  padding: 0 5px;
+  position: relative;
+}
+
+.e-listview .e-list-parent {
+  margin: 0;
+  padding: 0;
+}
+
+.e-listview .e-text-content {
+  height: 100%;
+  position: relative;
+  vertical-align: middle;
+}
+
+.e-listview .e-text-content * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.e-listview .e-list-text {
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.e-listview .e-list-icon + .e-list-text {
+  width: calc(100% - 60px);
+}
+
+.e-listview .e-icon-wrapper .e-list-text {
+  width: calc(100% - 60px);
+}
+
+.e-listview .e-content {
+  overflow: hidden;
+  position: relative;
+}
+
+.folder {
+  background-repeat: no-repeat;
+  background-position: 5px 5px;
+  background-image: url('../../../../assets/images/node_bc.gif');
+}
+
+.e-listview .e-list-icon {
+  height: 24px;
+  width: 30px;
+}
+
+.e-list-template .e-list-wrapper {
+  height: inherit;
+  position: relative;
+}
+
+.e-control.e-diagram.e-lib.e-droppable.e-tooltip {
+  position: absolute !important;
+}
+
+.e-listview .e-list-item.e-hover,
+.e-listview .e-list-item.e-hover.e-active.e-checklist {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #e5f3fb;
+  border-color: #70c0e7;
+}
+
+.e-listview .e-list-item.e-active {
+  background-color: #e5f3fb;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.e-listview .e-list-item.e-focused,
+.e-listview .e-list-item.e-focused.e-active.e-checklist {
+  background-color: #e5f3fb;
+  color: rgba(0, 0, 0, 0.87);
+}
