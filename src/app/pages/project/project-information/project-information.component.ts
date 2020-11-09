@@ -32,7 +32,7 @@ export class ProjectInformationComponent implements OnInit {
     {name: 'prj-information.column.code', prop: 'code', flexGrow: 1.4, minWidth: 140},
     {name: 'prj-information.column.name', prop: 'name', flexGrow: 1, minWidth: 100},
     {name: 'prj-information.column.update_time', prop: 'updateTime', flexGrow: 1, minWidth: 100},
-    {name: 'prj-information.column.status', prop: 'status', flexGrow: 0.9, minWidth: 90},
+    {name: 'prj-information.column.status', prop: 'statusValue', flexGrow: 0.9, minWidth: 90},
     {name: 'prj-information.column.action', prop: 'action_btn', flexGrow: 0.6, minWidth: 60},
   ];
   lstStatus: AppParam[] = [

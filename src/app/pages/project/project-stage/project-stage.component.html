@@ -11,7 +11,7 @@
               <label class="label">
                 {{ 'stage.code' | translate }}
               </label>
-              <input nbInput fullWidth />
+              <input (keyup.enter)="search()" nbInput fullWidth />
             </div>
           </nb-card-header>
           <nb-card-body>

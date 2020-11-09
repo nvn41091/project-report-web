@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {
   ComplexHierarchicalTree,
   ConnectorModel,
@@ -50,6 +50,9 @@ export class ProjectStageComponent implements OnInit {
   public fields = {
     iconCss: 'icon', tooltip: 'name'
   };
+
+  search() {
+  }
 
   constructor(private fb: FormBuilder) {
   }
