@@ -70,7 +70,11 @@ export class ProjectInformationComponent implements OnInit {
     code: new FormControl(null),
     name: new FormControl(null),
     status: new FormControl(null),
+    startDate: new FormControl(null),
     parentId: new FormControl(null),
+    endDatePlan: new FormControl(null),
+    actualEndTime: new FormControl(null),
+    date: new FormControl([new Date(), new Date()]),
   });
 
   search() {

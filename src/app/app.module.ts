@@ -92,7 +92,7 @@ export function CreateTranslateLoader(http: HttpClient) {
       defaultLanguage: 'vi',
     }),
     SharedModule,
-    NbStepperModule,
+    NbStepperModule
   ],
   bootstrap: [AppComponent],
   providers: [PagesAuth, DecimalPipe, LoginAuth,
