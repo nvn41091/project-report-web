@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {NbDialogService, NbThemeService} from '@nebular/theme';
 import {FormBuilder, FormControl} from '@angular/forms';
@@ -8,7 +8,6 @@ import {HttpHeaders} from '@angular/common/http';
 import {ConfirmDialogComponent} from '../../../share-lib-module/confirm-dialog/confirm-dialog.component';
 import {AppParam, AppParamService} from '../../../../assets/service/app-param.service';
 import {ProjectInformation, ProjectInformationService} from '../../../../assets/service/project-information.service';
-import {AppParamUpdateComponent} from '../../app-param/app-param-update/app-param-update.component';
 import {ProjectInformationUpdateComponent} from './project-information-update/project-information-update.component';
 
 @Component({
@@ -56,7 +55,8 @@ export class ProjectInformationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authorSearch().then(() => {});
+    this.authorSearch().then(() => {
+    });
     this.appParamService.getValueByType('TYPE_STATUS')
       .subscribe(res => Array.prototype.push.apply(this.lstStatus, res.body));
     this.search();
@@ -70,16 +70,22 @@ export class ProjectInformationComponent implements OnInit {
     code: new FormControl(null),
     name: new FormControl(null),
     status: new FormControl(null),
-    startDate: new FormControl(null),
+    start: new FormControl(null),
     parentId: new FormControl(null),
-    endDatePlan: new FormControl(null),
-    actualEndTime: new FormControl(null),
-    date: new FormControl([new Date(), new Date()]),
+    endPlan: new FormControl(null),
+    endTime: new FormControl(null),
+    date: new FormControl(null),
   });
 
   search() {
     if (!this.loading) {
+      const date = this.formSearch.get('date').value;
+      this.formSearch.get('start').setValue(date?.start);
+      this.formSearch.get('endTime').setValue(date?.end);
       this.dataSearch = this.formSearch.value;
+      // this.dataSearch.startDate = formatDate(this.dataSearch.startDate);
+      // this.dataSearch.endDatePlan = formatDate(this.dataSearch.endDatePlan);
+      // this.dataSearch.actualEndTime = formatDate(this.dataSearch.actualEndTime);
       this.setPage({offset: 0});
     }
   }

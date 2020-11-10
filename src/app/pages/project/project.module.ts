@@ -49,10 +49,7 @@ import {NbMomentDateModule} from '@nebular/moment';
     ListViewModule,
     NbToggleModule,
     NbDatepickerModule,
-    NbDateFnsDateModule.forRoot({
-      parseOptions: {useAdditionalWeekYearTokens: true, useAdditionalDayOfYearTokens: true},
-      formatOptions: {useAdditionalWeekYearTokens: true, useAdditionalDayOfYearTokens: true},
-    }),
+    NbDateFnsDateModule.forRoot({}),
     NbMomentDateModule,
   ],
 })

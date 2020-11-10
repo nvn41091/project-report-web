@@ -42,7 +42,7 @@
           <label class="label">
             {{ 'prj-information.column.end_date_plan' | translate }}
           </label>
-          <input (keyup.enter)="search()" formControlName="endDatePlan" nbInput fullWidth [nbDatepicker]="endDatePlan">
+          <input (keyup.enter)="search()" formControlName="endDate" nbInput fullWidth [nbDatepicker]="endDatePlan">
           <nb-datepicker #endDatePlan format="dd/MM/yyyy"></nb-datepicker>
         </div>
         <div class="form-group col-lg-12 text-center mb-0">

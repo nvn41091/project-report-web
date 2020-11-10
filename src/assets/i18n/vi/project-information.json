@@ -8,6 +8,7 @@
       "status": "Trạng thái",
       "update_time": "Ngày cập nhật",
       "start_date": "Ngày bắt đầu",
+      "date": "Thời gian dự án",
       "end_date_plan": "Thời gian dự tính hoàn thành",
       "actual_end_time": "Thời gian hoàn thành thực tế",
       "money": "Thu nhập dự án",

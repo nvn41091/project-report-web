@@ -110,7 +110,7 @@ export function CreateTranslateLoader(http: HttpClient) {
     {provide: HTTP_INTERCEPTORS, useClass: ForbiddenInterceptor, multi: true},
     {provide: NbRoleProvider, useValue: {getRole: () => of('user')}},
     {provide: APP_BASE_HREF, useValue: '/'},
-    {provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: (req) => false},
+    {provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: () => false},
   ],
 })
 export class AppModule {
