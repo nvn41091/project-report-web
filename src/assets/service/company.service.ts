@@ -47,4 +47,5 @@ export class Company {
   description: string;
   updateTime: number;
   status: boolean;
+  createBy: number;
 }

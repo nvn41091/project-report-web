@@ -33,9 +33,32 @@
               </ngx-inline-message>
             </div>
             <div class="form-group col-md-4">
-              <label class="label w-100">{{ 'prj-information.column.status' | translate }} <span
-                class="text-danger ml-2">*</span> </label>
-              <nb-toggle fullWidth formControlName="status"></nb-toggle>
+              <label class="label w-100">{{ 'prj-information.column.date' | translate }} </label>
+              <input formControlName="date" nbInput fullWidth [nbDatepicker]="date">
+              <nb-rangepicker #date [format]="'dd/MM/yyyy'"></nb-rangepicker>
+            </div>
+            <div class="form-group col-md-4">
+              <label class="label w-100">{{ 'prj-information.column.end_date_plan' | translate }} </label>
+              <input formControlName="endPlan" nbInput fullWidth [nbDatepicker]="endDatePlan">
+              <nb-datepicker #endDatePlan format="dd/MM/yyyy"></nb-datepicker>
+            </div>
+            <div class="form-group col-md-4">
+              <label class="label">{{ 'prj-information.column.money' | translate }}</label>
+              <input nbInput autofocus fullWidth class="form-control" formControlName="money"
+                     status="{{(this.infoField.get('money').invalid && this.infoField.get('money')?.touched) ? 'danger' : null }}" trim="blur" ngxNullValue>
+              <ngx-inline-message [message]="'prj-information.column.money'"
+                                  [formName]="infoField.get('money')">
+              </ngx-inline-message>
+            </div>
+            <div class="col-lg-4 form-group">
+              <label class="label">{{ 'prj-information.column.status' | translate }}</label><span class="text-danger ml-2">*</span>
+              <nb-select fullWidth formControlName="status" [placeholder]="'common.status.clean' | translate">
+                <nb-option *ngFor="let status of lstStatus"
+                           [value]="status.id">{{ status.value | translate }}</nb-option>
+              </nb-select>
+              <ngx-inline-message [message]="'prj-information.column.status'"
+                                  [formName]="infoField.get('status')">
+              </ngx-inline-message>
             </div>
             <div class="form-group col-md-12">
               <label class="label w-100">{{ 'prj-information.column.description' | translate }}</label>

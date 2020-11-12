@@ -148,8 +148,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
           dialogClass: 'modal-full',
           hasScroll: true,
         }).onClose.subscribe(res => {
-          if (res?.result === 'success') {
-            this.toastr.success('company.label.insert_success', true);
+          if (res?.result === 'complete') {
             this.reload();
           }
         });

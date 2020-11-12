@@ -55,8 +55,7 @@ export class ProjectInformationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authorSearch().then(() => {
-    });
+    this.authorSearch().then(() => {});
     this.appParamService.getValueByType('TYPE_STATUS')
       .subscribe(res => Array.prototype.push.apply(this.lstStatus, res.body));
     this.search();
@@ -117,6 +116,7 @@ export class ProjectInformationComponent implements OnInit {
     this.dialog.open(ProjectInformationUpdateComponent, {
       context: {
         data: data,
+        lstStatus: this.lstStatus,
       },
       dialogClass: 'modal-full',
       hasScroll: true,

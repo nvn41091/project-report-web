@@ -38,6 +38,7 @@ export class CompanyUpdateComponent implements OnInit {
       email: new FormControl(this.data?.email, [Validators.maxLength(200), Validators.email]),
       description: new FormControl(this.data?.description, [Validators.maxLength(500)]),
       status: new FormControl(this.data?.status ? this.data?.status : false, [Validators.required]),
+      createBy: new FormControl(this.data?.createBy),
     });
   }
 
