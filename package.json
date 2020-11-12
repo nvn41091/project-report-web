@@ -10,7 +10,7 @@
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
     "start": "node server.js",
-    "start:local": "ng serve --liveReload=true",
+    "start:local": "ng serve --liveReload=true --open",
     "build": "ng build --prod --aot --base-href /",
     "build:prod": "ng build",
     "test": "ng test",

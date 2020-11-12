@@ -5,6 +5,7 @@ import {PagesComponent} from './pages.component';
 import {UserComponent} from './user/user.component';
 import {CompanyComponent} from './company/company.component';
 import {ActionComponent} from './action/action.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 const routes: Routes = [{
   path: '',
@@ -12,6 +13,7 @@ const routes: Routes = [{
   children: [
     {
       path: 'home',
+      component: DashboardComponent,
     },
     {
       path: 'user',

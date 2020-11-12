@@ -4,6 +4,7 @@
     "user_menu": {
       "profile": "Thông tin tài khoản",
       "password": "Đổi mật khẩu",
+      "create_company": "Thêm mới công ty",
       "logout": "Đăng xuất"
     },
     "reload": "Tải lại",

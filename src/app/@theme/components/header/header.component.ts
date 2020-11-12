@@ -1,5 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {NbMediaBreakpointsService, NbMenuItem, NbMenuService, NbSidebarService, NbThemeService} from '@nebular/theme';
+import {
+  NbDialogService,
+  NbMediaBreakpointsService,
+  NbMenuItem,
+  NbMenuService,
+  NbSidebarService,
+  NbThemeService
+} from '@nebular/theme';
 
 import {LayoutService} from '../../../@core/utils';
 import {map, takeUntil, filter} from 'rxjs/operators';
@@ -10,6 +17,10 @@ import {User, UserService} from '../../../../assets/service/user.service';
 import {DataUserService} from '../../../shared/services/data-user.service';
 import {Router} from '@angular/router';
 import {LocalStorageService} from 'ngx-webstorage';
+import {CompanyUpdateComponent} from '../../../pages/company/company-update/company-update.component';
+import {CustomToastrService} from '../../../shared/services/custom-toastr.service';
+import {Browser} from 'leaflet';
+import win = Browser.win;
 
 @Component({
   selector: 'ngx-header',
@@ -30,36 +41,27 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ];
 
   themes = [
-    {
-      value: 'default',
-      name: 'Light',
-    },
-    {
-      value: 'dark',
-      name: 'Dark',
-    },
-    {
-      value: 'cosmic',
-      name: 'Cosmic',
-    },
-    {
-      value: 'corporate',
-      name: 'Corporate',
-    },
+    {value: 'default', name: 'Light'},
+    {value: 'dark', name: 'Dark'},
+    {value: 'cosmic', name: 'Cosmic'},
+    {value: 'corporate', name: 'Corporate'},
   ];
   currentTheme = 'default';
 
   userMenu: NbMenuItem[] = [
     {title: 'Profile', icon: 'person-outline', data: 'index.user_menu.profile'},
     {title: 'Change Password', icon: 'lock-outline', data: 'index.user_menu.password'},
+    {title: 'Create Company', icon: 'plus-outline', data: 'index.user_menu.create_company'},
     {title: 'Log out', icon: 'log-out-outline', data: 'index.user_menu.logout'},
   ];
 
   constructor(private sidebarService: NbSidebarService,
+              private dialog: NbDialogService,
               private menuService: NbMenuService,
               private themeService: NbThemeService,
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService,
+              private toastr: CustomToastrService,
               private localStore: LocalStorageService,
               private tokenService: NbTokenService,
               public translate: TranslateService,
@@ -96,14 +98,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   reload() {
-    this.reloadToken().then(() => {});
-    window.location.reload();
-  }
-
-  async reloadToken() {
-    await this.userService.reloadToken().subscribe(res => {
+    this.userService.reloadToken().subscribe(res => {
+      this.localStore.clear('token');
       this.localStore.store('token', res.body);
       this.tokenService.set(new NbAuthJWTToken(res.body[0].token, 'token'));
+      window.location.reload();
     });
   }
 
@@ -142,6 +141,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
     switch (item.data) {
       case 'index.user_menu.password':
         this.router.navigateByUrl('/pages/change-password').then(() => {
+        });
+        break;
+      case 'index.user_menu.create_company':
+        this.dialog.open(CompanyUpdateComponent, {
+          dialogClass: 'modal-full',
+          hasScroll: true,
+        }).onClose.subscribe(res => {
+          if (res?.result === 'success') {
+            this.toastr.success('company.label.insert_success', true);
+            this.reload();
+          }
         });
         break;
       case 'index.user_menu.logout':
