@@ -5,12 +5,13 @@ import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectComponent } from './project.component';
 import { ProjectInformationComponent } from './project-information/project-information.component';
 import {
-  NbButtonModule,
-  NbCardModule, NbDatepickerModule,
-  NbIconModule,
-  NbInputModule,
-  NbSelectModule,
-  NbSpinnerModule, NbToggleModule
+    NbAutocompleteModule,
+    NbButtonModule,
+    NbCardModule, NbDatepickerModule,
+    NbIconModule,
+    NbInputModule,
+    NbSelectModule,
+    NbSpinnerModule, NbToggleModule
 } from '@nebular/theme';
 import {TranslateModule} from '@ngx-translate/core';
 import {NbSecurityModule} from '@nebular/security';
@@ -31,26 +32,27 @@ import {NbMomentDateModule} from '@nebular/moment';
     ProjectInformationUpdateComponent,
     ProjectStageComponent
   ],
-  imports: [
-    CommonModule,
-    ProjectRoutingModule,
-    NbCardModule,
-    TranslateModule,
-    NbButtonModule,
-    NbIconModule,
-    NbSecurityModule,
-    ReactiveFormsModule,
-    NbSelectModule,
-    NgxDatatableModule,
-    SharedModule,
-    NbSpinnerModule,
-    NbInputModule,
-    NgxTrimDirectiveModule,
-    ListViewModule,
-    NbToggleModule,
-    NbDatepickerModule,
-    NbDateFnsDateModule.forRoot({}),
-    NbMomentDateModule,
-  ],
+    imports: [
+        CommonModule,
+        ProjectRoutingModule,
+        NbCardModule,
+        TranslateModule,
+        NbButtonModule,
+        NbIconModule,
+        NbSecurityModule,
+        ReactiveFormsModule,
+        NbSelectModule,
+        NgxDatatableModule,
+        SharedModule,
+        NbSpinnerModule,
+        NbInputModule,
+        NgxTrimDirectiveModule,
+        ListViewModule,
+        NbToggleModule,
+        NbDatepickerModule,
+        NbDateFnsDateModule.forRoot({}),
+        NbMomentDateModule,
+        NbAutocompleteModule,
+    ],
 })
 export class ProjectModule { }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProjectInformation} from '../../../../../assets/service/project-information.service';
-import {CompanyService} from '../../../../../assets/service/company.service';
+import {Company, CompanyService} from '../../../../../assets/service/company.service';
 import {NbDialogRef} from '@nebular/theme';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomToastrService} from '../../../../shared/services/custom-toastr.service';
@@ -17,6 +17,7 @@ export class ProjectInformationUpdateComponent implements OnInit {
   data: ProjectInformation;
   loading: boolean = false;
   lstStatus: AppParam[];
+  lstCustomer: Company[];
 
   constructor(private ref: NbDialogRef<ProjectInformationUpdateComponent>,
               private fb: FormBuilder,
@@ -28,10 +29,10 @@ export class ProjectInformationUpdateComponent implements OnInit {
   infoField: FormGroup;
 
   ngOnInit(): void {
-    this.userFieldInit();
+    this.infoFieldInit();
   }
 
-  userFieldInit() {
+  infoFieldInit() {
     const date = {
       start: this.data?.startDate ? new Date(this.data.startDate) : undefined,
       end: this.data?.actualEndTime ? new Date(this.data.actualEndTime) : undefined,
@@ -45,10 +46,14 @@ export class ProjectInformationUpdateComponent implements OnInit {
       money: new FormControl(this.data?.money, []),
       endPlan: new FormControl(this.data?.endDatePlan ? new Date(this.data?.endDatePlan) : undefined, []),
       customerId: new FormControl(this.data?.customerId, []),
+      customer: new FormControl(null, []),
       companyId: new FormControl(this.data?.companyId, []),
       description: new FormControl(this.data?.description, [Validators.maxLength(500)]),
       status: new FormControl(this.data?.status, [Validators.required]),
     });
+  }
+
+  autoSearchCustomer() {
   }
 
   save() {
@@ -71,6 +76,10 @@ export class ProjectInformationUpdateComponent implements OnInit {
         this.toastr.error(err.error.title);
       });
     }
+  }
+
+  customerSelect(customer: Company) {
+    return null;
   }
 
   cancel() {

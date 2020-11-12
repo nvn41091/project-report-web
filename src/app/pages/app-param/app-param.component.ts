@@ -60,8 +60,7 @@ export class AppParamComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.author().then(() => {
-    });
+    this.author().then(() => {});
     this.search();
     this.formSearch.get('type').valueChanges.pipe(
       debounceTime(1000),
