@@ -1,10 +1,6 @@
 <nb-card>
   <nb-card-header class="d-flex">
     <label> {{ 'company.title' | translate }}</label>
-    <button *nbIsGranted="['access', 'COMPANY#INSERT']" nbButton status="primary" size="tiny" outline class="ml-auto" (click)="edit(null)">
-      <nb-icon icon="plus" pack="eva"></nb-icon>
-      {{ 'common.label.insert_btn' | translate }}
-    </button>
   </nb-card-header>
   <nb-card-body *nbIsGranted="['access', 'COMPANY#SEARCH']">
     <form [formGroup]="formSearch">

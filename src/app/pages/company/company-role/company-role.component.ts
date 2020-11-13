@@ -84,7 +84,10 @@ export class CompanyRoleComponent implements OnInit {
   }
 
   search() {
-    this.roleService.searchByCodeOrName(this.searchParam).subscribe(res => this.onSuccess(res.body));
+    this.roleService.searchByCodeOrName({
+      name: this.searchParam.name,
+      id: this.company.id
+    }).subscribe(res => this.onSuccess(res.body));
   }
 
   submit() {

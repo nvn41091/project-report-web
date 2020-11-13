@@ -85,6 +85,7 @@ export class ModuleUpdateComponent implements OnInit {
       module.pathUrl = null;
       module.parentId = null;
       module.actionId = null;
+      module.accessUser = 0;
     }
     if (module.id) {
       this.moduleService.update(module).subscribe(res => {
