@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {NbAuthJWTToken, NbTokenService} from '@nebular/auth';
 import {FormControl, FormGroup, Validators} from '@angular/forms';

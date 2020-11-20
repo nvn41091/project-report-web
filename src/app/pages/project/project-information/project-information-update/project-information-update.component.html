@@ -62,12 +62,13 @@
             </div>
             <div class="col-lg-4 form-group">
               <label class="label">{{ 'prj-information.column.customer' | translate }}</label>
-              <input formControlName="customer" (focus)="autoSearchCustomer()"
+              <input formControlName="customerName" (focus)="autoSearchCustomer()" (blur)="cleanCustomer()"
                      nbInput fullWidth trim="blur" ngxNullValue [nbAutocomplete]="autoInsertType">
 
-              <nb-autocomplete #autoInsertType (selectedChange)="customerSelect($event)">
-                <nb-option *ngFor="let customer of lstCustomer" [value]="customer"> {{ customer.name }} </nb-option>
+              <nb-autocomplete #autoInsertType [activeFirst]="true">
+                <nb-option *ngFor="let customer of lstCustomer" (click)="customerSelect(customer)"> {{ customer.name }} </nb-option>
               </nb-autocomplete>
+
             </div>
             <div class="form-group col-md-12">
               <label class="label w-100">{{ 'prj-information.column.description' | translate }}</label>

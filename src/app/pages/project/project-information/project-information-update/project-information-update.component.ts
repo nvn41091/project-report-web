@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ProjectInformation} from '../../../../../assets/service/project-information.service';
 import {Company, CompanyService} from '../../../../../assets/service/company.service';
 import {NbDialogRef} from '@nebular/theme';
@@ -7,6 +7,7 @@ import {CustomToastrService} from '../../../../shared/services/custom-toastr.ser
 import {TranslateService} from '@ngx-translate/core';
 import {onlyCharacterValidator} from '../../../../shared/directives/only-characters.directive';
 import {AppParam} from '../../../../../assets/service/app-param.service';
+import {debounceTime, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-project-information-update',
@@ -23,13 +24,20 @@ export class ProjectInformationUpdateComponent implements OnInit {
               private fb: FormBuilder,
               private toastr: CustomToastrService,
               private translate: TranslateService,
-              private companyService: CompanyService) {
+              private companyService: CompanyService,
+              private cd: ChangeDetectorRef) {
   }
 
   infoField: FormGroup;
 
   ngOnInit(): void {
     this.infoFieldInit();
+  }
+
+  autoCompleteType(name: string) {
+    return this.companyService.autoCompleteCustomer({
+      name: name
+    });
   }
 
   infoFieldInit() {
@@ -46,14 +54,33 @@ export class ProjectInformationUpdateComponent implements OnInit {
       money: new FormControl(this.data?.money, []),
       endPlan: new FormControl(this.data?.endDatePlan ? new Date(this.data?.endDatePlan) : undefined, []),
       customerId: new FormControl(this.data?.customerId, []),
-      customer: new FormControl(null, []),
+      customerName: new FormControl(this.data?.customerName, []),
       companyId: new FormControl(this.data?.companyId, []),
       description: new FormControl(this.data?.description, [Validators.maxLength(500)]),
       status: new FormControl(this.data?.status, [Validators.required]),
     });
+
+    this.infoField.get('customerName').valueChanges.pipe(
+      debounceTime(1000),
+      switchMap((value: string) => {
+        return this.autoCompleteType(value);
+      })
+    ).subscribe(value => {
+      this.lstCustomer = value.body;
+      this.infoField.get('customerId').setValue(null);
+    });
   }
 
   autoSearchCustomer() {
+    this.autoCompleteType(this.infoField.get('customerName').value)
+      .subscribe(success => this.lstCustomer = success.body);
+  }
+
+  cleanCustomer() {
+    if (!this.infoField.get('customerId').value) {
+      this.infoField.get('customerName').setValue(null);
+      this.cd.detectChanges();
+    }
   }
 
   save() {
@@ -79,7 +106,7 @@ export class ProjectInformationUpdateComponent implements OnInit {
   }
 
   customerSelect(customer: Company) {
-    return null;
+    this.infoField.get('customerName').setValue(customer.name);
   }
 
   cancel() {

@@ -36,6 +36,12 @@ export class CompanyService {
     });
   }
 
+  autoCompleteCustomer(data: any) {
+    return this.http.post<Array<Company>>(`${environment.api}/company/autoCompleteCustomer`, data, {
+      observe: 'response',
+    });
+  }
+
 }
 
 export class Company {

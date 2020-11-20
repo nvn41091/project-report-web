@@ -56,7 +56,7 @@ export class AppParamComponent implements OnInit {
   }
 
   autoFocus() {
-    this.autoCompleteType(null).subscribe(res => this.types = res.body);
+    this.autoCompleteType(this.formSearch.get('type').value).subscribe(res => this.types = res.body);
   }
 
   ngOnInit(): void {
