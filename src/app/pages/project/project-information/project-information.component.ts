@@ -82,9 +82,6 @@ export class ProjectInformationComponent implements OnInit {
       this.formSearch.get('start').setValue(date?.start);
       this.formSearch.get('endTime').setValue(date?.end);
       this.dataSearch = this.formSearch.value;
-      // this.dataSearch.startDate = formatDate(this.dataSearch.startDate);
-      // this.dataSearch.endDatePlan = formatDate(this.dataSearch.endDatePlan);
-      // this.dataSearch.actualEndTime = formatDate(this.dataSearch.actualEndTime);
       this.setPage({offset: 0});
     }
   }

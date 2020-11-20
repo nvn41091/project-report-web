@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {ProjectInformation} from '../../../../../assets/service/project-information.service';
+import {ProjectInformation, ProjectInformationService} from '../../../../../assets/service/project-information.service';
 import {Company, CompanyService} from '../../../../../assets/service/company.service';
 import {NbDialogRef} from '@nebular/theme';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -25,6 +25,7 @@ export class ProjectInformationUpdateComponent implements OnInit {
               private toastr: CustomToastrService,
               private translate: TranslateService,
               private companyService: CompanyService,
+              private projectInformationService: ProjectInformationService,
               private cd: ChangeDetectorRef) {
   }
 
@@ -78,16 +79,17 @@ export class ProjectInformationUpdateComponent implements OnInit {
 
   cleanCustomer() {
     if (!this.infoField.get('customerId').value) {
-      this.infoField.get('customerName').setValue(null);
-      this.cd.detectChanges();
+      this.infoField.get('customerName').setValue('');
     }
   }
 
   save() {
     this.loading = true;
     const company = Object.assign({}, this.infoField.value);
+    company.startDate = company.date.start;
+    company.actualEndTime = company.date.end;
     if (company.id) {
-      this.companyService.update(company).subscribe(res => {
+      this.projectInformationService.update(company).subscribe(res => {
         this.toastr.success('common.label.update_success', true);
         this.ref.close({result: 'complete'});
       }, err => {
@@ -95,7 +97,7 @@ export class ProjectInformationUpdateComponent implements OnInit {
         this.toastr.error(err.error.title);
       });
     } else {
-      this.companyService.insert(company).subscribe(res => {
+      this.projectInformationService.insert(company).subscribe(res => {
         this.toastr.success('common.label.insert_success', true);
         this.ref.close({result: 'complete'});
       }, err => {
@@ -107,6 +109,7 @@ export class ProjectInformationUpdateComponent implements OnInit {
 
   customerSelect(customer: Company) {
     this.infoField.get('customerName').setValue(customer.name);
+    this.infoField.get('customerId').setValue(customer.id);
   }
 
   cancel() {
