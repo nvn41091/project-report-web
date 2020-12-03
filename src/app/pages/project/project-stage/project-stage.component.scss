@@ -1,3 +1,10 @@
+@import '../../../@theme/styles/themes';
+@include nb-install-component() {
+  nb-card-header, nb-card-body {
+    padding: 0;
+  }
+}
+
 .e-listview:not(.e-list-template) .e-list-item {
   height: 36px;
   line-height: 36px;

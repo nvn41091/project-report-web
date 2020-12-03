@@ -115,7 +115,7 @@
                   <nb-icon icon="edit-outline" pack="eva" size="tiny"></nb-icon>
                 </button>
                 <button class="p-1" nbButton status="success" ghost title="{{ 'common.label.view' | translate }}"
-                        *nbIsGranted="['access', 'PRI#VIEW']">
+                        *nbIsGranted="['access', 'PRI#VIEW']" (click)="more(row)">
                   <nb-icon icon="eye-outline" pack="eva" size="tiny"></nb-icon>
                 </button>
                 <button class="p-1" nbButton status="danger" ghost title="{{ 'common.label.delete' | translate }}"

@@ -28,19 +28,19 @@ export class PagesAuth implements CanActivate {
       await this.getUserInfo().then(r => user = r);
       this.dataUserService.setUser(user);
       this.nbAciService.register('user', null, {['access']: user?.roles});
-      if (state.url === '/pages/home' || state.url === '/pages/404' || state.url === '/pages/change-password') {
-        return true;
-      }
-      let check = false;
-      for (let i = 0; i < user.menus.length; i ++) {
-        const path =  state.url.substring(0, user.menus[i]?.pathUrl?.length);
-        if (user.menus[i].pathUrl === path) {
-          check = true;
-        }
-      }
-      if (!check) {
-        await this.router.navigate(['/pages/404']);
-      }
+      // if (state.url === '/pages/home' || state.url === '/pages/404' || state.url === '/pages/change-password') {
+      //   return true;
+      // }
+      // let check = false;
+      // for (let i = 0; i < user.menus.length; i ++) {
+      //   const path =  state.url.substring(0, user.menus[i]?.pathUrl?.length);
+      //   if (user.menus[i].pathUrl === path) {
+      //     check = true;
+      //   }
+      // }
+      // if (!check) {
+      //   await this.router.navigate(['/pages/404']);
+      // }
     } else {
       this.router.navigate(['auth/login']).then(() => {});
     }

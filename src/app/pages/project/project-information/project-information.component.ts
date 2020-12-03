@@ -9,6 +9,7 @@ import {ConfirmDialogComponent} from '../../../share-lib-module/confirm-dialog/c
 import {AppParam, AppParamService} from '../../../../assets/service/app-param.service';
 import {ProjectInformation, ProjectInformationService} from '../../../../assets/service/project-information.service';
 import {ProjectInformationUpdateComponent} from './project-information-update/project-information-update.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'ngx-project-information',
@@ -48,6 +49,7 @@ export class ProjectInformationComponent implements OnInit {
               private appParamService: AppParamService,
               private dialog: NbDialogService,
               private toastr: CustomToastrService,
+              private router: Router,
               private accessChecker: NbAccessChecker) {
     this.themeService.onThemeChange().subscribe((theme: any) => {
       this.theme = theme.name;
@@ -55,7 +57,8 @@ export class ProjectInformationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authorSearch().then(() => {});
+    this.authorSearch().then(() => {
+    });
     this.appParamService.getValueByType('TYPE_STATUS')
       .subscribe(res => Array.prototype.push.apply(this.lstStatus, res.body));
     this.search();
@@ -120,6 +123,10 @@ export class ProjectInformationComponent implements OnInit {
     }).onClose.subscribe(res => {
       res?.result === 'complete' ? this.setPage({offset: 0}) : {};
     });
+  }
+
+  more(data: ProjectInformation) {
+    this.router.navigate(['/pages/project/more', data.id]);
   }
 
   delete(data: ProjectInformation) {
