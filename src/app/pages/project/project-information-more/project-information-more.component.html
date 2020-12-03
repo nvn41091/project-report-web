@@ -1,6 +1,6 @@
 <nb-card>
   <nb-card-body>
-    <nb-tabset>
+    <nb-tabset fullWidth>
       <nb-tab *ngFor="let tab of tabs" [tabTitle]="tab.title | translate" [tabIcon]="tab.icon" [lazyLoad]="true">
         <ng-container *ngComponentOutlet="tab.component"></ng-container>
       </nb-tab>
