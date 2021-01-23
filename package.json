@@ -54,6 +54,7 @@
     "@swimlane/ngx-datatable": "^18.0.0",
     "@syncfusion/ej2-angular-diagrams": "^18.2.56",
     "@syncfusion/ej2-angular-lists": "^18.2.54",
+    "DlhSoft.GanttChartHyperLibrary": "http://DlhSoft.com/Packages/DlhSoft.GanttChartHyperLibrary.tar",
     "angular2-chartjs": "0.4.1",
     "bootstrap": "4.3.1",
     "chart.js": "2.7.1",
