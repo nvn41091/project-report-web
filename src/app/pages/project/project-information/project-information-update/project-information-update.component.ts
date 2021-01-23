@@ -55,32 +55,24 @@ export class ProjectInformationUpdateComponent implements OnInit {
       money: new FormControl(this.data?.money, []),
       endPlan: new FormControl(this.data?.endDatePlan ? new Date(this.data?.endDatePlan) : undefined, []),
       customerId: new FormControl(this.data?.customerId, []),
-      customerName: new FormControl(this.data?.customerName, []),
       companyId: new FormControl(this.data?.companyId, []),
       description: new FormControl(this.data?.description, [Validators.maxLength(500)]),
       status: new FormControl(this.data?.status, [Validators.required]),
     });
 
-    this.infoField.get('customerName').valueChanges.pipe(
+    this.infoField.get('customerId').valueChanges.pipe(
       debounceTime(1000),
       switchMap((value: string) => {
         return this.autoCompleteType(value);
       })
     ).subscribe(value => {
       this.lstCustomer = value.body;
-      this.infoField.get('customerId').setValue(null);
     });
   }
 
   autoSearchCustomer() {
-    this.autoCompleteType(this.infoField.get('customerName').value)
+    this.autoCompleteType(this.infoField.get('customerId').value)
       .subscribe(success => this.lstCustomer = success.body);
-  }
-
-  cleanCustomer() {
-    if (!this.infoField.get('customerId').value) {
-      this.infoField.get('customerName').setValue('');
-    }
   }
 
   save() {
@@ -108,8 +100,7 @@ export class ProjectInformationUpdateComponent implements OnInit {
   }
 
   customerSelect(customer: Company) {
-    this.infoField.get('customerName').setValue(customer.name);
-    this.infoField.get('customerId').setValue(customer.id);
+    this.infoField.get('customerId').setValue(customer.name);
   }
 
   cancel() {

@@ -62,7 +62,7 @@
             </div>
             <div class="col-lg-4 form-group">
               <label class="label">{{ 'prj-information.column.customer' | translate }}</label>
-              <input formControlName="customerName" (focusin)="autoSearchCustomer()"
+              <input formControlName="customerId" (focusin)="autoSearchCustomer()"
                      nbInput fullWidth trim="blur" ngxNullValue [nbAutocomplete]="autoInsertType">
 
               <nb-autocomplete #autoInsertType>
