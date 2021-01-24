@@ -27,6 +27,11 @@ const routes: Routes = [{
           component: ProjectStageComponent,
         }
       ]
+    },
+    {
+      path: 'progress',
+      component: ProjectProgressComponent,
+      data: { 'isView': false }
     }
   ],
 }];
